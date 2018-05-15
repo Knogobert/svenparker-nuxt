@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'svenparker-nuxt',
+    title: 'Sven Parker',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,7 +16,17 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: '#37D278' },
+  transition: {
+    name: 'page',
+    mode: 'out-in',
+    enterClass: 'ZYZ',
+    afterEnter: `afterEnter (el) {
+      console.log('Before enter...');
+    }`,
+    duration: 1000,
+    appear: true
+  },
   /*
   ** Build configuration
   */
