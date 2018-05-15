@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
+      <app/>
       <h1 class="title">
         svenparker-nuxt
       </h1>
@@ -14,20 +14,19 @@
           target="_blank"
           class="button--green">Documentation</a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+          href="/contact"
+          class="button--grey">Contact</a>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import App from '~/components/App.vue'
 
 export default {
   components: {
-    AppLogo
+    App
   }
 }
 </script>
