@@ -1,4 +1,14 @@
 module.exports = {
+
+  build: {
+    vendor: ['vuesax']
+  },
+  plugins: ['~/plugins/vuesax'],
+
+  css: [
+      'assets/main.css'
+  ],
+
   /*
   ** Headers of the page
   */
@@ -17,6 +27,9 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#37D278' },
+
+  router: { linkExactActiveClass: 'active' },
+
   transition: {
     name: 'page',
     mode: 'out-in',
