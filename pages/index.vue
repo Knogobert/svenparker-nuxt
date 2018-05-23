@@ -16,16 +16,18 @@
       </div>
     </div>
   </section>
+
+  <project/>
 </template>
 
 <script>
-// import App from '~/components/App.vue'
+import Project from '~/components/Project.vue'
 
-// export default {
-//   components: {
-//     App
-//   }
-// }
+export default {
+  components: {
+    Project
+  }
+}
 </script>
 
 <style>

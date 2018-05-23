@@ -6,7 +6,7 @@
         Contact
       </h1>
       <h2 class="subtitle">
-        Personal portfolio
+        info
       </h2>
       <div class="links">
         <nuxt-link to="/">
