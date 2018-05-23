@@ -1,7 +1,7 @@
 <template>
-  <section class="container">
-    <div>
-      <app/>
+  <main class="container">
+
+    <section>
       <h1 class="title">
         Contact
       </h1>
@@ -15,18 +15,19 @@
           </vs-button>
         </nuxt-link>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 </template>
 
 <script>
-import App from '~/components/App.vue'
+// import App from '~/components/App.vue'
 
-export default {
-  components: {
-    App
-  }
-}
+// export default {
+//   components: {
+//     App
+//   }
+// }
 </script>
 
 <style>

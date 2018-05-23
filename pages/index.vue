@@ -1,8 +1,9 @@
 <template>
-  <section class="container">
-    <div>
+  <main class="container">
+
+    <section>
       <h1 class="title">
-        svenparker-nuxt
+        Sven Parker
       </h1>
       <h2 class="subtitle">
         Personal portfolio
@@ -14,10 +15,11 @@
           </vs-button>
         </nuxt-link>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <project/>
+    <project/>
+
+  </main>
 </template>
 
 <script>
@@ -31,4 +33,4 @@ export default {
 </script>
 
 <style>
-</style>
+</style>´
