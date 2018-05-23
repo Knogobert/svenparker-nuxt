@@ -1,10 +1,5 @@
 module.exports = {
 
-  build: {
-    vendor: ['vuesax']
-  },
-  plugins: ['~/plugins/vuesax'],
-
   css: [
       'assets/main.css'
   ],
