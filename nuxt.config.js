@@ -1,5 +1,8 @@
 module.exports = {
 
+  /*
+  ** Added css/scss
+  */
   css: [
       'assets/main.scss'
   ],
@@ -27,13 +30,20 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Quicksand' }
     ]
   },
+
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#37D278' },
 
+  /*
+  ** Routing options
+  */
   router: { linkExactActiveClass: 'active' },
 
+  /*
+  ** Transition options
+  */
   transition: {
     name: 'page',
     mode: 'out-in',
@@ -62,5 +72,6 @@ module.exports = {
         })
       }
     }
+    
   }
 }
