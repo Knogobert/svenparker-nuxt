@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/_variables.scss';
 
 .sp-intro {
   background-color: #2ECC71;
@@ -46,14 +47,14 @@ export default {
     display: block;
     font-weight: 300;
     font-size: 100px;
-    color: #229652;
+    color: $white;
     letter-spacing: 1px;
   }
 
   .subtitle {
     font-weight: 300;
     font-size: 42px;
-    color: #229652;
+    color: #F6F6F6 - 2;
     word-spacing: 5px;
     padding-bottom: 15px;
   }

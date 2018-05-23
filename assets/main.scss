@@ -1,18 +1,2 @@
-
-.page-enter-active,
-.page-leave-active {
-    transition: opacity .5s;
-}
-
-.page-enter,
-.page-leave-to {
-    opacity: 0;
-}
-
-a {
-    text-decoration: none;
-    
-    &:visited {
-        color: initial;
-    }
-}
+@import '~assets/_variables.scss';
+@import '~assets/_globals.scss';

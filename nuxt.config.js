@@ -44,6 +44,7 @@ module.exports = {
     duration: 1000,
     appear: true
   },
+
   /*
   ** Build configuration
   */

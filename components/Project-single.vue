@@ -15,6 +15,7 @@ props: ['title']
 </script>
 
 <style lang="scss">
+@import '~assets/_variables.scss';
 
 .project-single {
   background-color: #26A65B;
