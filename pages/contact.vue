@@ -1,29 +1,22 @@
 <template>
   <main class="container">
 
-    <section class="sp-intro">
-      <h1 class="title">
-        Contact
-      </h1>
-      <h2 class="subtitle">
-        info
-      </h2>
-      <div class="links">
-        <nuxt-link to="/">Index</nuxt-link>
-      </div>
-    </section>
+    <sp-intro>
+      <template slot="title">Contact</template>
+      <template slot="subtitle">Info</template>
+    </sp-intro>
 
   </main>
 </template>
 
 <script>
-// import App from '~/components/App.vue'
+import spIntro from '~/components/Intro.vue'
 
-// export default {
-//   components: {
-//     App
-//   }
-// }
+export default {
+  components: {
+    spIntro
+  }
+}
 </script>
 
 <style lang="scss">

@@ -10,8 +10,6 @@
 
 <script>
 
-props: ['title']
-
 </script>
 
 <style lang="scss">
