@@ -18,7 +18,6 @@
 
 <script>
 export default {
-  //props: [item],
   data() {
     return {
       show: false
@@ -72,8 +71,22 @@ export default {
     padding-bottom: 15px;
   }
 
-  a {
-    //color: #0B29FB;
+  .links {
+    display: flex;
+    &-link {
+      display: inline-flex;
+
+      + .links-link {
+        margin-left: 1rem;
+      }
+
+      a {
+        color: $white;
+        background-color: $ufo-d3;
+        padding: 1rem;
+        border-radius: .2rem;
+      }
+    }
   }
 }
 
