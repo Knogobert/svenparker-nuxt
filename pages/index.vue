@@ -5,15 +5,11 @@
       <h1 class="title">
         Sven Parker
       </h1>
-      <h2 class="subtitle">
+      <!-- <h2 class="subtitle">
         Personal portfolio
-      </h2>
+      </h2> -->
       <div class="links">
-        <nuxt-link to="/contact">
-          <vs-button vs-type="primary-filled">
-            Contact
-          </vs-button>
-        </nuxt-link>
+        <nuxt-link to="/contact">Contact</nuxt-link>
       </div>
     </section>
 
@@ -32,7 +28,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+
 .sp-intro {
   background-color: #2ECC71;
   width: 100%;
@@ -44,5 +41,26 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
+
+  .title {
+    display: block;
+    font-weight: 300;
+    font-size: 100px;
+    color: #229652;
+    letter-spacing: 1px;
+  }
+
+  .subtitle {
+    font-weight: 300;
+    font-size: 42px;
+    color: #229652;
+    word-spacing: 5px;
+    padding-bottom: 15px;
+  }
+
+  a {
+    //color: #0B29FB;
+  }
 }
+
 </style>

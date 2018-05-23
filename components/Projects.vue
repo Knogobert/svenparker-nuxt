@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .sp-projects {
   background-color: #2AB764;
   display: block;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <Nav/> -->
+    <Nav/>
     <nuxt/>
   </div>
 </template>
@@ -27,6 +27,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #2ECC71;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -41,23 +45,4 @@ html {
   flex-flow: column;
 }
 
-.title {
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>

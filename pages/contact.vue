@@ -1,7 +1,7 @@
 <template>
   <main class="container">
 
-    <section>
+    <section class="sp-intro">
       <h1 class="title">
         Contact
       </h1>
@@ -9,11 +9,7 @@
         info
       </h2>
       <div class="links">
-        <nuxt-link to="/">
-          <vs-button vs-type="primary-filled">
-            Index
-          </vs-button>
-        </nuxt-link>
+        <nuxt-link to="/">Index</nuxt-link>
       </div>
     </section>
 

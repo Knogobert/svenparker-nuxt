@@ -14,7 +14,7 @@ props: ['title']
 
 </script>
 
-<style>
+<style lang="scss">
 
 .project-single {
   background-color: #26A65B;

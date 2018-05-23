@@ -9,6 +9,10 @@
     opacity: 0;
 }
 
-/* a:visited {
-    color: initial;
-} */
+a {
+    text-decoration: none;
+    
+    &:visited {
+        color: initial;
+    }
+}
