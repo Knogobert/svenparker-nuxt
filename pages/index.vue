@@ -1,7 +1,7 @@
 <template>
   <main class="container">
 
-    <section>
+    <section class="sp-intro">
       <h1 class="title">
         Sven Parker
       </h1>
@@ -17,20 +17,30 @@
       </div>
     </section>
 
-    <project/>
+    <sp-projects></sp-projects>
 
   </main>
 </template>
 
 <script>
-import Project from '~/components/Project.vue'
+import spProjects from '~/components/Projects.vue'
 
 export default {
   components: {
-    Project
+    spProjects
   }
 }
 </script>
 
 <style>
-</style>´
+.sp-intro {
+  flex-basis: 100%;
+  min-height: 500px;
+  max-height: 100vh;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

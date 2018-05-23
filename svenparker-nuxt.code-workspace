@@ -1,7 +1,18 @@
 {
 	"folders": [
 		{
-			"path": "/Users/SvenParker/Documents/www/svenparker-nuxt"
+			"path": "."
+		},
+		{
+			"path": "/Users/SvenParker/Documents/www/laracasts-vue/Vue-Basic"
 		}
-	]
+	],
+	"settings": {
+		"html-css-class-completion.includeGlobPattern": "**/*.{css,html,vue}",
+		"css.fileExtensions": [
+			"css",
+			"scss",
+			"vue"
+		]
+	}
 }
