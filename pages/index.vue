@@ -34,6 +34,8 @@ export default {
 
 <style>
 .sp-intro {
+  background-color: #2ECC71;
+  width: 100%;
   flex-basis: 100%;
   min-height: 500px;
   max-height: 100vh;
