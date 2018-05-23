@@ -18,7 +18,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Personal portfolio' },
       { name: 'msapplication-TileColor', content: '#2ecc71'},
       { name: 'msapplication-config', content: 'browserconfig.xml'},
-      { name: 'theme-color', content: '#2ecc71'}
+      { name: 'theme-color', content: '#2ecc71'},
+      { name: 'robots', content: 'noindex' },
     ],
     link: [
       { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/apple-touch-icon.png' },
