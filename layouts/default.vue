@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Nav/>
+    <!-- <sp-nav/> -->
     <nuxt/>
   </div>
 </template>
 
 <script>
-import Nav from '~/components/Nav.vue'
+import spNav from '~/components/Nav.vue'
 
 export default {
   components: {
-    Nav
+    spNav
   }
 }
 </script>

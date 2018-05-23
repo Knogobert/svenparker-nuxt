@@ -47,7 +47,8 @@ export default {
   background-color: #2ECC71;
   width: 100%;
   flex-basis: 100%;
-  min-height: 500px;
+  min-height: 300px;
+  height: calc(100vh - 55px);
   max-height: 100vh;
 
   display: flex;
