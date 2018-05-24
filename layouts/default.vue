@@ -11,18 +11,34 @@ import spNav from '~/components/Nav.vue'
 import spLogo from '~/components/Logo.vue'
 
 export default {
+  name: 'default-layout',
   components: {
     spNav,
     spLogo
+  },
+  data() {
+    return {
+      color: {
+        hue: 145,
+        saturation: 63,
+        luminosity: 49,
+        alpha: 1
+      },
+    }
   },
   computed: {
     coloring() {
       return {
         base: {
           default: '#2ECC71',
-          lighten: '#37d278'
+          lighten: 'hsla('+this.color.hue+', '+this.color.saturation+'%, '+this.color.luminosity+'%, '+this.color.alpha+')'
         }
       }
+    }
+  },
+  methods: {
+    bodyColorChange(color) {
+      coloring.base.lighten = color;
     }
   }
 }

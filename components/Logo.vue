@@ -15,6 +15,7 @@
 import ColorPicker from '@radial-color-picker/vue-color-picker'
 
 export default {
+  name: 'sp-logo',
   components: {
     ColorPicker
   },
@@ -32,9 +33,11 @@ export default {
     }
   },
   methods: {
-      onColorPick() {
-          console.log(this.color.hue);
-      }
+    onColorPick() {
+      console.log(this.color.hue);
+      //Vue.set(coloring.base.lighten, 'hsla('+this.color.hue+', '+this.color.saturation+'%, '+this.color.luminosity+'%, '+this.color.alpha+')');
+      this.$emit('bodyColorChange', 'hsla('+this.color.hue+', '+this.color.saturation+'%, '+this.color.luminosity+'%, '+this.color.alpha+')');
+    }
   }
 }
 </script>
@@ -57,13 +60,13 @@ export default {
   text-align: center;
 
   a {
-    margin: 0;
+    margin: 10px 0 0;
   }
 
   svg {
     height: auto;
     width: 100%;
-    max-height: 30vh;
+    max-height: 180px;
 
     .svg {
       &-fill--green{fill:$ufo}
