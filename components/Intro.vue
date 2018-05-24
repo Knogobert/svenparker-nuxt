@@ -44,7 +44,7 @@ export default {
 @import '~assets/_variables.scss';
 
 .sp-intro {
-  background-color: #2ECC71;
+  //background-color: #2ECC71;
   width: 100%;
   flex-basis: 100%;
   min-height: 300px;

@@ -19,8 +19,8 @@ export default {
     coloring() {
       return {
         base: {
-          default: 'red',
-          lighten: 'pink'
+          default: '#2ECC71',
+          lighten: '#37d278'
         }
       }
     }
@@ -30,11 +30,6 @@ export default {
 
 <style lang="scss">
 @import '~assets/_variables.scss';
-
-
-body {
-  background-color: $ufo;
-}
 
 .container {
   min-height: 100vh;
