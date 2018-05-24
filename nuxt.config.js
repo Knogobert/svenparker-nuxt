@@ -3,9 +3,7 @@ module.exports = {
   /*
   ** Added css/scss
   */
-  css: [
-      'assets/main.scss'
-  ],
+  css: ['assets/main.scss'],
 
   /*
   ** Headers of the page
@@ -74,5 +72,12 @@ module.exports = {
       }
     }
     
-  }
+  },
+
+  // plugins: [
+  //     {
+  //         src: '~/plugins/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.js',
+  //         ssr: false
+  //     }
+  // ]
 }

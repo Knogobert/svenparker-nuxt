@@ -7,23 +7,41 @@
       </svg>
     </nuxt-link>
     <input type="text" v-model="strokeColorClass" v-if="hide">
+    <color-picker v-model="color" @input="onColorPick"></color-picker>
   </div>
 </template>
 
 <script>
+import ColorPicker from '@radial-color-picker/vue-color-picker'
+
 export default {
+  components: {
+    ColorPicker
+  },
   data() {
     return {
       hide: false,
       bgColorClass: 'svg-fill--green',
-      strokeColorClass: 'svg-fill--white'
+      strokeColorClass: 'svg-fill--white',
+      color: {
+        hue: 145,
+        saturation: 63,
+        luminosity: 49,
+        alpha: 1
+      },
     }
+  },
+  methods: {
+      onColorPick() {
+          console.log(this.color.hue);
+      }
   }
 }
 </script>
 
 <style lang="scss">
 @import '~assets/_variables.scss';
+@import '@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.css';
 
 .sp-logo {
   position: fixed;
@@ -60,6 +78,12 @@ export default {
   .show {
     visibility: visible;
   }
+}
+
+// Overwrites for vue-color-picker plugin
+.color-picker {
+  height: 200px;
+  width: 200px;
 }
 
 </style>
