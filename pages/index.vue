@@ -16,6 +16,7 @@ import spIntro from '~/components/Intro.vue'
 import spProjects from '~/components/Projects.vue'
 
 export default {
+  name: 'index-page',
   components: {
     spIntro,
     spProjects

@@ -29,11 +29,11 @@
 import spProjectSingle from '~/components/Project-single.vue'
 
 export default {
+  name: 'sp-projects',
   components: {
     spProjectSingle
   }
 }
-
 </script>
 
 <style lang="scss">

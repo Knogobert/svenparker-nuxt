@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  name: 'sp-Intro',
   data() {
     return {
       show: false

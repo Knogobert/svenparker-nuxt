@@ -13,6 +13,7 @@
 import spIntro from '~/components/Intro.vue'
 
 export default {
+  name: 'contact-page',
   components: {
     spIntro
   }
