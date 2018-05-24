@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background-color: #2ECC71;
+  background-color: $ufo;
 }
 
 *, *:before, *:after {
@@ -18,12 +18,12 @@ body {
   margin: 0;
 }
 
-.page-enter-active,
-.page-leave-active {
-    transition: opacity .5s;
-}
+// .page-enter-active,
+// .page-leave-active {
+//     transition: opacity .5s;
+// }
 
-.page-enter,
-.page-leave-to {
-    opacity: 0;
-}
+// .page-enter,
+// .page-leave-to {
+//     opacity: 0;
+// }
