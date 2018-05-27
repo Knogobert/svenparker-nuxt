@@ -34,8 +34,6 @@ export default {
   },
   methods: {
     onColorPick() {
-      console.log(this.color.hue);
-      //Vue.set(coloring.base.lighten, 'hsla('+this.color.hue+', '+this.color.saturation+'%, '+this.color.luminosity+'%, '+this.color.alpha+')');
       this.$emit('bodyColorChange', 'hsla('+this.color.hue+', '+this.color.saturation+'%, '+this.color.luminosity+'%, '+this.color.alpha+')');
     }
   }

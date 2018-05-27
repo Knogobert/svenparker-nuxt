@@ -1,7 +1,7 @@
 <template>
-  <div :style="{ 'background-color': coloring.base.lighten }">
+  <div :style="{ 'background-color': color.base.default }">
     <!-- <sp-nav/> -->
-    <sp-logo/>
+    <sp-logo @bodyColorChange="bodyColorChanged"/>
     <nuxt/>
   </div>
 </template>
@@ -19,26 +19,16 @@ export default {
   data() {
     return {
       color: {
-        hue: 145,
-        saturation: 63,
-        luminosity: 49,
-        alpha: 1
-      },
-    }
-  },
-  computed: {
-    coloring() {
-      return {
         base: {
           default: '#2ECC71',
-          lighten: 'hsla('+this.color.hue+', '+this.color.saturation+'%, '+this.color.luminosity+'%, '+this.color.alpha+')'
+          lighten: 'hsla(145, 63%, 49%, 1)'
         }
       }
     }
   },
   methods: {
-    bodyColorChange(color) {
-      coloring.base.lighten = color;
+    bodyColorChanged(color) {
+      this.color.base.default = color;
     }
   }
 }
