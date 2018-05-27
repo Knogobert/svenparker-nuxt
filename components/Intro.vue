@@ -46,10 +46,10 @@ export default {
       ]
     }
   },
-  methods: {
-    colorChange(color) {
-      this.$root.$on('colorChange', this.color);
-    }
+  beforeUpdate() {
+    console.log('beforeUpdate!!');
+    this.$root.$on('colorChange', this.color);
+    console.log(this.color);
   }
 }
 </script>
