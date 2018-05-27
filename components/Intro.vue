@@ -9,7 +9,8 @@
     </h2>
     <ul class="links">
       <li class="links-link" v-for="link in links" :key="link.name">
-        <nuxt-link :to="link.path">{{ link.name }}</nuxt-link>
+        <nuxt-link :to="link.path" >{{ link.name }}</nuxt-link>
+        <!-- :style="{ 'background-color': color.base.darken }" -->
       </li>
     </ul>
   </section>
@@ -21,7 +22,14 @@ export default {
   name: 'sp-Intro',
   data() {
     return {
-      show: false
+      show: false,
+      color: {
+        base: {
+          darken: 'hsla(145, 63%, 44%, 1)',
+          default: 'hsla(145, 63%, 49%, 1)',
+          lighten: 'hsla(145, 63%, 52%, 1)'
+        }
+      }
     }
   },
   computed: {
@@ -36,6 +44,11 @@ export default {
           path: '/contact'
         }
       ]
+    }
+  },
+  methods: {
+    colorChange(color) {
+      this.$root.$on('colorChange', this.color);
     }
   }
 }
@@ -86,7 +99,8 @@ export default {
 
       a {
         color: $white;
-        background-color: $ufo-d3;
+        //background-color: $ufo-d3;
+        background-color: hsla(0, 0%, 0%, .1);
         padding: 1rem;
         border-radius: .2rem;
       }

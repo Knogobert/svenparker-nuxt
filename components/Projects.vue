@@ -46,6 +46,7 @@ export default {
   
   h2 {
     margin: 1rem 0;
+    color: $white;
   }
 }
 

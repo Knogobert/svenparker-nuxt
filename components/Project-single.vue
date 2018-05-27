@@ -16,8 +16,15 @@
 @import '~assets/_variables.scss';
 
 .project-single {
-  background-color: #26A65B;
+  background-color: hsla(0, 0%, 0%, .1);
   padding: 50px;
+
+  h3,
+  h4,
+  h5,
+  p {
+    color: $white;
+  }
 }
 
 </style>
