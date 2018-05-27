@@ -85,8 +85,9 @@ export default {
 
 // Overwrites for vue-color-picker plugin
 .color-picker {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
+  min-width: 150px;
 }
 
 </style>
