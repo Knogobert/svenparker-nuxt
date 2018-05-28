@@ -69,11 +69,12 @@ export default {
   //background-color: #2ECC71;
   width: 100%;
   flex-basis: 100%;
-  min-height: 600px;
+  min-height: 500px;
   height: 100%;
   height: 100vh;
   height: calc(100vh - 55px);
   max-height: 100vh;
+  padding: 10rem 1rem 4rem;
 
   display: flex;
   flex-flow: column;
