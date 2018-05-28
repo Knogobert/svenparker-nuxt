@@ -55,7 +55,6 @@ export default {
     }
   },
   mounted() {
-    console.log('Mounted!');
     this.$bus.$on('colorChange', (data) => {
       this.color = data;
     });
