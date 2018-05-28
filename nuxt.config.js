@@ -74,6 +74,7 @@ module.exports = {
     
   },
 
+  plugins: ['~/plugins/eventBus.js']
   // plugins: [
   //     {
   //         src: '~/plugins/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.js',

@@ -9,8 +9,8 @@
     </h2>
     <ul class="links">
       <li class="links-link" v-for="link in links" :key="link.name">
-        <nuxt-link :to="link.path" >{{ link.name }}</nuxt-link>
-        <!-- :style="{ 'background-color': color.base.darken }" -->
+        <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }">{{ link.name }}</nuxt-link>
+        <!-- :style="{ 'background-color': color.primary.darken1 }" -->
       </li>
     </ul>
   </section>
@@ -24,10 +24,18 @@ export default {
     return {
       show: false,
       color: {
-        base: {
-          darken: 'hsla(145, 63%, 44%, 1)',
+        primary: {
+          darken3: 'hsla(145, 63%, 36%, 1)',
+          darken2: 'hsla(145, 63%, 40%, 1)',
+          darken1: 'hsla(145, 63%, 44%, 1)',
           default: 'hsla(145, 63%, 49%, 1)',
-          lighten: 'hsla(145, 63%, 52%, 1)'
+          lighten1: 'hsla(145, 63%, 52%, 1)',
+          lighten2: 'hsla(145, 63%, 56%, 1)',
+        },
+        secondary: {
+          darken1: 'hsla(203, 73%, 36%, 1)',
+          default: 'hsla(203, 73%, 41%, 1)',
+          lighten1: 'hsla(203, 73%, 46%, 1)'
         }
       }
     }
@@ -46,10 +54,11 @@ export default {
       ]
     }
   },
-  beforeUpdate() {
-    console.log('beforeUpdate!!');
-    this.$root.$on('colorChange', this.color);
-    console.log(this.color);
+  mounted() {
+    console.log('Mounted!');
+    this.$bus.$on('colorChange', (data) => {
+      this.color = data;
+    });
   }
 }
 </script>

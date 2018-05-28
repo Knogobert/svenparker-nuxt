@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     onColorPick() {
-      this.$emit('bodyColorChange', this.color.hue);
+      this.$emit('bodyColorChange', Math.round(this.color.hue) );
     }
   }
 }

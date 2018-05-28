@@ -1,6 +1,6 @@
 <template>
-  <div :style="{ 'background-color': color.base.default }">
-    <style>body{background-color: {{ color.base.default }};}</style>
+  <div :style="{ 'background-color': color.primary.default }">
+    <style>body{background-color: {{ color.primary.default }};}</style>
     <!-- <sp-nav/> -->
     <sp-logo @bodyColorChange="bodyColorChanged"/>
     <nuxt/>
@@ -20,25 +20,62 @@ export default {
   data() {
     return {
       defaultColor: {
-        hue: 145,
-        saturation: 63,
-        luminosity: 49,
-        alpha: 1
+        primary: {
+          hue: 145,
+          saturation: 63,
+          luminosity: 49,
+          alpha: 1
+        },
+        secondary: {
+          hue: 203,
+          saturation: 73,
+          luminosity: 41,
+          alpha: 1,
+          offset: 58
+        }
       },
       color: {
-        base: {
-          darken: 'hsla(145, 63%, 44%, 1)',
+        primary: {
+          darken3: 'hsla(145, 63%, 36%, 1)',
+          darken2: 'hsla(145, 63%, 40%, 1)',
+          darken1: 'hsla(145, 63%, 44%, 1)',
           default: 'hsla(145, 63%, 49%, 1)',
-          lighten: 'hsla(145, 63%, 52%, 1)'
+          lighten1: 'hsla(145, 63%, 52%, 1)',
+          lighten2: 'hsla(145, 63%, 56%, 1)',
+        },
+        secondary: {
+          darken1: 'hsla(203, 73%, 36%, 1)',
+          default: 'hsla(203, 73%, 41%, 1)',
+          lighten1: 'hsla(203, 73%, 46%, 1)'
         }
       }
     }
   },
   methods: {
+    colorStringify(defColor, hue, luminosity) {
+      return 'hsla('+hue+', '+defColor.saturation+'%, '+(defColor.luminosity + luminosity)+'%, '+defColor.alpha+')';
+    },
     bodyColorChanged(hue) {
-      this.color.base.default = 'hsla('+hue+', '+this.defaultColor.saturation+'%, '+this.defaultColor.luminosity+'%, '+this.defaultColor.alpha+')';
-      this.color.base.darken = 'hsla('+hue+', '+this.defaultColor.saturation+'%, '+(this.defaultColor.luminosity - 5)+'%, '+this.defaultColor.alpha+')';
-      this.$emit('colorChange', this.color);
+      // Tried to loop through but cant find a way without using eval()
+      // let colorObj = this.color;
+      // Object.keys(colorObj).forEach( (base) => {
+      //   console.log(`Current base: ${base}`);
+      //   Object.keys(colorObj[base]).forEach(clr => {
+      //     console.log(clr);
+      //   });
+      // });
+      this.color.primary.darken3 = this.colorStringify(this.defaultColor.primary, hue, -13);
+      this.color.primary.darken2 = this.colorStringify(this.defaultColor.primary, hue, -9);
+      this.color.primary.darken1 = this.colorStringify(this.defaultColor.primary, hue, -5);
+      this.color.primary.default = this.colorStringify(this.defaultColor.primary, hue, 0);
+      this.color.primary.lighten1 = this.colorStringify(this.defaultColor.primary, hue, +3);
+      this.color.primary.lighten2 = this.colorStringify(this.defaultColor.primary, hue, +7);
+
+      this.color.secondary.darken1 = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), -5);
+      this.color.secondary.default = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset));
+      this.color.secondary.lighten1 = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), +3);
+
+      this.$bus.$emit('colorChange', this.color);
     }
   }
 }
