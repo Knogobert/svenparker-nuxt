@@ -65,6 +65,7 @@ export default {
     width: 8rem;
     height: 8rem;
     top: 1.7rem;
+    left: calc(50% - 4rem);
     overflow: hidden;
     position: absolute;
   }
