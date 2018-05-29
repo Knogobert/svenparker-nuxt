@@ -53,12 +53,12 @@
         },
         data() {
             return {
-                isPaletteIn: true,
-                isKnobIn: true,
+                isPaletteIn: false,
+                isKnobIn: false,
                 isPressed: false,
                 isRippling: false,
                 isDragging: false,
-                isDisabled: false,
+                isDisabled: true,
             }
         },
         computed: {
@@ -74,10 +74,6 @@
                     rotator.angle = newAngle;
                 }
             },
-        },
-        created() {
-            // this.hidePalette();
-            // this.togglePicker();
         },
         mounted() {
             if (this.mouseScroll) {
@@ -254,7 +250,7 @@
                 height: 76%;
                 top: 12%;
                 left: 12%;
-                background-color: #fff;
+                background-color: transparent;
                 border-radius: 50%;
             }
 

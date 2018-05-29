@@ -97,6 +97,9 @@ export default {
     width: 150px;
     min-width: 150px;
     
+    .palette::before {
+      background-color: transparent;
+    }
     .rotator {
       z-index: 110;
       &.dragging {
