@@ -1,0 +1,28 @@
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .5s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.flow-down-before-enter {
+  // opacity: 0;
+  // transform: translateY(-50%);
+}
+.flow-down-enter {
+  animation: flowDown .5s;
+  // transform: translateY(0%);
+  // transition: all .2s ease-in;
+}
+
+@keyframes flowDown {
+    0% {
+        transform: translateY(-5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}

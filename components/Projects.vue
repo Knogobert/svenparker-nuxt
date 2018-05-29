@@ -3,7 +3,7 @@
   <section class="sp-projects">
     <h2>Projects</h2>
 
-    <sp-project-single v-for="project in projects" :key="project.key" :bg="project.bg">
+    <sp-project-single v-for="(project, index) in projects" :key="index" :image="project.image">
       <template slot="title">{{ project.title }}</template>
       <template slot="date">{{ project.date }}</template>
       <template slot="description">{{ project.description }}</template>
@@ -29,7 +29,7 @@ export default {
           link: 'http://www.laleprestanca.se/',
           date: 'May 2016',
           description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a back-end for the site users to manage their meet-ups through. The result was great!',
-          //bg: 'http://svenparker.com/img/portfolio/web/snap-LLS-opt.png'
+          image: 'http://svenparker.com/img/portfolio/web/snap-LLS-opt.png'
         },
         btk: {
           title: 'Bankeryds Tennisklubb',
@@ -47,7 +47,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~assets/_variables.scss';
 
 .sp-projects {

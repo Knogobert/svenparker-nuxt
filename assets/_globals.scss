@@ -19,12 +19,7 @@ body {
   margin: 0;
 }
 
-// .page-enter-active,
-// .page-leave-active {
-//     transition: opacity .5s;
-// }
-
-// .page-enter,
-// .page-leave-to {
-//     opacity: 0;
-// }
+img {
+  max-width: 100%;
+  height: auto;
+}

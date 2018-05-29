@@ -71,7 +71,7 @@ export default {
   min-height: 500px;
   height: 100%;
   height: 100vh;
-  height: calc(100vh - 55px);
+  //height: calc(100vh - 45px);
   max-height: 100vh;
   padding: 10rem 1rem 4rem;
 

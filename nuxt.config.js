@@ -43,16 +43,12 @@ module.exports = {
   /*
   ** Transition options
   */
-  transition: {
-    name: 'page',
-    mode: 'out-in',
-    enterClass: 'ZYZ',
-    afterEnter: `afterEnter (el) {
-      console.log('Before enter...');
-    }`,
-    duration: 1000,
-    appear: true
-  },
+  // transition: {
+  //   name: 'page',
+  //   mode: 'in-out',
+  //   duration: 200,
+  //   appear: true
+  // },
 
   /*
   ** Build configuration
@@ -75,10 +71,4 @@ module.exports = {
   },
 
   plugins: ['~/plugins/eventBus.js']
-  // plugins: [
-  //     {
-  //         src: '~/plugins/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.js',
-  //         ssr: false
-  //     }
-  // ]
 }

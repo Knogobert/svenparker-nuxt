@@ -49,6 +49,7 @@ export default {
   right: 0;
   height: auto;
   padding: 1rem;
+  z-index: 100;
 
   display: flex;
   justify-content: center;
