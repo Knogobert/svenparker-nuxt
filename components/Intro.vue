@@ -9,8 +9,7 @@
     </h2>
     <ul class="links">
       <li class="links-link" v-for="link in links" :key="link.name">
-        <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }" @click="$bus.$emit('colorChange')">{{ link.name }}</nuxt-link>
-        <!-- :style="{ 'background-color': color.primary.darken1 }" -->
+        <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }">{{ link.name }}</nuxt-link>
       </li>
     </ul>
   </section>
@@ -111,6 +110,7 @@ export default {
         background-color: hsla(0, 0%, 0%, .1);
         padding: 1rem;
         border-radius: .2rem;
+        user-select: none;
       }
     }
   }
