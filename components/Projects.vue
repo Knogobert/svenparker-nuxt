@@ -3,7 +3,7 @@
   <section class="sp-projects">
     <h2>Projects</h2>
 
-    <sp-project-single v-for="project in projects" :key="project">
+    <sp-project-single v-for="project in projects" :key="project.key" :bg="project.bg">
       <template slot="title">{{ project.title }}</template>
       <template slot="date">{{ project.date }}</template>
       <template slot="description">{{ project.description }}</template>
@@ -26,8 +26,10 @@ export default {
       projects: {
         lls: {
           title: 'La Lepre Stanca',
+          link: 'http://www.laleprestanca.se/',
           date: 'May 2016',
-          description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a back-end for the site users to manage their meet-ups through. The result was great!'
+          description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a back-end for the site users to manage their meet-ups through. The result was great!',
+          //bg: 'http://svenparker.com/img/portfolio/web/snap-LLS-opt.png'
         },
         btk: {
           title: 'Bankeryds Tennisklubb',
