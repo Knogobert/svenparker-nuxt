@@ -3,7 +3,7 @@
   <section class="sp-projects">
     <h2>Projects</h2>
 
-    <sp-project-single v-for="(project, index) in projects" :key="index" :image="project.image">
+    <sp-project-single v-for="(project, key, index) in projects" :key="index" :image="project.image" :index="index">
       <template slot="title">{{ project.title }}</template>
       <template slot="date">{{ project.date }}</template>
       <template slot="description">{{ project.description }}</template>
@@ -24,6 +24,12 @@ export default {
   data() {
     return {
       projects: {
+        bc: {
+          title: 'Briefcave',
+          date: 'August 2016',
+          description: 'I love my job at Briefcave. I developed the Wordpress theme for their new agency website and it features a nice page for job estimates and a lot of slick animations. This is where I currently sit.',
+          image: 'http://svenparker.com/img/portfolio/web/snap-BC-opt.png'
+        },
         lls: {
           title: 'La Lepre Stanca',
           link: 'http://www.laleprestanca.se/',
@@ -34,12 +40,14 @@ export default {
         btk: {
           title: 'Bankeryds Tennisklubb',
           date: 'April 2016',
-          description: 'Website I programmed using SCSS and Wordpress for a tennis club in Bankeryd, Sweden. The back-end uses Advanced Custom Fields Pro so the customer easily can change what’s on the front-end. This project took around 100 hours to create, together with Mattias Haal &amp; Mattias Rydh at Grand Public.'
+          description: 'Website I programmed using SCSS and Wordpress for a tennis club in Bankeryd, Sweden. The back-end uses Advanced Custom Fields Pro so the customer easily can change what’s on the front-end. This project took around 100 hours to create, together with Mattias Haal &amp; Mattias Rydh at Grand Public.',
+          image: 'http://svenparker.com/img/portfolio/web/snap-BTK-opt.png'
         },
         swss: {
           title: 'Swiss+style',
           date: 'February 2016',
-          description: 'A small and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. Built using SCSS & PHP.'
+          description: 'A small and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. Built using SCSS & PHP.',
+          image: 'http://svenparker.com/img/portfolio/web/snap-Swiss+style-opt.png'
         }
       }
     }

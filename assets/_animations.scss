@@ -13,14 +13,28 @@
   // transform: translateY(-50%);
 }
 .flow-down-enter {
-  animation: flowDown .5s;
+  animation: flowDown 1.5s;
   // transform: translateY(0%);
   // transition: all .2s ease-in;
 }
-
 @keyframes flowDown {
     0% {
-        transform: translateY(-5%);
+        transform: translateY(-15%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.flow-up-before-enter {
+
+}
+.flow-up-enter {
+  animation: flowUp 1.5s;
+}
+@keyframes flowUp {
+    0% {
+        transform: translateY(15%);
     }
     100% {
         transform: translateY(0%);

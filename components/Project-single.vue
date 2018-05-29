@@ -1,14 +1,14 @@
 <template>
 
-  <div class="project-single project-single--left"><!-- :style="projectStyle" -->
+  <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0 }"><!-- :style="projectStyle" -->
     <a class="project-single-link grid-container flow-down-before-enter" href="#">
       <div class="grid-row">
-        <article class="col-6" v-flowIn>
+        <article class="project-single-article col-6" v-flowDown>
           <h3 class="project-single-title"><slot name="title"></slot></h3>
           <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
           <p class="project-single-description"><slot name="description"></slot></p>
         </article>
-        <figure class="col-6">
+        <figure class="project-single-figure col-6" v-flowUp>
           <img :src="image">
         </figure>
       </div>
@@ -20,7 +20,7 @@
 <script>
 export default {
   name: 'sp-projects-single',
-  props: ['image'],
+  props: ['index','image'],
   computed: {
     // projectStyle(){
     //   return {
@@ -29,7 +29,7 @@ export default {
     // }
   },
   directives: {
-    flowIn: {
+    flowDown: {
       inViewport (el) {
         var rect = el.getBoundingClientRect()
         return !(rect.bottom < 0 || rect.right < 0 || 
@@ -54,6 +54,32 @@ export default {
         document.removeEventListener('scroll', el.$onScroll)
         delete el.$onScroll
       }
+    },
+    flowUp: {
+      inViewport (el) {
+        var rect = el.getBoundingClientRect()
+        return !(rect.bottom < 0 || rect.right < 0 || 
+                rect.left > window.innerWidth ||
+                rect.top > window.innerHeight)
+      },
+      bind(el, binding) {
+        el.classList.add('flow-up-before-enter')
+        el.$onScroll = function() {
+          if (binding.def.inViewport(el)) {
+            el.classList.add('flow-up-enter')
+            el.classList.remove('flow-up-before-enter')
+            binding.def.unbind(el, binding)        
+          }
+        }
+        document.addEventListener('scroll', el.$onScroll)
+      },
+      inserted(el, binding) {
+        el.$onScroll()  
+      },
+      unbind(el, binding) {    
+        document.removeEventListener('scroll', el.$onScroll)
+        delete el.$onScroll
+      }
     }
   }
 }
@@ -65,17 +91,30 @@ export default {
 .project-single {
   // background-color: hsla(0, 0%, 0%, .1);
   background-size: cover;
+  text-align: left;
 
   &--left{
-    text-align: left;
+    //text-align: left;
+    .project-single-article {
+      float: left;
+    }
+    .project-single-figure {
+      float: right;
+    }
   }
   &--right{
-    text-align: right;
+    //text-align: right;
+    .project-single-article {
+      float: right;
+    }
+    .project-single-figure {
+      float: left;
+    }
   }
 
   &-link {
     min-height: 25rem;//400px
-    padding: 3rem;
+    padding: 5rem 3rem;
     display: block;
     transition: .2s ease-in-out background-color;
 
@@ -104,7 +143,7 @@ export default {
     margin-bottom: .5rem;
   }
   &-description {
-    max-width: 500px;
+    //max-width: 500px;
   }
 
 }
