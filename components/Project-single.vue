@@ -3,7 +3,7 @@
   <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0 }"><!-- :style="projectStyle" -->
     <a class="project-single-link grid-container flow-down-before-enter" href="#">
       <div class="grid-row">
-        <article class="project-single-article col-6" v-flowDown>
+        <article class="project-single-article col-6 mb-sm-2" v-flowDown>
           <h3 class="project-single-title"><slot name="title"></slot></h3>
           <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
           <p class="project-single-description"><slot name="description"></slot></p>

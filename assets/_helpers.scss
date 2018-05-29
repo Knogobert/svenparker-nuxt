@@ -20,3 +20,20 @@
 .hidden-sm {
     display: none;
 }
+
+.mb-sm-1 {
+    margin-bottom: 1rem;
+}
+.mb-sm-2 {
+    margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: $breakpoint-med) {
+    .hidden-sm {
+        display: block;
+    }
+    .mb-sm-1,
+    .mb-sm-2 {
+        margin-bottom: inherit;
+    }
+}
