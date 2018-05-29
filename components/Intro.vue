@@ -68,7 +68,6 @@ export default {
 .sp-intro {
   //background-color: #2ECC71;
   width: 100%;
-  flex-basis: 100%;
   min-height: 500px;
   height: 100%;
   height: 100vh;
@@ -84,14 +83,14 @@ export default {
   .title {
     display: block;
     font-weight: 300;
-    font-size: 100px;
+    font-size: 4rem;
     color: $white;
     letter-spacing: 1px;
   }
 
   .subtitle {
     font-weight: 300;
-    font-size: 2rem;
+    font-size: 1rem;
     color: $white - 5;
     word-spacing: 5px;
     padding-bottom: 15px;
@@ -113,6 +112,20 @@ export default {
         padding: 1rem;
         border-radius: .2rem;
       }
+    }
+  }
+
+  @media only screen and (min-width: 500px){
+    .subtitle {
+      font-size: 1.8rem;
+    }
+    .title {
+      font-size: 5rem;
+    }
+  }
+  @media only screen and (min-width: 640px){
+    .subtitle {
+      // font-size: 2rem;
     }
   }
 }
