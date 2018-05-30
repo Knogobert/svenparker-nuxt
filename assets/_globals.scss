@@ -41,6 +41,7 @@ img {
     pointer-events: none;
     mix-blend-mode: exclusion;
     background-color: currentColor;
+    filter: invert(1) hue-rotate(180deg);
   }
 
   img {
