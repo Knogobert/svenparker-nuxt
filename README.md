@@ -25,4 +25,6 @@ $ npm start
 $ npm run generate
 ```
 
+If `node-sass` is giving you sass (not output, just sassiness) try `npm rebuild --force` but be aware of its effects.
+
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
