@@ -4,6 +4,12 @@
 
 ## Build Setup
 
+Make sure you have installed and are using:
+```json
+"node": ">=8.0.0",
+"npm": ">=5.0.0"
+```
+
 ``` bash
 # install dependencies
 $ npm install # Or yarn install
