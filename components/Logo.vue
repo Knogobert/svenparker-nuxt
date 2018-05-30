@@ -55,6 +55,7 @@ export default {
   justify-content: center;
 
   text-align: center;
+  pointer-events: none;
 
   a {
     margin: 10px 0 0;

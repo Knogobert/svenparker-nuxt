@@ -28,6 +28,15 @@ p {
   font-size: 1.125rem;
   font-weight: $font-weight-light;
   line-height: 1.8;
+
+  + p {
+    margin-top: 1rem;
+  }
+
+  small {
+    font-size: 90%;
+    font-weight: $font-weight-heavy;
+  }
 }
 
 h1,h2,h3,h4,h5,h6,p,a {

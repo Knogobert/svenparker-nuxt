@@ -1,7 +1,7 @@
 <template>
 
   <section class="sp-projects">
-    <h2>Projects</h2>
+    <!-- <h2>Projects</h2> -->
 
     <sp-project-single v-for="(project, key, index) in projects" :key="index" :image="project.image" :index="index">
       <template slot="title">{{ project.title }}</template>

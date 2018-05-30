@@ -143,11 +143,21 @@ export default {
     display: block;
     transition: .2s ease-in-out background-color;
 
+    .filter::before {
+      transition: .2s ease-in-out opacity;
+    }
+    
     &:active, 
     &:hover, 
     &:focus {
       background-color: hsla(0, 0%, 0%, .1);
       transition: .2s ease-in-out background-color;
+
+      .filter::before {
+        opacity: 0;
+        transition: .2s ease-in-out opacity;
+      }
+
       // .project-single-title {
       //   opacity: 1;
       //   transition: .2s ease-in-out opacity;
