@@ -54,6 +54,36 @@ export default {
     });
   },
   directives: {
+    // inView: {
+    //   inViewport (el) {
+    //     var rect = el.getBoundingClientRect()
+    //     return !(rect.bottom < 0 || rect.right < 0 || 
+    //             rect.left > window.innerWidth ||
+    //             rect.top > window.innerHeight)
+    //   },
+    //   bind(el, binding) {
+    //     el.classList.add('not-inView')
+    //     el.$onScroll = function() {
+    //       if (binding.def.inViewport(el)) {
+    //         el.classList.add('inView')
+    //         el.classList.remove('not-inView')
+    //         //binding.def.unbind(el, binding)        
+    //       }else{
+    //         el.classList.add('not-inView')
+    //         el.classList.remove('inView')
+    //         //binding.def.bind(el, binding)        
+    //       }
+    //     }
+    //     document.addEventListener('scroll', el.$onScroll)
+    //   },
+    //   inserted(el, binding) {
+    //     el.$onScroll()  
+    //   },
+    //   unbind(el, binding) {    
+    //     document.removeEventListener('scroll', el.$onScroll)
+    //     delete el.$onScroll
+    //   }
+    // },
     flowDown: {
       inViewport (el) {
         var rect = el.getBoundingClientRect()

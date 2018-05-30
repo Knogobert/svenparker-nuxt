@@ -55,10 +55,14 @@ export default {
     }
   },
   methods: {
+    // saveToLocalStorage(name, data) {
+    //   localStorage.setItem(name, JSON.stringify(data));
+    //   console.log('SAVED to LS');
+    // },
     colorStringify(defColor, hue, luminosity) {
       return 'hsla('+hue+', '+defColor.saturation+'%, '+(defColor.luminosity + luminosity)+'%, '+defColor.alpha+')';
     },
-    bodyColorChanged(hue) {
+    bodyColorChanged(hue, wasReleased = false) {
       // Tried to loop through but cant find a way without using eval()
       // let colorObj = this.color;
       // Object.keys(colorObj).forEach( (base) => {
@@ -67,6 +71,7 @@ export default {
       //     console.log(clr);
       //   });
       // });
+
       this.color.primary.darken3 = this.colorStringify(this.defaultColor.primary, hue, -13);
       this.color.primary.darken2 = this.colorStringify(this.defaultColor.primary, hue, -9);
       this.color.primary.darken1 = this.colorStringify(this.defaultColor.primary, hue, -5);
@@ -75,12 +80,27 @@ export default {
       this.color.primary.lighten2 = this.colorStringify(this.defaultColor.primary, hue, +7);
 
       this.color.secondary.darken1 = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), -5);
-      this.color.secondary.default = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset));
+      this.color.secondary.default = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), 0);
       this.color.secondary.lighten1 = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), +3);
 
       this.$bus.$emit('colorChange', this.color);
+
+      // if (wasReleased) {
+      //   this.saveToLocalStorage('themeColor', this.color);
+      // }
     }
-  }
+  },
+  // mounted() {
+  //   if(localStorage.getItem('themeColor') != null){
+  //     let themeColor = JSON.parse(localStorage.getItem('themeColor'));
+  //     console.log( themeColor );
+  //     setTimeout(() => {
+  //     this.$bus.$emit('colorChange', themeColor );
+  //     console.log('Emitted COOKIEZ!');  
+  //     }, 2000);
+  //     console.log('GOT COOKIEZ!');
+  //   }
+  // }
 }
 </script>
 
