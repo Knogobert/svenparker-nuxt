@@ -2,7 +2,7 @@
 
   <section class="sp-intro grid-container grid-container--pad">
     <div class="grid-row">
-      <article class="sp-intro-inner">
+      <article class="sp-intro-inner col-10">
         <h1 class="title">
           <slot name="title">Title</slot>
         </h1>
@@ -12,11 +12,11 @@
         <p class="introduction">
           <slot></slot>
         </p>
-        <ul class="links">
+        <!-- <ul class="links">
           <li class="links-link" v-for="link in links" :key="link.name">
             <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }">{{ link.name }}</nuxt-link>
           </li>
-        </ul>
+        </ul> -->
       </article>
     </div>
   </section>
@@ -79,7 +79,7 @@ export default {
   height: 100vh;
   //height: calc(100vh - 45px);
   max-height: 100vh;
-  padding: 10rem 1rem 4rem;
+  padding: 30vh 7vw 4rem;
 
   display: flex;
   flex-flow: column;
@@ -87,19 +87,19 @@ export default {
   align-items: left;
 
   &-inner {
-    max-width: 31.25rem;
+    //max-width: 31.25rem;
   }
 
   .title {
     display: block;
-    font-weight: 300;
+    font-weight: $font-weight-light;
     font-size: 4rem;
     color: $white;
     letter-spacing: .0625rem;//1px
   }
 
   .subtitle {
-    font-weight: 300;
+    font-weight: $font-weight-light;
     font-size: 1rem;
     color: $white - 5;
     word-spacing: .375rem;

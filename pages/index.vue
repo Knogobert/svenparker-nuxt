@@ -4,7 +4,14 @@
     <sp-intro>
       <template slot="title">Sven Parker</template>
       <template slot="subtitle">Web Developer / Web Designer</template>
-      I have an affectionate relationship with web development and always try to stay updated with the latest on the matter. I can handle responsive HTML5, CSS, SASS, JS, JSON, Gulp, Git, MySQL, Wordpress & PHP.
+      <p>
+        Solving old problems with modern solutions — 
+        My youth keeps me up to date in the latest and creates an eager to learn more. 
+        To find out what I'm up to, check out my <a href="https://github.com/Knogobert/" target="_blank">Github</a>
+         — <a href="https://codepen.io/Knogobert/" target="_blank">Codepen</a>
+         — <a href="https://vsco.co/svenparker/" target="_blank">VSCO</a>
+         — <a href="http://se.linkedin.com/in/SvenParker" target="_blank">LinkedIn</a>
+      </p>
     </sp-intro>
 
     <sp-projects></sp-projects>

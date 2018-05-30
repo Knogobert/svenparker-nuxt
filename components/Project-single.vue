@@ -8,7 +8,7 @@
           <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
           <p class="project-single-description"><slot name="description"></slot></p>
         </article>
-        <figure class="project-single-figure col-6" v-flowUp>
+        <figure class="project-single-figure col-6 filter" v-flowUp>
           <img :src="image">
         </figure>
       </div>
@@ -146,6 +146,9 @@ export default {
     //max-width: 500px;
   }
 
+  .filter::before {
+    
+  }
 }
 
 </style>
