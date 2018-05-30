@@ -79,7 +79,7 @@ export default {
   height: 100vh;
   //height: calc(100vh - 45px);
   max-height: 100vh;
-  padding: 30vh 7vw 4rem;
+  //padding: 30vh 7vw 4rem;
 
   display: flex;
   flex-flow: column;
@@ -103,7 +103,11 @@ export default {
     font-size: 1rem;
     color: $white - 5;
     word-spacing: .375rem;
-    padding-bottom: 15px;
+    padding-bottom: 2rem;
+  }
+
+  .introduction p {
+    font-size: 1.4rem;
   }
 
   .links {
