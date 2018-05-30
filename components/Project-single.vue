@@ -8,8 +8,8 @@
           <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
           <p class="project-single-description"><slot name="description"></slot></p>
         </article>
-        <figure class="project-single-figure col-6 filter" v-flowUp>
-          <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style>
+        <figure class="project-single-figure col-6 filter" :style="{ 'color': color.primary.lighten1 }" v-flowUp>
+          <!-- <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style> -->
           <img :src="image">
         </figure>
       </div>
@@ -146,7 +146,7 @@ export default {
     .filter::before {
       transition: .2s ease-in-out opacity;
     }
-    
+
     &:active, 
     &:hover, 
     &:focus {

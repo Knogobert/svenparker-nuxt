@@ -28,6 +28,7 @@ img {
 .filter {
   position: relative;
   filter: contrast(120%) brightness(110%);
+  color: red;
   
   &::before {
     content: "";
@@ -39,7 +40,7 @@ img {
     position: absolute;
     pointer-events: none;
     mix-blend-mode: exclusion;
-    background-color: #2ECC71;
+    background-color: currentColor;
   }
 
   img {
