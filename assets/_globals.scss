@@ -27,18 +27,22 @@ img {
 
 .filter {
   position: relative;
-  -webkit-filter: contrast(80%);
-  filter: contrast(80%);
-}
-.filter::before {
-  content: "";
-  display: block;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  background: rgba(48, 255, 151, 1);
+  filter: contrast(80%) brightness(110%);
+  
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+    mix-blend-mode: exclusion;
+    background-color: #2ECC71;
+  }
+
+  img {
+    display: block;
+  }
 }

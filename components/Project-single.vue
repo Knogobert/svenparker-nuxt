@@ -9,6 +9,7 @@
           <p class="project-single-description"><slot name="description"></slot></p>
         </article>
         <figure class="project-single-figure col-6 filter" v-flowUp>
+          <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style>
           <img :src="image">
         </figure>
       </div>
@@ -21,12 +22,36 @@
 export default {
   name: 'sp-projects-single',
   props: ['index','image'],
+  data() {
+    return {
+      color: {
+        primary: {
+          darken3: 'hsla(145, 63%, 36%, 1)',
+          darken2: 'hsla(145, 63%, 40%, 1)',
+          darken1: 'hsla(145, 63%, 44%, 1)',
+          default: 'hsla(145, 63%, 49%, 1)',
+          lighten1: 'hsla(145, 63%, 52%, 1)',
+          lighten2: 'hsla(145, 63%, 56%, 1)',
+        },
+        secondary: {
+          darken1: 'hsla(203, 73%, 36%, 1)',
+          default: 'hsla(203, 73%, 41%, 1)',
+          lighten1: 'hsla(203, 73%, 46%, 1)'
+        }
+      }
+    }
+  },
   computed: {
     // projectStyle(){
     //   return {
     //     'background-image': `url(${this.bg})`,
     //   }
     // }
+  },
+  mounted() {
+    this.$bus.$on('colorChange', (data) => {
+      this.color = data;
+    });
   },
   directives: {
     flowDown: {
@@ -144,10 +169,6 @@ export default {
   }
   &-description {
     //max-width: 500px;
-  }
-
-  .filter::before {
-    
   }
 }
 
