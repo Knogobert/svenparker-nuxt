@@ -1,17 +1,24 @@
 <template>
 
-  <section class="sp-intro">
-    <h1 class="title">
-       <slot name="title">Title</slot>
-    </h1>
-    <h2 class="subtitle">
-      <slot name="subtitle">Subtitle</slot>
-    </h2>
-    <ul class="links">
-      <li class="links-link" v-for="link in links" :key="link.name">
-        <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }">{{ link.name }}</nuxt-link>
-      </li>
-    </ul>
+  <section class="sp-intro grid-container grid-container--pad">
+    <div class="grid-row">
+      <article class="sp-intro-inner">
+        <h1 class="title">
+          <slot name="title">Title</slot>
+        </h1>
+        <h2 class="subtitle">
+          <slot name="subtitle">Subtitle</slot>
+        </h2>
+        <p class="introduction">
+          <slot></slot>
+        </p>
+        <ul class="links">
+          <li class="links-link" v-for="link in links" :key="link.name">
+            <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }">{{ link.name }}</nuxt-link>
+          </li>
+        </ul>
+      </article>
+    </div>
   </section>
 
 </template>
@@ -77,21 +84,25 @@ export default {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
+
+  &-inner {
+    max-width: 31.25rem;
+  }
 
   .title {
     display: block;
     font-weight: 300;
     font-size: 4rem;
     color: $white;
-    letter-spacing: 1px;
+    letter-spacing: .0625rem;//1px
   }
 
   .subtitle {
     font-weight: 300;
     font-size: 1rem;
     color: $white - 5;
-    word-spacing: 5px;
+    word-spacing: .375rem;
     padding-bottom: 15px;
   }
 
