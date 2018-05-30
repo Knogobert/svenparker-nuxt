@@ -3,12 +3,12 @@
   <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0 }"><!-- :style="projectStyle" -->
     <a class="project-single-link grid-container flow-down-before-enter" href="#">
       <div class="grid-row">
-        <article class="project-single-article col-6 mb-sm-2" v-flowDown>
+        <article class="project-single-article col-6 mb-sm-2" v-flow:down>
           <h3 class="project-single-title"><slot name="title"></slot></h3>
           <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
           <p class="project-single-description"><slot name="description"></slot></p>
         </article>
-        <figure class="project-single-figure col-6 filter" :style="{ 'color': color.primary.lighten1 }" v-flowUp>
+        <figure class="project-single-figure col-6 filter" :style="{ 'color': color.primary.lighten1 }" v-flow:up.inView><!-- v-inView -->
           <!-- <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style> -->
           <img :src="image">
         </figure>
@@ -54,37 +54,14 @@ export default {
     });
   },
   directives: {
-    // inView: {
-    //   inViewport (el) {
-    //     var rect = el.getBoundingClientRect()
-    //     return !(rect.bottom < 0 || rect.right < 0 || 
-    //             rect.left > window.innerWidth ||
-    //             rect.top > window.innerHeight)
-    //   },
-    //   bind(el, binding) {
-    //     el.classList.add('not-inView')
-    //     el.$onScroll = function() {
-    //       if (binding.def.inViewport(el)) {
-    //         el.classList.add('inView')
-    //         el.classList.remove('not-inView')
-    //         //binding.def.unbind(el, binding)        
-    //       }else{
-    //         el.classList.add('not-inView')
-    //         el.classList.remove('inView')
-    //         //binding.def.bind(el, binding)        
-    //       }
-    //     }
-    //     document.addEventListener('scroll', el.$onScroll)
-    //   },
-    //   inserted(el, binding) {
-    //     el.$onScroll()  
-    //   },
-    //   unbind(el, binding) {    
-    //     document.removeEventListener('scroll', el.$onScroll)
-    //     delete el.$onScroll
-    //   }
-    // },
-    flowDown: {
+    flow: {
+      inPaddedViewport (el) {
+        var rect = el.getBoundingClientRect()
+        //debugger;
+        return !(rect.bottom-150 < 0 || rect.right < 0 || 
+                rect.left > window.innerWidth ||
+                rect.top+150 > window.innerHeight)
+      },
       inViewport (el) {
         var rect = el.getBoundingClientRect()
         return !(rect.bottom < 0 || rect.right < 0 || 
@@ -92,38 +69,30 @@ export default {
                 rect.top > window.innerHeight)
       },
       bind(el, binding) {
-        el.classList.add('flow-down-before-enter')
+        el.classList.add('flow-'+binding.arg+'-before-enter')
         el.$onScroll = function() {
-          if (binding.def.inViewport(el)) {
-            el.classList.add('flow-down-enter')
-            el.classList.remove('flow-down-before-enter')
-            binding.def.unbind(el, binding)        
-          }
-        }
-        document.addEventListener('scroll', el.$onScroll)
-      },
-      inserted(el, binding) {
-        el.$onScroll()  
-      },
-      unbind(el, binding) {    
-        document.removeEventListener('scroll', el.$onScroll)
-        delete el.$onScroll
-      }
-    },
-    flowUp: {
-      inViewport (el) {
-        var rect = el.getBoundingClientRect()
-        return !(rect.bottom < 0 || rect.right < 0 || 
-                rect.left > window.innerWidth ||
-                rect.top > window.innerHeight)
-      },
-      bind(el, binding) {
-        el.classList.add('flow-up-before-enter')
-        el.$onScroll = function() {
-          if (binding.def.inViewport(el)) {
-            el.classList.add('flow-up-enter')
-            el.classList.remove('flow-up-before-enter')
-            binding.def.unbind(el, binding)        
+          if(binding.modifiers.inView === true){
+            if (binding.def.inPaddedViewport(el)) {
+              el.classList.add('inView')
+              el.classList.remove('not-inView')
+              //binding.def.unbind(el, binding)        
+            }else{
+              el.classList.add('not-inView')
+              el.classList.remove('inView')
+              //binding.def.bind(el, binding)        
+            }
+
+            if (binding.def.inViewport(el)) {
+              el.classList.add('flow-'+binding.arg+'-enter')
+              el.classList.remove('flow-'+binding.arg+'-before-enter')
+              //binding.def.unbind(el, binding)        
+            }
+          }else{
+            if (binding.def.inViewport(el)) {
+              el.classList.add('flow-'+binding.arg+'-enter')
+              el.classList.remove('flow-'+binding.arg+'-before-enter')
+              binding.def.unbind(el, binding)        
+            }
           }
         }
         document.addEventListener('scroll', el.$onScroll)
@@ -192,6 +161,11 @@ export default {
       //   opacity: 1;
       //   transition: .2s ease-in-out opacity;
       // }
+    }
+
+    .inView.filter::before {
+      opacity: 0;
+      transition: .2s ease-in-out opacity;
     }
   }
 
