@@ -106,7 +106,7 @@ export default {
     padding-bottom: 2rem;
   }
 
-  .introduction p {
+  .introduction {
     font-size: 1.4rem;
   }
 
