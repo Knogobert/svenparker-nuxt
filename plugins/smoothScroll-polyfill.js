@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import smoothscroll from 'smoothscroll-polyfill';
+import smoothScrollPkg from 'smoothscroll-polyfill';
 
 const smoothScroll = {}
 
 smoothScroll.install = function (Vue) {
-    smoothscroll.polyfill();
+    smoothScrollPkg.polyfill();
 }
 
 Vue.use(smoothScroll)
