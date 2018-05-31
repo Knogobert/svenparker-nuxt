@@ -1,7 +1,7 @@
 <template>
 
   <div class="project-single" :class="[{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0}, 'project-'+slug ]"><!-- :style="projectStyle" -->
-    <a class="project-single-link grid-container" :href="url" :title="'Go to '+title">
+    <a class="project-single-link grid-container" :href="url" :title="'Go to '+title" target="_blank">
       <div class="grid-row">
         <article class="project-single-article col-6 mb-sm-2" v-flow:down>
           <h3 class="project-single-title"><slot name="title"></slot></h3>
