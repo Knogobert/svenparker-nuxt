@@ -102,13 +102,17 @@ export default {
     width: 150px;
     min-width: 150px;
     
-    .palette::before {
-      background-color: transparent;
+    .palette {
+      box-shadow: 0 0 20px 0px rgba($black,.1);
+      
+      &::before {
+       background-color: transparent;
+      }
     }
     .rotator {
       z-index: 110;
       &.dragging {
-        z-index: 110;
+        z-index: 130;
       }
     }
     .selector {

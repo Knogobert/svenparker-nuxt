@@ -184,8 +184,8 @@
 
 <style lang="scss">
     .color-picker {
-        $initial-color: #ff0000;
-        $button-border: #b2b2b2;
+        $initial-color: #2ECC71;
+        $button-border: transparent;
         $material-curve-angular: cubic-bezier(0.35, 0, 0.25, 1);
 
         @function z-depth-all($depth: 1) {
@@ -198,7 +198,7 @@
         }
 
         display: block;
-        overflow: hidden;
+        //overflow: hidden;
         width: 280px;
         height: 280px;
         position: relative;
@@ -255,7 +255,7 @@
             }
 
             &.is-in {
-                transform: scale(1);
+                transform: scale(.8);
                 opacity: 1;
             }
 
