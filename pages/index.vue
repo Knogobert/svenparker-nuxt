@@ -12,7 +12,7 @@
        — <a href="https://codepen.io/Knogobert/" target="_blank">Codepen</a>
        — <a href="https://vsco.co/svenparker/" target="_blank">VSCO</a>
        — <a href="http://se.linkedin.com/in/SvenParker" target="_blank">LinkedIn</a>
-       — <a href="#">Or just scroll down.</a>
+       — <a href="#" @click.prevent="scrollSmooooovelyTo('.project-briefcave')">Or just scroll.</a>
       </small>
     </sp-intro>
 
@@ -30,6 +30,11 @@ export default {
   components: {
     spIntro,
     spProjects
+  },
+  methods: {
+    scrollSmooooovelyTo(selector) {
+      document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 </script>

@@ -3,7 +3,7 @@
   <section class="sp-projects">
     <!-- <h2>Projects</h2> -->
 
-    <sp-project-single v-for="(project, key, index) in projects" :key="index" :image="project.image" :index="index" :slug="key">
+    <sp-project-single v-for="(project, key, index) in projects" :key="index" :image="project.image" :index="index" :slug="project.key">
       <template slot="title">{{ project.title }}</template>
       <template slot="date">{{ project.date }}</template>
       <template slot="description">{{ project.description }}</template>
@@ -40,7 +40,7 @@ export default {
         btk: {
           title: 'Bankeryds Tennisklubb',
           date: 'April 2016',
-          description: 'Website I programmed using SCSS and Wordpress for a tennis club in Bankeryd, Sweden. The back-end uses Advanced Custom Fields Pro so the customer easily can change what’s on the front-end. This project took around 100 hours to create, together with Mattias Haal &amp; Mattias Rydh at Grand Public.',
+          description: 'Website I programmed using SCSS and Wordpress for a tennis club in Bankeryd, Sweden. The back-end uses Advanced Custom Fields Pro so the customer easily can change what’s on the front-end. This project took around 100 hours to create, together with Mattias Haal & Mattias Rydh at Grand Public.',
           image: 'http://svenparker.com/img/portfolio/web/snap-BTK-opt.png'
         },
         swss: {

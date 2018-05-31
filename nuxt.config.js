@@ -70,5 +70,8 @@ module.exports = {
     
   },
 
-  plugins: ['~/plugins/eventBus.js']
+  plugins: [
+    '~/plugins/eventBus.js',
+    //'~/plugins/smoothScroll-polyfill.js'
+  ]
 }

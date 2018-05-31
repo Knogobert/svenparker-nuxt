@@ -1,6 +1,6 @@
 <template>
 
-  <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0, slug }"><!-- :style="projectStyle" -->
+  <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0, 'project-briefcave': index === 0 }"><!-- :style="projectStyle" -->
     <a class="project-single-link grid-container flow-down-before-enter" href="#">
       <div class="grid-row">
         <article class="project-single-article col-6 mb-sm-2" v-flow:down>

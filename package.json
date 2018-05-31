@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "@radial-color-picker/vue-color-picker": "^0.4.2",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "smoothscroll-polyfill": "^0.4.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
