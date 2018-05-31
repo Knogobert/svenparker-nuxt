@@ -123,10 +123,12 @@ export default {
       left: 11.5%;
       border: none;
       box-shadow: 0 0 20px 0px rgba($black,.05);
+      transition: box-shadow .2s ease-in-out;
       &:active,
       &:focus,
       &:hover {
         box-shadow: 0 0 20px 0px rgba($black,.1);
+        transition: box-shadow .2s ease-in-out;
       }
     }
   }
