@@ -1,6 +1,6 @@
 <template>
 
-  <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0 }"><!-- :style="projectStyle" -->
+  <div class="project-single" :class="{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0, slug }"><!-- :style="projectStyle" -->
     <a class="project-single-link grid-container flow-down-before-enter" href="#">
       <div class="grid-row">
         <article class="project-single-article col-6 mb-sm-2" v-flow:down>
@@ -21,7 +21,7 @@
 <script>
 export default {
   name: 'sp-projects-single',
-  props: ['index','image'],
+  props: ['index', 'slug', 'image'],
   data() {
     return {
       color: {
@@ -138,7 +138,7 @@ export default {
 
   &-link {
     min-height: 25rem;//400px
-    padding: 5rem 3rem;
+    padding: 3rem 1.5rem;
     display: block;
     transition: .2s ease-in-out background-color;
 
@@ -149,7 +149,7 @@ export default {
     &:active, 
     &:hover, 
     &:focus {
-      background-color: hsla(0, 0%, 0%, .1);
+      background-color: hsla(0, 0%, 0%, .05);
       transition: .2s ease-in-out background-color;
 
       .filter::before {
@@ -167,13 +167,17 @@ export default {
       opacity: 0;
       transition: .2s ease-in-out opacity;
     }
+
+    @media only screen and (min-width: $breakpoint-xs) {
+      padding: 5rem 3rem;
+    }
   }
 
   h3,h4,h5,p {
     color: $white;
   }
   &-title {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: .75rem;
     // opacity: 0;
     // transition: .2s ease-in-out opacity;
@@ -183,6 +187,17 @@ export default {
   }
   &-description {
     //max-width: 500px;
+  }
+
+  @media only screen and (min-width: $breakpoint-sm) {
+    &-title {
+      font-size: 3rem;
+    }
+  }
+  @media only screen and (max-width: $breakpoint-md) {
+    .flow-up-enter {
+      animation: fromTransparent 1.5s;
+    }
   }
 }
 

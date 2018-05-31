@@ -8,10 +8,11 @@
       My youth keeps me up to date in the latest and creates an eager to learn more. 
       <br/><small>
       To find out what I'm up to, check out my
-        — <a href="https://github.com/Knogobert/" target="_blank">Github</a>
-        — <a href="https://codepen.io/Knogobert/" target="_blank">Codepen</a>
-        — <a href="https://vsco.co/svenparker/" target="_blank">VSCO</a>
-        — <a href="http://se.linkedin.com/in/SvenParker" target="_blank">LinkedIn</a>
+       — <a href="https://github.com/Knogobert/" target="_blank">Github</a>
+       — <a href="https://codepen.io/Knogobert/" target="_blank">Codepen</a>
+       — <a href="https://vsco.co/svenparker/" target="_blank">VSCO</a>
+       — <a href="http://se.linkedin.com/in/SvenParker" target="_blank">LinkedIn</a>
+       — <a href="#">Or just scroll down.</a>
       </small>
     </sp-intro>
 

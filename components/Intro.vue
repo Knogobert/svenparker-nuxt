@@ -83,7 +83,7 @@ export default {
 
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: left;
 
   &-inner {
@@ -93,21 +93,22 @@ export default {
   .title {
     display: block;
     font-weight: $font-weight-light;
-    font-size: 4rem;
+    font-size: 3.2rem;
     color: $white;
     letter-spacing: .0625rem;//1px
   }
 
   .subtitle {
     font-weight: $font-weight-light;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: $white - 5;
-    word-spacing: .375rem;
+    word-spacing: .15rem;
     padding-bottom: 2rem;
   }
 
   .introduction {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
   }
 
   .links {
@@ -130,17 +131,28 @@ export default {
     }
   }
 
-  @media only screen and (min-width: 500px){
-    .subtitle {
-      font-size: 1.8rem;
+  @media only screen and (min-width: $breakpoint-sm){
+    .title {
+      font-size: 4rem;
     }
+    .subtitle {
+      font-size: 1.4rem;
+      word-spacing: .375rem;
+    }
+    .introduction {
+      font-size: 1.3rem;
+      line-height: 1.8;
+    }
+  }
+  @media only screen and (min-width: $breakpoint-md){
     .title {
       font-size: 5rem;
     }
-  }
-  @media only screen and (min-width: 640px){
     .subtitle {
-      // font-size: 2rem;
+      font-size: 1.8rem;
+    }
+    .introduction {
+      font-size: 1.4rem;
     }
   }
 }

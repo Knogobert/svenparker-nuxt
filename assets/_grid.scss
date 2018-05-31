@@ -6,14 +6,20 @@
   margin-right: auto;
 
   &--pad {
-    padding: 3rem;
+    padding: 1.5rem;
   }
 
-  @media only screen and (min-width: $breakpoint-small) {
+  @media only screen and (min-width: $breakpoint-xs) {
+    &--pad {
+      padding: 3rem;
+    }
+  }
+
+  @media only screen and (min-width: $breakpoint-sm) {
     width: $width-sm;
   }
 
-  @media only screen and (min-width: $breakpoint-large) {
+  @media only screen and (min-width: $breakpoint-lg) {
     width: $width-lg;
     max-width: 100rem;
   }
@@ -64,7 +70,7 @@
 .col-11-sm { width: ($width / (12 / 11)) - ($gutter * 1 / 12); }
 .col-12-sm { width: $width; }
 
-@media only screen and (min-width: $breakpoint-med) {
+@media only screen and (min-width: $breakpoint-md) {
   .col-1 { width:($width / 12) - ($gutter * 11 / 12); }
   .col-2 { width: ($width / 6) - ($gutter * 10 / 12); }
   .col-3 { width: ($width / 4) - ($gutter * 9 / 12); }

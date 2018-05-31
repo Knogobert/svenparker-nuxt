@@ -7,6 +7,14 @@
 .page-leave-to {
   opacity: 0;
 }
+@keyframes fromTransparent {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 .flow-down-before-enter {
   // opacity: 0;
