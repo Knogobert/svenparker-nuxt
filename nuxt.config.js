@@ -1,5 +1,5 @@
 module.exports = {
-
+  mode: 'spa',
   /*
   ** Added css/scss
   */
