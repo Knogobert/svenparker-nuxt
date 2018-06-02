@@ -59,7 +59,6 @@
                 isRippling: false,
                 isDragging: false,
                 isDisabled: true,
-                windowWidth: window.innerWidth
             }
         },
         computed: {
@@ -177,13 +176,26 @@
                     }
                 }
             },
-            handleWindowResize(event) {
-                //this.windowWidth = event.currentTarget.innerWidth;
+            handleWindowResize() {
+                rotator.destroy();
+
                 fillColorWheel(this.$refs.palette, this.$el.offsetWidth || 280);
+
+                rotator = new Rotator(this.$refs.rotator, {
+                    inertia: 0.7,
+                    angle: this.value.hue,
+                    onRotate: this.updateColor,
+                    onDragStart: () => {
+                        this.isDragging = true;
+                    },
+                    onDragStop: () => {
+                        this.isDragging = false;
+                    },
+                });
             }
         },
         beforeDestroy() {
-            window.removeEventListener('resize', this.handleWindowResize)
+            //window.removeEventListener('resize', this.handleWindowResize)
             rotator.destroy();
             rotator = null;
         },

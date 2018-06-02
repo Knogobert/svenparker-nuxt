@@ -108,6 +108,11 @@ export default {
       &::before {
        background-color: transparent;
       }
+
+      &.is-in {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
     .rotator {
       z-index: 110;
@@ -144,6 +149,13 @@ export default {
       height: 150px;
       width: 150px;
       min-width: 150px;
+
+      .palette {
+        &.is-in {
+          transform: scale(.8);
+          opacity: 1;
+        }
+      }
     }
   }
 }
