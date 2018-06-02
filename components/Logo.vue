@@ -67,10 +67,10 @@ export default {
   &-overColorPicker {
     z-index: 100;
     border-radius: 50%;
-    width: 8rem;
-    height: 8rem;
-    top: 1.7rem;
-    left: calc(50% - 4rem);
+    width: 5rem;
+    height: 5rem;
+    top: 1.75rem;
+    left: calc(50% - 2.5rem);
     overflow: hidden;
     position: absolute;
   }
@@ -98,9 +98,9 @@ export default {
 
   // Overwrites for vue-color-picker plugin
   .color-picker {
-    height: 150px;
-    width: 150px;
-    min-width: 150px;
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
     
     .palette {
       box-shadow: 0 0 20px 0px rgba($black,.1);
@@ -132,7 +132,19 @@ export default {
       }
     }
   }
+
+  @media only screen and (min-width: $breakpoint-sm){
+    &-overColorPicker {
+      width: 8rem;
+      height: 8rem;
+      top: 1.7rem;
+      left: calc(50% - 4rem);
+    }
+    .color-picker {
+      height: 150px;
+      width: 150px;
+      min-width: 150px;
+    }
+  }
 }
-
-
 </style>

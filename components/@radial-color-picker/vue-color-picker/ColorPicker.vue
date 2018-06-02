@@ -59,6 +59,7 @@
                 isRippling: false,
                 isDragging: false,
                 isDisabled: true,
+                windowWidth: window.innerWidth
             }
         },
         computed: {
@@ -93,6 +94,8 @@
                     this.isDragging = false;
                 },
             });
+
+            window.addEventListener('resize', this.handleWindowResize);
         },
         methods: {
             onScroll(ev) {
@@ -174,8 +177,13 @@
                     }
                 }
             },
+            handleWindowResize(event) {
+                //this.windowWidth = event.currentTarget.innerWidth;
+                fillColorWheel(this.$refs.palette, this.$el.offsetWidth || 280);
+            }
         },
         beforeDestroy() {
+            window.removeEventListener('resize', this.handleWindowResize)
             rotator.destroy();
             rotator = null;
         },
