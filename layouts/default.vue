@@ -4,21 +4,18 @@
     <!-- <sp-nav/> -->
     <sp-logo @bodyColorChange="bodyColorChanged"/>
     <nuxt/>
-    <sp-footer/>
   </div>
 </template>
 
 <script>
 import spNav from '~/components/Nav.vue'
 import spLogo from '~/components/Logo.vue'
-import spFooter from '~/components/Footer.vue'
 
 export default {
   name: 'default-layout',
   components: {
     spNav,
-    spLogo,
-    spFooter
+    spLogo
   },
   data() {
     return {

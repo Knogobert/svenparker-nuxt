@@ -88,6 +88,7 @@ export default {
 
   &-inner {
     //max-width: 31.25rem;
+    //animation: flowDown 1.5s;
   }
 
   .title {
