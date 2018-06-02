@@ -1,20 +1,49 @@
+// .page-enter-active,
+// .page-leave-active {
+//   transition: opacity .5s;
+// }
+
+// .page-enter,
+// .page-leave-to {
+//   opacity: 0;
+// }
+
 .page-enter-active,
 .page-leave-active {
-  transition: opacity .5s;
+  opacity: 1;
+  transition: opacity .25s;
+  animation-duration: .5s;
+  animation-fill-mode: both;
 }
-
-.page-enter,
-.page-leave-to {
+.page-enter-active {
+  animation-name: pageFadeInUp;
+}
+.page-leave-active {
+  animation-name: pageFadeOutDown;
+}
+.page-enter, .page-leave-to {
   opacity: 0;
 }
-@keyframes fromTransparent {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+@-webkit-keyframes pageFadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.25%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
+@-webkit-keyframes pageFadeOutDown {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 1.25%, 0);
+  }
+}
+
 
 .flow-down-before-enter {
   // opacity: 0;
@@ -50,5 +79,15 @@
     100% {
         opacity: 1;
         transform: translateY(0%);
+    }
+}
+
+// Globally used
+@keyframes fromTransparent {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
