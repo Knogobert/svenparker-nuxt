@@ -21,7 +21,13 @@
 <script>
 export default {
   name: 'sp-projects-single',
-  props: ['index', 'slug', 'title', 'url', 'image'],
+  props: {
+    index: Number,
+    slug: String,
+    title: String,
+    url: String,
+    image: String,
+  },
   data() {
     return {
       color: {
