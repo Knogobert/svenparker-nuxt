@@ -110,6 +110,13 @@ export default {
   .introduction {
     font-size: 1.2rem;
     line-height: 1.5;
+
+    pre {
+      display: inline-block;
+      padding: 0 0.5rem;
+      margin: 0 .5rem;
+      background-color: hsla(0, 0%, 0%, .03);
+    }
   }
 
   .links {

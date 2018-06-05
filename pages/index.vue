@@ -5,7 +5,7 @@
       <template slot="title">Sven Parker</template>
       <template slot="subtitle">Web Developer / Web Designer</template>
       Solving old problems with modern solutions — 
-      I love keeping up to date in the latest and have an eager to always learn more. 
+      I love keeping up to date in the latest and have an eager to always learn more. This website is built on Vue and served serverless. That means you can<pre>git pull</pre>it <a>here</a> and run it completely local.
       <br/><small>
       To find out what I'm up to, check out my
        — <a href="https://github.com/Knogobert/" target="_blank">Github</a>
