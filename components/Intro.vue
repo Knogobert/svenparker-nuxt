@@ -117,6 +117,14 @@ export default {
       margin: 0 .5rem;
       background-color: hsla(0, 0%, 0%, .03);
     }
+    a {
+      font-weight: $font-weight-heavy;
+    }
+    small {
+      display: inline-block;
+      margin-top: 2rem;
+      font-weight: initial;
+    }
   }
 
   .links {
