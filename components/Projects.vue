@@ -36,28 +36,28 @@ export default {
           url: 'https://www.briefcave.se/',
           date: 'August 2016',
           description: 'I love my job at Briefcave. I developed the Wordpress theme for their new agency website and it features a nice page for job estimates and a lot of slick animations. This is where I currently sit.',
-          image: 'http://svenparker.com/img/portfolio/web/snap-BC-opt.png'
+          image: '/projects/snap-BC.jpg'
         },
         lls: {
           title: 'La Lepre Stanca',
           url: 'http://www.laleprestanca.se/',
           date: 'May 2016',
           description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a back-end for the site users to manage their meet-ups through. The result was great!',
-          image: 'http://svenparker.com/img/portfolio/web/snap-LLS-opt.png'
+          image: '/projects/snap-LLS.jpg'
         },
         btk: {
           title: 'Bankeryds Tennisklubb',
           url: 'http://www.bankerydstk.nu/',
           date: 'April 2016',
           description: 'Website I programmed using SCSS and Wordpress for a tennis club in Bankeryd, Sweden. The back-end uses Advanced Custom Fields Pro so the customer easily can change what’s on the front-end. This project took around 100 hours to create, together with Mattias Haal & Mattias Rydh at Grand Public.',
-          image: 'http://svenparker.com/img/portfolio/web/snap-BTK-opt.png'
+          image: '/projects/snap-BTK.jpg'
         },
         swss: {
           title: 'Swiss+style',
           url: 'http://svenparker.com/swiss+style/index.php',
           date: 'February 2016',
           description: 'A small and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. Built using SCSS & PHP.',
-          image: 'http://svenparker.com/img/portfolio/web/snap-Swiss+style-opt.png'
+          image: '/projects/snap-SWSS.png'
         }
       }
     }
