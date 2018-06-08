@@ -2,7 +2,7 @@
   <nav class="nav-main">
     <!-- <nuxt-link to="/">Home</nuxt-link>
     <nuxt-link to="/contact">Contact</nuxt-link> -->
-    <a href.prevent="#" v-bodyZoom:left>Contact</a>
+    <a href="#" v-bodyZoom:left>Contact</a>
   </nav>
 </template>
 
