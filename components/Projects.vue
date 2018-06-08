@@ -42,21 +42,21 @@ export default {
           title: 'La Lepre Stanca',
           url: 'http://www.laleprestanca.se/',
           date: 'May 2016',
-          description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a back-end for the site users to manage their meet-ups through. The result was great!',
+          description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a user portal for the site users to manage their meet-ups in. The result was great!',
           image: '/projects/snap-LLS.jpg'
         },
         btk: {
           title: 'Bankeryds Tennisklubb',
           url: 'http://www.bankerydstk.nu/',
           date: 'April 2016',
-          description: 'Website I programmed using SCSS and Wordpress for a tennis club in Bankeryd, Sweden. The back-end uses Advanced Custom Fields Pro so the customer easily can change what’s on the front-end. This project took around 100 hours to create, together with Mattias Haal & Mattias Rydh at Grand Public.',
+          description: '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was programmed for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
           image: '/projects/snap-BTK.jpg'
         },
         swss: {
           title: 'Swiss+style',
           url: 'http://svenparker.com/swiss+style/index.php',
           date: 'February 2016',
-          description: 'A small and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. Built using SCSS & PHP.',
+          description: 'A small, fun and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. One of my first PHP-only websites.',
           image: '/projects/snap-SWSS.png'
         }
       }
