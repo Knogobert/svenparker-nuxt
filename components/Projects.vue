@@ -58,6 +58,13 @@ export default {
           date: 'February 2016',
           description: 'A small, fun and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. One of my first PHP-only websites.',
           image: '/projects/snap-SWSS.png'
+        },
+        temp: {
+          title: 'More to come...',
+          // url: 'http://svenparker.com/swiss+style/index.php',
+           date: 'June 2018',
+          description: 'Currently updating this website, for reals.',
+          //image: '/projects/snap-SWSS.png'
         }
       }
     }
