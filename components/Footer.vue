@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-main" v-addClass.bodyZoom>
+  <footer class="footer-main" v-bodyZoom:up>
     <h6>That’s it folks!</h6>
   </footer>
 </template>
@@ -7,7 +7,7 @@
 <script>
 export default {
   directives: {
-    addClass: {
+    bodyZoom: {
       inViewport (el) {
         var rect = el.getBoundingClientRect()
         return !(rect.bottom < 0 || rect.right < 0 || 
@@ -18,9 +18,9 @@ export default {
         el.$onScroll = function() {
           let body = document.querySelector('body');
           if (binding.def.inViewport(el)) {
-            body.classList.add('js-zoom')
+            body.classList.add('js-zoom--'+binding.arg)
           }else{
-            body.classList.remove('js-zoom')
+            body.classList.remove('js-zoom--'+binding.arg)
           }
         }
         document.addEventListener('scroll', el.$onScroll)
@@ -49,6 +49,9 @@ export default {
 
   text-align: center;
   user-select: none;
+
+  // for .js-zoom--up on body
+  margin-top: -50px;
 }
 
 </style>
