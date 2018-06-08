@@ -205,6 +205,9 @@ export default {
   &-description {
     //max-width: 500px;
   }
+  &-figure {
+    //opacity: 0;
+  }
 
   @media only screen and (min-width: $breakpoint-sm) {
     &-title {
