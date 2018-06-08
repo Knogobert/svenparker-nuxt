@@ -3,9 +3,9 @@
     <style>body{background-color: {{ color.primary.default }};}</style>
     
     <sp-logo @bodyColorChange="bodyColorChanged"/>
+    <sp-nav/>
 
     <div class="o-wrapper">
-      <!-- <sp-nav/> -->
       <nuxt/>
     </div>
     
