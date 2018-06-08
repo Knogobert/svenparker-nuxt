@@ -1,8 +1,8 @@
 <template>
 
   <div class="project-single" :class="[{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0}, 'project-'+slug ]"><!-- :style="projectStyle" -->
-    <a class="project-single-link grid-container" :href="url" :title="'Go to '+title" target="_blank">
-      <div class="grid-row">
+    <a class="project-single-link grid-container" :href="url" :title="'Go to '+title" target="_blank"  :class="{'project-single-link--height-auto': image === undefined}">
+      <div class="grid-row" v-if="image">
         <article class="project-single-article col-6 mb-sm-2" v-flow:down>
           <h3 class="project-single-title"><slot name="title"></slot></h3>
           <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
@@ -12,6 +12,13 @@
           <!-- <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style> -->
           <img :src="image">
         </figure>
+      </div>
+      <div class="grid-row" v-else>
+        <article class="project-single-article col-12 mb-sm-2" v-flow:down>
+          <h3 class="project-single-title"><slot name="title"></slot></h3>
+          <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
+          <p class="project-single-description"><slot name="description"></slot></p>
+        </article>
       </div>
     </a>
   </div>
@@ -172,6 +179,10 @@ export default {
     .inView.filter::before {
       opacity: 0;
       transition: .2s ease-in-out opacity;
+    }
+
+    &--height-auto {
+      min-height: auto;
     }
 
     @media only screen and (min-width: $breakpoint-xs) {
