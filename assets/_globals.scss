@@ -35,6 +35,10 @@ body.js-zoom--left .o-wrapper {
   transform-origin: center left;
   transform: translateX(-50%) scale(1, .95);
 }
+body.js-zoom--out .o-wrapper {
+  transform-origin: center;
+  transform: scale(.85);
+}
 
 img {
   max-width: 100%;

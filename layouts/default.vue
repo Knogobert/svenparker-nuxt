@@ -4,6 +4,7 @@
     
     <sp-logo @bodyColorChange="bodyColorChanged"/>
     <sp-nav/>
+    <sp-slide-in-contact/>
 
     <div class="o-wrapper">
       <nuxt/>
@@ -17,6 +18,7 @@
 <script>
 import spNav from '~/components/Nav.vue'
 import spLogo from '~/components/Logo.vue'
+import spSlideInContact from '~/components/SlideIn-Contact.vue'
 import spFooter from '~/components/Footer.vue'
 
 export default {
@@ -24,6 +26,7 @@ export default {
   components: {
     spNav,
     spLogo,
+    spSlideInContact,
     spFooter
   },
   data() {
