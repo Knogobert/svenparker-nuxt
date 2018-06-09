@@ -18,8 +18,8 @@
 
         <div class="ripple"
              :class="{ 'is-rippling': isRippling }"
-             :style="{ borderColor: color }"
              @animationend="stopRipple">
+             <!-- :style="{ borderColor: color }" -->
         </div>
 
         <button type="button"
@@ -95,6 +95,8 @@
             });
 
             window.addEventListener('resize', this.handleWindowResize);
+
+            this.callAttention();
         },
         methods: {
             onScroll(ev) {
@@ -148,6 +150,8 @@
                 }
             },
             togglePicker() {
+                this.callAttention(false);
+
                 if (this.isDisabled) {
                     this.isKnobIn = true;
                 } else {
@@ -161,6 +165,17 @@
                     this.isPaletteIn = false;
                 } else {
                     this.isDisabled = false;
+                }
+            },
+            callAttention(keepRipples = true) {
+                this.$options.ripples = setInterval(() => {
+                    console.log('CALLED');
+                    this.isRippling = true;
+                }, 5000);
+                
+                if(keepRipples === false){
+                    console.log('CLEARED');
+                    return clearInterval(this.$options.ripples);
                 }
             },
             stopRipple() {
@@ -361,20 +376,20 @@
         }
 
         .ripple {
-            width: 20%;
-            height: 20%;
+            width: 50%;
+            height: 50%;
             border-radius: 50%;
-            border: $initial-color solid 8px;
-            opacity: 0;
+            border: rgba(0, 0, 0, 0.5) solid 8px;
+            //opacity: 0;
             position: absolute;
-            top: 40%;
-            left: 40%;
+            top: 25%;
+            left: 25%;
             z-index: -1;
         }
 
         .is-rippling {
             z-index: 0;
-            animation: color-picker-ripple .5s $material-curve-angular forwards;
+            animation: color-picker-ripple 1s $material-curve-angular forwards;
         }
     }
 
@@ -393,5 +408,14 @@
     25%  { transform: scale(0.8); }
     50%  { transform: scale(1); }
     100% { transform: scale(1); }
+}
+
+@keyframes radial-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+  }
 }
 </style>
