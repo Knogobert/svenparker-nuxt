@@ -53,6 +53,7 @@
         },
         data() {
             return {
+                interval: 0,
                 isPaletteIn: false,
                 isKnobIn: false,
                 isPressed: false,
@@ -168,15 +169,13 @@
                 }
             },
             callAttention(keepRipples = true) {
-                this.$options.ripples = setInterval(() => {
-                    console.log('CALLED');
-                    this.isRippling = true;
-                }, 5000);
-                
                 if(keepRipples === false){
-                    console.log('CLEARED');
-                    return clearInterval(this.$options.ripples);
+                    return clearInterval(this.interval);
                 }
+
+                this.interval = setInterval(() => {
+                    this.isRippling = true;
+                }, 10000);
             },
             stopRipple() {
                 this.isRippling = false;
