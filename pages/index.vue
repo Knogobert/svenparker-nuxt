@@ -17,22 +17,18 @@
     </sp-intro>
 
     <sp-projects></sp-projects>
-
-    <sp-footer/>
   </main>
 </template>
 
 <script>
 import spIntro from '~/components/Intro.vue'
 import spProjects from '~/components/Projects.vue'
-import spFooter from '~/components/Footer.vue'
 
 export default {
   name: 'index-page',
   components: {
     spIntro,
-    spProjects,
-    spFooter
+    spProjects
   },
   methods: {
     scrollSmooooovelyTo(selector) {

@@ -18,8 +18,8 @@
 
         <div class="ripple"
              :class="{ 'is-rippling': isRippling }"
-             :style="{ borderColor: color }"
              @animationend="stopRipple">
+             <!-- :style="{ borderColor: color }" -->
         </div>
 
         <button type="button"
@@ -53,6 +53,7 @@
         },
         data() {
             return {
+                interval: 0,
                 isPaletteIn: false,
                 isKnobIn: false,
                 isPressed: false,
@@ -95,6 +96,8 @@
             });
 
             window.addEventListener('resize', this.handleWindowResize);
+
+            this.callAttention();
         },
         methods: {
             onScroll(ev) {
@@ -148,6 +151,8 @@
                 }
             },
             togglePicker() {
+                this.callAttention(false);
+
                 if (this.isDisabled) {
                     this.isKnobIn = true;
                 } else {
@@ -162,6 +167,15 @@
                 } else {
                     this.isDisabled = false;
                 }
+            },
+            callAttention(keepRipples = true) {
+                if(keepRipples === false){
+                    return clearInterval(this.interval);
+                }
+
+                this.interval = setInterval(() => {
+                    this.isRippling = true;
+                }, 10000);
             },
             stopRipple() {
                 this.isRippling = false;
@@ -361,20 +375,20 @@
         }
 
         .ripple {
-            width: 20%;
-            height: 20%;
+            width: 50%;
+            height: 50%;
             border-radius: 50%;
-            border: $initial-color solid 8px;
-            opacity: 0;
+            border: rgba(0, 0, 0, 0.5) solid 8px;
+            //opacity: 0;
             position: absolute;
-            top: 40%;
-            left: 40%;
+            top: 25%;
+            left: 25%;
             z-index: -1;
         }
 
         .is-rippling {
             z-index: 0;
-            animation: color-picker-ripple .5s $material-curve-angular forwards;
+            animation: color-picker-ripple 1s $material-curve-angular forwards;
         }
     }
 
@@ -393,5 +407,14 @@
     25%  { transform: scale(0.8); }
     50%  { transform: scale(1); }
     100% { transform: scale(1); }
+}
+
+@keyframes radial-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+  }
 }
 </style>
