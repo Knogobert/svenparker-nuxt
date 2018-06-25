@@ -132,7 +132,7 @@ export default {
   background: $ufo-d2; /* Grey background */
   outline: none; /* Remove outline */
   border-radius: 2px;
-  padding: 2px 10px;
+  padding: 2px;
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
