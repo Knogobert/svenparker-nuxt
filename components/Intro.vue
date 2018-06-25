@@ -97,6 +97,8 @@ export default {
     font-size: 3.2rem;
     color: $white;
     letter-spacing: .0625rem;//1px
+
+    font-variation-settings: "wght" 120, "wdth" 400;
   }
 
   .subtitle {
@@ -118,7 +120,36 @@ export default {
       background-color: hsla(0, 0%, 0%, .03);
     }
     a {
+      position: relative;
+      display: inline-block;
       font-weight: $font-weight-heavy;
+      font-variation-settings: "wght" 160, "wdth" 420;
+      transition: font-variation-settings .2s ease-in-out;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+        background-color: hsla(0, 0%, 0%, .15);
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:active, 
+      &:hover, 
+      &:focus {
+        font-variation-settings: "wght" 100, "wdth" 444;
+        transition: font-variation-settings .2s ease-in-out;
+
+        &:before {
+          visibility: visible;
+          transform: scaleX(1);
+        }
+      }
     }
     small {
       display: inline-block;

@@ -1,7 +1,14 @@
+@font-face {
+    src: url('/assets/fonts/BarlowGX.woff2');
+    font-family: 'Barlow';
+    font-style: normal;
+}
+
 // Typography
-$font-weight-light: 300;
+$font-family-sans: Barlow, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-weight-light: 400;//300;
 $font-weight-regular: 400;
-$font-weight-heavy: 700;
+$font-weight-heavy: 400;//700;
 
 // Grid
 $width: 100%;

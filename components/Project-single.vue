@@ -163,10 +163,10 @@ export default {
         transition: .2s ease-in-out opacity;
       }
 
-      // .project-single-title {
-      //   opacity: 1;
-      //   transition: .2s ease-in-out opacity;
-      // }
+      .project-single-title {
+        font-variation-settings: "wght" 80, "wdth" 500;
+        transition: font-variation-settings .2s ease-in-out;
+      }
     }
 
     .inView.filter::before {
@@ -185,8 +185,8 @@ export default {
   &-title {
     font-size: 2rem;
     margin-bottom: .75rem;
-    // opacity: 0;
-    // transition: .2s ease-in-out opacity;
+    font-variation-settings: "wght" 130, "wdth" 480;
+    transition: font-variation-settings .2s ease-in-out;
   }
   &-subtitle {
     margin-bottom: .5rem;
