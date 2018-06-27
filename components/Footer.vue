@@ -1,23 +1,25 @@
 <template>
-  <footer class="footer-main" v-bodyZoom:up>
-    <transition name="page">
-      <div class="footer-slider footer-slider--left" v-if="showSliders">
-        <input type="range" min="20" max="188" v-model="sliderWeightValue" @change="changeWeight" class="slider">
-      </div>
-    </transition>
+  <footer class="footer-main"><!--v-bodyZoom:up-->
+    <div class="footer-main-container">
+      <transition name="page">
+        <div class="footer-slider footer-slider--left" v-if="showSliders">
+          <input type="range" min="20" max="188" v-model="sliderWeightValue" @change="changeWeight" class="slider">
+        </div>
+      </transition>
 
-    <h6 @click="toggleShowSliders()">That’s it folks!</h6>
-    
-    <transition name="page">
-      <div class="footer-slider footer-slider--right" v-if="showSliders">
-        <input type="range" min="300" max="500" v-model="sliderWidthValue" @change="changeWidth" class="slider">
-      </div>
-    </transition>
-    <style v-if="sliderChanged">
-      html {
-        font-variation-settings: "wght" {{ weight }}, "wdth" {{ width }};
-      }
-    </style>
+      <h6>That’s it folks!</h6><!--@click="toggleShowSliders()"-->
+      
+      <transition name="page">
+        <div class="footer-slider footer-slider--right" v-if="showSliders">
+          <input type="range" min="300" max="500" v-model="sliderWidthValue" @change="changeWidth" class="slider">
+        </div>
+      </transition>
+      <style v-if="sliderChanged">
+        html {
+          font-variation-settings: "wght" {{ weight }}, "wdth" {{ width }};
+        }
+      </style>
+    </div>
   </footer>
 </template>
 
@@ -46,11 +48,13 @@ export default {
       this.showSliders = !this.showSliders
     },
     changeWeight(){
-      this.sliderChanged = true
+      // Uncomment to re-enable buggy mess of a variable font slider
+      //this.sliderChanged = true
       this.weight = parseInt(this.sliderWeightValue)
     },
     changeWidth(){
-      this.sliderChanged = true
+      // Uncomment to re-enable buggy mess of a variable font slider
+      //this.sliderChanged = true
       this.width = parseInt(this.sliderWidthValue)
     }
   },
@@ -90,7 +94,10 @@ export default {
 @import '~assets/_variables.scss';
 
 .footer-main {
-  padding: 1rem;
+  position:relative;
+  z-index: 0;
+
+  padding: 2rem;
 
   display: flex;
   justify-content: center;
@@ -98,26 +105,32 @@ export default {
   text-align: center;
   user-select: none;
 
-  // for .js-zoom--up on body
-  margin-top: -50px;
+  &-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+  }
 
   h6 {
+    display: inline-flex;
     line-height: 1.2;
     height: 21px;
-    font-variation-settings: "wght" 110, "wdth" 420;
-    transition: font-variation-settings .2s ease-in-out;
+    // font-variation-settings: "wght" 110, "wdth" 420;
+    // transition: font-variation-settings .2s ease-in-out;
 
-    &:active, 
-    &:hover, 
-    &:focus {
-      font-variation-settings: "wght" 140, "wdth" 380;
-      transition: font-variation-settings .2s ease-in-out;
-    }
+    // &:active, 
+    // &:hover, 
+    // &:focus {
+    //   font-variation-settings: "wght" 140, "wdth" 380;
+    //   transition: font-variation-settings .2s ease-in-out;
+    // }
   }
 }
 
 .footer-slider {
-  
+  display: inline-flex;
   &--left {
     padding-right: 15px;
   }

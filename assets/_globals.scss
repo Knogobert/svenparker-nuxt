@@ -17,6 +17,8 @@ html {
 
 body {
   background-color: $ufo;
+  position:relative;
+  z-index:0;
   // background: repeat url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3e %3crect width='10' height='10' fill='#{$ufo-d3}'/%3e %3cpath d='M-1%2c1 l2%2c-2 M0%2c10 l10%2c-10 M9%2c11 l2%2c-2' stroke='#{$ufo-d2}' stroke-width='3'/%3e %3c/svg%3e");
 }
 
@@ -27,13 +29,13 @@ body {
 
 // Zooming of o-wrapper via body class .js-zoom
 .o-wrapper {
-  transition: all 0.5s ease 0s;
+  position:relative;
+  z-index:1;
   box-shadow: 0px 22px 54px rgba(0, 0, 0, 0.25);
 }
-body.js-zoom--up .o-wrapper {
-  transform-origin: center bottom;
-  transform: translateY(-60px) scale(0.9);
-}
+// body.js-zoom--up .o-wrapper {
+
+// }
 
 img {
   max-width: 100%;

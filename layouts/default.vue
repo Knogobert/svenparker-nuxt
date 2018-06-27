@@ -1,10 +1,10 @@
 <template>
-  <div :style="{ 'background-color': color.primary.default }">
+  <div>
     <style>body{background-color: {{ color.primary.default }};}</style>
     
     <sp-logo @bodyColorChange="bodyColorChanged"/>
 
-    <div class="o-wrapper">
+    <div class="o-wrapper" :style="{ 'background-color': color.primary.default }">
       <!-- <sp-nav/> -->
       <nuxt/>
     </div>
