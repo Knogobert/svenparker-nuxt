@@ -26,6 +26,7 @@
                 class="selector"
                 :class="{ 'is-pressed': isPressed }"
                 :style="{ backgroundColor: color }"
+                :disabled="isToggling"
                 @animationend="togglePicker"
                 @click="selectColor">
         </button>
@@ -60,6 +61,7 @@
                 isRippling: false,
                 isDragging: false,
                 isDisabled: true,
+                isToggling: false,
             }
         },
         computed: {
@@ -141,6 +143,7 @@
                 rotator.setAngleFromEvent(ev);
             },
             selectColor() {
+                this.isToggling = true;
                 this.isPressed = true;
 
                 if (!this.isDisabled) {
@@ -189,6 +192,7 @@
                         this.isDisabled = true;
                     }
                 }
+                this.isToggling = false;
             },
             handleWindowResize() {
                 rotator.destroy();
