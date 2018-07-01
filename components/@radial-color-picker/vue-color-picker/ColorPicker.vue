@@ -27,6 +27,35 @@
             Taste the rainbow
         </span>
 
+        <ul class="color-swatch-list">
+            <li class="color-swatch"
+                :value="colorChoice[0]"
+                :style=" 'background-color:' + colorChoice[0]">
+            </li>
+            <li class="color-swatch"
+                :value="colorChoice[1]"
+                :style=" 'background-color:' + colorChoice[1]">
+            </li>
+            <li class="color-swatch"
+                :value="colorChoice[2]"
+                :style=" 'background-color:' + colorChoice[2]">
+            </li>
+            <li class="color-swatch"
+                :value="colorChoice[3]"
+                :style=" 'background-color:' + colorChoice[3]">
+            </li>
+            <li class="color-swatch"
+                :value="colorChoice[4]"
+                :style=" 'background-color:' + colorChoice[4]">
+            </li>
+            <!-- // Usable random color choices
+            // hsla(223, 63%, 49%, 1)
+            // hsla(329, 63%, 49%, 1)
+            // hsla(25, 63%, 49%, 1)
+            // hsla(56, 63%, 49%, 1)
+            // hsla(145, 63%, 49%, 1)
+            // hsla(180, 63%, 49%, 1) -->
+        </ul>
 
         <button type="button"
                 class="selector"
@@ -56,7 +85,7 @@
             },
             mouseScroll: {
                 default: false,
-            },
+            }
         },
         data() {
             return {
@@ -68,6 +97,13 @@
                 isDragging: false,
                 isDisabled: true,
                 isToggling: false,
+                colorChoice: [
+                    'hsla(223, 63%, 49%, 1)',
+                    'hsla(329, 63%, 49%, 1)',
+                    'hsla(25, 63%, 49%, 1)',
+                    'hsla(56, 63%, 49%, 1)',
+                    'hsla(145, 63%, 49%, 1)'
+                ]
             }
         },
         computed: {
@@ -381,6 +417,19 @@
 
             &.is-pressed {
                 animation: color-picker-beat .4s $material-curve-angular forwards;
+            }
+        }
+
+        .color-swatch-list {
+            position: relative;
+            .color-swatch {
+                width: 25px;
+                height: 25px;
+                display: block;
+                border-radius: 50%;
+                border: 5px solid #fff;
+                position: absolute;
+
             }
         }
 
