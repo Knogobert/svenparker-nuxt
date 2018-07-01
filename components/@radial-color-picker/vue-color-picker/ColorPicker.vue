@@ -27,24 +27,24 @@
             Taste the rainbow
         </span>
 
-        <ul class="color-swatch-list">
-            <li class="color-swatch"
+        <ul class="color-swatch-list" v-show="1==0">
+            <li class="color-swatch color-swatch--1"
                 :value="colorChoice[0]"
                 :style=" 'background-color:' + colorChoice[0]">
             </li>
-            <li class="color-swatch"
+            <li class="color-swatch color-swatch--2"
                 :value="colorChoice[1]"
                 :style=" 'background-color:' + colorChoice[1]">
             </li>
-            <li class="color-swatch"
+            <li class="color-swatch color-swatch--3"
                 :value="colorChoice[2]"
                 :style=" 'background-color:' + colorChoice[2]">
             </li>
-            <li class="color-swatch"
+            <li class="color-swatch color-swatch--4"
                 :value="colorChoice[3]"
                 :style=" 'background-color:' + colorChoice[3]">
             </li>
-            <li class="color-swatch"
+            <li class="color-swatch color-swatch--5"
                 :value="colorChoice[4]"
                 :style=" 'background-color:' + colorChoice[4]">
             </li>
@@ -422,14 +422,37 @@
 
         .color-swatch-list {
             position: relative;
+            height: 100%;
             .color-swatch {
                 width: 25px;
                 height: 25px;
                 display: block;
                 border-radius: 50%;
-                border: 5px solid #fff;
+                border: 3px solid #fff;
+                box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
                 position: absolute;
+                transform-origin: center;
+                top: 62.5px;
+                left: 62.5px;
 
+                transition: transform .2s $material-curve-angular;
+                transform: translateY(0%);
+
+                &--1{
+                    transform: rotateZ(0deg) translateY(350%);
+                }
+                &--2{
+                    transform: rotateZ(72deg) translateY(350%);
+                }
+                &--3{
+                    transform: rotateZ(144deg) translateY(350%);
+                }
+                &--4{
+                    transform: rotateZ(216deg) translateY(350%);
+                }
+                &--5{
+                    transform: rotateZ(288deg) translateY(350%);
+                }
             }
         }
 
