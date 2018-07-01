@@ -22,6 +22,12 @@
              <!-- :style="{ borderColor: color }" -->
         </div>
 
+        <span class="ripple-text"
+             :class="{ 'is-rippling-text': isRippling }">
+            Taste the rainbow
+        </span>
+
+
         <button type="button"
                 class="selector"
                 :class="{ 'is-pressed': isPressed }"
@@ -390,8 +396,21 @@
             z-index: -1;
         }
 
+        .ripple-text {
+            opacity: 0;
+            width: 100%;
+            position: absolute;
+            top: 40%;
+            left: 0;
+            z-index: -1;
+        }
+
         .is-rippling {
             z-index: 0;
+            animation: color-picker-ripple 1s $material-curve-angular forwards;
+        }
+        .is-rippling-text {
+            z-index: 130;
             animation: color-picker-ripple 1s $material-curve-angular forwards;
         }
     }
