@@ -27,7 +27,7 @@
             Taste the rainbow
         </span>
 
-        <ul class="color-swatch-list" v-show="1==0">
+        <ul class="color-swatch-list" v-show="1==0" :class="{ 'is-swatch-in': isRippling }">
             <li class="color-swatch color-swatch--1"
                 :value="colorChoice[0]"
                 :style=" 'background-color:' + colorChoice[0]">
@@ -265,229 +265,235 @@
 </script>
 
 <style lang="scss">
-    .color-picker {
-        $initial-color: #2ECC71;
-        $button-border: transparent;
-        $material-curve-angular: cubic-bezier(0.35, 0, 0.25, 1);
+.color-picker {
+    $initial-color: #2ECC71;
+    $button-border: transparent;
+    $material-curve-angular: cubic-bezier(0.35, 0, 0.25, 1);
 
-        @function z-depth-all($depth: 1) {
-            $color1: 0.12, 0.19, 0.38;
-            $blur1: 10px, 50px, 30px;
+    @function z-depth-all($depth: 1) {
+        $color1: 0.12, 0.19, 0.38;
+        $blur1: 10px, 50px, 30px;
 
-            $color2: 0.16, 0.24, 0.48;
-            $blur2: 5px, 15px, 15px;
-            @return 0 0 nth($blur1, $depth) rgba(0, 0, 0, nth($color1, $depth)), 0 0 nth($blur2, $depth) rgba(0, 0, 0, nth($color2, $depth));
-        }
+        $color2: 0.16, 0.24, 0.48;
+        $blur2: 5px, 15px, 15px;
+        @return 0 0 nth($blur1, $depth) rgba(0, 0, 0, nth($color1, $depth)), 0 0 nth($blur2, $depth) rgba(0, 0, 0, nth($color2, $depth));
+    }
 
-        display: block;
-        //overflow: hidden;
-        width: 280px;
-        height: 280px;
-        position: relative;
+    display: block;
+    //overflow: hidden;
+    width: 280px;
+    height: 280px;
+    position: relative;
 
-        &:focus {
-            outline: 0;
-
-            .knob {
-                box-shadow: z-depth-all(3);
-            }
-        }
-
-        &,
-        .palette,
-        .rotator,
-        .selector,
-        .ripple,
-        .knob {
-            -webkit-touch-callout: none;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            box-sizing: border-box;
-
-            &::before {
-                box-sizing: border-box;
-            }
-        }
-
-        .palette {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            background-size: 100% 100%;
-            border-radius: 50%;
-            overflow: hidden;
-            will-change: transform, opacity;
-            transition: transform .5s $material-curve-angular,
-                        opacity .5s $material-curve-angular;
-
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                width: 76%;
-                height: 76%;
-                top: 12%;
-                left: 12%;
-                background-color: transparent;
-                border-radius: 50%;
-            }
-
-            &.is-in {
-                transform: scale(.8);
-                opacity: 1;
-            }
-
-            &.is-out {
-                transform: scale(0);
-                opacity: 0;
-            }
-        }
-
-        .rotator {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-
-            &.dragging {
-                z-index: 1;
-            }
-
-            &.disabled {
-                pointer-events: none;
-            }
-        }
+    &:focus {
+        outline: 0;
 
         .knob {
-            box-shadow: z-depth-all(1);
-            border-radius: 50%;
-            position: absolute;
-            width: 7%;
-            height: 7%;
-            top: 2.5%;
-            left: 46.5%;
-            background-color: #fff;
-            transition: transform .4s $material-curve-angular;
-            outline: 0;
-            border-style: none;
-
-            &.is-in {
-                transform: scale(1);
-            }
-
-            &.is-out {
-                transform: scale(0);
-            }
-        }
-
-        &:not(:focus) .knob:hover {
-            box-shadow: z-depth-all(2);
-        }
-
-        .selector {
-            position: absolute;
-            width: 25%;
-            height: 25%;
-            top: 37.5%;
-            left: 37.5%;
-            padding: 0;
-            margin: 0;
-            border-radius: 50%;
-            background-color: $initial-color;
-            outline: 0;
-            cursor: pointer;
-            transition: transform .7s $material-curve-angular;
-            will-change: transform;
-            overflow: visible;
-            border: 6px solid #fff;
-            box-shadow: 0 0 0 1px $button-border;
-
-            &::-moz-focus-inner {
-              border: 0;
-            }
-
-            &:hover {
-                box-shadow: 0 0 1px 1px #333;
-            }
-
-            &:focus {
-                box-shadow: 0 0 1px 2px $button-border;
-            }
-
-            &.is-pressed {
-                animation: color-picker-beat .4s $material-curve-angular forwards;
-            }
-        }
-
-        .color-swatch-list {
-            position: relative;
-            height: 100%;
-            .color-swatch {
-                width: 25px;
-                height: 25px;
-                display: block;
-                border-radius: 50%;
-                border: 3px solid #fff;
-                box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
-                position: absolute;
-                transform-origin: center;
-                top: 62.5px;
-                left: 62.5px;
-
-                transition: transform .2s $material-curve-angular;
-                transform: translateY(0%);
-
-                &--1{
-                    transform: rotateZ(0deg) translateY(350%);
-                }
-                &--2{
-                    transform: rotateZ(72deg) translateY(350%);
-                }
-                &--3{
-                    transform: rotateZ(144deg) translateY(350%);
-                }
-                &--4{
-                    transform: rotateZ(216deg) translateY(350%);
-                }
-                &--5{
-                    transform: rotateZ(288deg) translateY(350%);
-                }
-            }
-        }
-
-        .ripple {
-            width: 50%;
-            height: 50%;
-            border-radius: 50%;
-            border: rgba(0, 0, 0, 0.5) solid 8px;
-            //opacity: 0;
-            position: absolute;
-            top: 25%;
-            left: 25%;
-            z-index: -1;
-        }
-
-        .ripple-text {
-            opacity: 0;
-            width: 100%;
-            position: absolute;
-            top: 40%;
-            left: 0;
-            z-index: -1;
-        }
-
-        .is-rippling {
-            z-index: 0;
-            animation: color-picker-ripple 1s $material-curve-angular forwards;
-        }
-        .is-rippling-text {
-            z-index: 130;
-            animation: color-picker-ripple 1s $material-curve-angular forwards;
+            box-shadow: z-depth-all(3);
         }
     }
+
+    &,
+    .palette,
+    .rotator,
+    .selector,
+    .ripple,
+    .knob {
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+        box-sizing: border-box;
+
+        &::before {
+            box-sizing: border-box;
+        }
+    }
+
+    .palette {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        will-change: transform, opacity;
+        transition: transform .5s $material-curve-angular,
+                    opacity .5s $material-curve-angular;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 76%;
+            height: 76%;
+            top: 12%;
+            left: 12%;
+            background-color: transparent;
+            border-radius: 50%;
+        }
+
+        &.is-in {
+            transform: scale(.8);
+            opacity: 1;
+        }
+
+        &.is-out {
+            transform: scale(0);
+            opacity: 0;
+        }
+    }
+
+    .rotator {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+
+        &.dragging {
+            z-index: 1;
+        }
+
+        &.disabled {
+            pointer-events: none;
+        }
+    }
+
+    .knob {
+        box-shadow: z-depth-all(1);
+        border-radius: 50%;
+        position: absolute;
+        width: 7%;
+        height: 7%;
+        top: 2.5%;
+        left: 46.5%;
+        background-color: #fff;
+        transition: transform .4s $material-curve-angular;
+        outline: 0;
+        border-style: none;
+
+        &.is-in {
+            transform: scale(1);
+        }
+
+        &.is-out {
+            transform: scale(0);
+        }
+    }
+
+    &:not(:focus) .knob:hover {
+        box-shadow: z-depth-all(2);
+    }
+
+    .selector {
+        position: absolute;
+        width: 25%;
+        height: 25%;
+        top: 37.5%;
+        left: 37.5%;
+        padding: 0;
+        margin: 0;
+        border-radius: 50%;
+        background-color: $initial-color;
+        outline: 0;
+        cursor: pointer;
+        transition: transform .7s $material-curve-angular;
+        will-change: transform;
+        overflow: visible;
+        border: 6px solid #fff;
+        box-shadow: 0 0 0 1px $button-border;
+
+        &::-moz-focus-inner {
+            border: 0;
+        }
+
+        &:hover {
+            box-shadow: 0 0 1px 1px #333;
+        }
+
+        &:focus {
+            box-shadow: 0 0 1px 2px $button-border;
+        }
+
+        &.is-pressed {
+            animation: color-picker-beat .4s $material-curve-angular forwards;
+        }
+    }
+
+    .color-swatch-list {
+        position: relative;
+        height: 100%;
+        opacity: 0;
+        transform: scale(1) rotateZ(0deg);
+        .color-swatch {
+            width: 25px;
+            height: 25px;
+            display: block;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
+            position: absolute;
+            transform-origin: center;
+            top: 62.5px;
+            left: 62.5px;
+
+            transition: transform .2s $material-curve-angular;
+            transform: translateY(0%);
+
+            &--1{
+                transform: rotateZ(0deg) translateY(350%);
+            }
+            &--2{
+                transform: rotateZ(72deg) translateY(350%);
+            }
+            &--3{
+                transform: rotateZ(144deg) translateY(350%);
+            }
+            &--4{
+                transform: rotateZ(216deg) translateY(350%);
+            }
+            &--5{
+                transform: rotateZ(288deg) translateY(350%);
+            }
+        }
+        &.is-swatch-in {
+            z-index: 0;
+            animation: color-swatch-transition 1s $material-curve-angular;
+        }
+    }
+
+    .ripple {
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        border: rgba(0, 0, 0, 0.5) solid 8px;
+        //opacity: 0;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        z-index: -1;
+    }
+
+    .ripple-text {
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        top: 40%;
+        left: 0;
+        z-index: -1;
+    }
+
+    .is-rippling {
+        z-index: 0;
+        animation: color-picker-ripple 1s $material-curve-angular forwards;
+    }
+    .is-rippling-text {
+        z-index: 130;
+        animation: color-picker-ripple 1s $material-curve-angular forwards;
+    }
+}
 
 @keyframes color-picker-ripple {
     0%   { transform: scale(1); opacity: .3; }
@@ -514,4 +520,12 @@
     box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
   }
 }
+
+@keyframes color-swatch-transition {
+    0%   { transform: scale(0) rotateZ(-30deg); opacity: .8; }
+    // 25%  { transform: scale(0.4) rotateZ(-20deg); }
+    // 50%  { transform: scale(0.9) rotateZ(-10deg); }
+    100% { transform: scale(1) rotateZ(0deg); opacity: 0; }
+}
+
 </style>
