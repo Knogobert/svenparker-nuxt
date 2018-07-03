@@ -23,7 +23,7 @@
         </div>
 
         <span class="ripple-text"
-             :class="{ 'is-rippling-text': isRippling }">
+             :class="{ 'is-rippling-text': isRipplingText === 1 }">
             Taste the rainbow
         </span>
 
@@ -94,6 +94,7 @@
                 isKnobIn: false,
                 isPressed: false,
                 isRippling: false,
+                isRipplingText: 0,
                 isDragging: false,
                 isDisabled: true,
                 isToggling: false,
@@ -191,6 +192,7 @@
                 if (!this.isDisabled) {
                     this.$emit('select', this.value);
                     this.isRippling = true;
+                    this.isRipplingText++;
                 } else {
                     this.isPaletteIn = true;
                 }
