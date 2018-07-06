@@ -27,7 +27,7 @@
             Taste the rainbow
         </span>
 
-        <ul class="color-swatch-list" v-show="1==0" :class="{ 'is-swatch-in': isRippling }">
+        <ul class="color-swatch-list" v-show="1==0" :class="isSwatchesIn >= 1 ? 'is-swatch-in' : 'is-swatch-out'">
             <li class="color-swatch color-swatch--1"
                 :value="colorChoice[0]"
                 :style=" 'background-color:' + colorChoice[0]">
@@ -91,6 +91,7 @@
             return {
                 interval: 0,
                 isPaletteIn: false,
+                isSwatchesIn: 0,
                 isKnobIn: false,
                 isPressed: false,
                 isRippling: false,
@@ -193,8 +194,10 @@
                     this.$emit('select', this.value);
                     this.isRippling = true;
                     this.isRipplingText++;
+                    this.isSwatchesIn = 0;
                 } else {
                     this.isPaletteIn = true;
+                    this.isSwatchesIn++;
                 }
             },
             togglePicker() {
@@ -426,7 +429,8 @@
         position: relative;
         height: 100%;
         opacity: 0;
-        transform: scale(1) rotateZ(0deg);
+        //transform: scale(1) rotateZ(0deg);
+        transition: transform 1s $material-curve-angular;
         .color-swatch {
             width: 25px;
             height: 25px;
@@ -460,7 +464,13 @@
         }
         &.is-swatch-in {
             z-index: 0;
-            animation: color-swatch-transition 1s $material-curve-angular;
+            opacity: 1;
+            animation: color-swatch-transition-in 1s $material-curve-angular;
+        }
+        &.is-swatch-out {
+            z-index: 0;
+            opacity: 0;
+            animation: color-swatch-transition-out 1s $material-curve-angular;
         }
     }
 
@@ -521,11 +531,13 @@
   }
 }
 
-@keyframes color-swatch-transition {
-    0%   { transform: scale(0) rotateZ(-30deg); opacity: .8; }
-    // 25%  { transform: scale(0.4) rotateZ(-20deg); }
-    // 50%  { transform: scale(0.9) rotateZ(-10deg); }
-    100% { transform: scale(1) rotateZ(0deg); opacity: 0; }
+@keyframes color-swatch-transition-in {
+    from   { transform: scale(0) rotateZ(-30deg); opacity: 0; }
+    to     { transform: scale(1) rotateZ(0deg); opacity: 1; }
+}
+@keyframes color-swatch-transition-out {
+    from   { transform: scale(1) rotateZ(0deg); opacity: 1; }
+    to     { transform: scale(0) rotateZ(-30deg); opacity: 0; }
 }
 
 </style>
