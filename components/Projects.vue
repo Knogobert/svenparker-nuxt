@@ -62,7 +62,7 @@ export default {
         temp: {
           title: 'More to come...',
           // url: 'http://svenparker.com/swiss+style/index.php',
-          date: 'June 2018',
+          date: 'July 2018',
           description: 'I’m currently updating this website, for reals.',
           //image: '/projects/snap-SWSS.png'
         }
