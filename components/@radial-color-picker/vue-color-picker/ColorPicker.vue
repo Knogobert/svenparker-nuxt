@@ -90,14 +90,14 @@
         data() {
             return {
                 interval: 0,
-                isPaletteIn: false,
-                isSwatchesIn: 0,
+                isDisabled: true,
+                isDragging: false,
                 isKnobIn: false,
+                isPaletteIn: false,
                 isPressed: false,
                 isRippling: false,
                 isRipplingText: 0,
-                isDragging: false,
-                isDisabled: true,
+                isSwatchesIn: 0,
                 isToggling: false,
                 colorChoice: [
                     'hsla(223, 63%, 49%, 1)',
