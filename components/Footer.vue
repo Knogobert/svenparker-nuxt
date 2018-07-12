@@ -8,7 +8,7 @@
       </transition>
 
       <h6>That’s it folks!</h6><!--@click="toggleShowSliders()"-->
-      
+
       <transition name="page">
         <div class="footer-slider footer-slider--right" v-if="showSliders">
           <input type="range" min="300" max="500" v-model="sliderWidthValue" @change="changeWidth" class="slider">
@@ -62,7 +62,7 @@ export default {
     bodyZoom: {
       inViewport (el) {
         var rect = el.getBoundingClientRect()
-        return !(rect.bottom < 0 || rect.right < 0 || 
+        return !(rect.bottom < 0 || rect.right < 0 ||
                 rect.left > window.innerWidth ||
                 rect.top > window.innerHeight)
       },
@@ -78,9 +78,9 @@ export default {
         document.addEventListener('scroll', el.$onScroll)
       },
       inserted(el, binding) {
-        el.$onScroll()  
+        el.$onScroll()
       },
-      unbind(el, binding) {    
+      unbind(el, binding) {
         document.removeEventListener('scroll', el.$onScroll)
         delete el.$onScroll
       }
@@ -120,8 +120,8 @@ export default {
     // font-variation-settings: "wght" 110, "wdth" 420;
     // transition: font-variation-settings .2s ease-in-out;
 
-    // &:active, 
-    // &:hover, 
+    // &:active,
+    // &:hover,
     // &:focus {
     //   font-variation-settings: "wght" 140, "wdth" 380;
     //   transition: font-variation-settings .2s ease-in-out;
@@ -148,7 +148,7 @@ export default {
   padding: 2px;
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;

@@ -101,10 +101,10 @@ export default {
     height: 100px;
     width: 100px;
     min-width: 100px;
-    
+
     .palette {
       box-shadow: 0 0 20px 0px rgba($black,.1);
-      
+
       &::before {
        background-color: transparent;
       }

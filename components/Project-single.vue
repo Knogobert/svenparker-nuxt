@@ -71,13 +71,13 @@ export default {
       inPaddedViewport (el) {
         var rect = el.getBoundingClientRect()
         //debugger;
-        return !(rect.bottom-150 < 0 || rect.right < 0 || 
+        return !(rect.bottom-150 < 0 || rect.right < 0 ||
                 rect.left > window.innerWidth ||
                 rect.top+150 > window.innerHeight)
       },
       inViewport (el) {
         var rect = el.getBoundingClientRect()
-        return !(rect.bottom < 0 || rect.right < 0 || 
+        return !(rect.bottom < 0 || rect.right < 0 ||
                 rect.left > window.innerWidth ||
                 rect.top > window.innerHeight)
       },
@@ -88,32 +88,32 @@ export default {
             if (binding.def.inPaddedViewport(el)) {
               el.classList.add('inView')
               el.classList.remove('not-inView')
-              //binding.def.unbind(el, binding)        
+              //binding.def.unbind(el, binding)
             }else{
               el.classList.add('not-inView')
               el.classList.remove('inView')
-              //binding.def.bind(el, binding)        
+              //binding.def.bind(el, binding)
             }
 
             if (binding.def.inViewport(el)) {
               el.classList.add('flow-'+binding.arg+'-enter')
               el.classList.remove('flow-'+binding.arg+'-before-enter')
-              //binding.def.unbind(el, binding)        
+              //binding.def.unbind(el, binding)
             }
           }else{
             if (binding.def.inViewport(el)) {
               el.classList.add('flow-'+binding.arg+'-enter')
               el.classList.remove('flow-'+binding.arg+'-before-enter')
-              binding.def.unbind(el, binding)        
+              binding.def.unbind(el, binding)
             }
           }
         }
         document.addEventListener('scroll', el.$onScroll)
       },
       inserted(el, binding) {
-        el.$onScroll()  
+        el.$onScroll()
       },
-      unbind(el, binding) {    
+      unbind(el, binding) {
         document.removeEventListener('scroll', el.$onScroll)
         delete el.$onScroll
       }
@@ -159,8 +159,8 @@ export default {
       transition: .2s ease-in-out opacity;
     }
 
-    &:active, 
-    &:hover, 
+    &:active,
+    &:hover,
     &:focus {
       background-color: hsla(0, 0%, 0%, .05);
       transition: .2s ease-in-out background-color;

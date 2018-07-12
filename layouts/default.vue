@@ -1,14 +1,14 @@
 <template>
   <div>
     <style>body{background-color: {{ color.primary.default }};}</style>
-    
+
     <sp-logo @bodyColorChange="bodyColorChanged"/>
 
     <div class="o-wrapper" :style="{ 'background-color': color.primary.default }">
       <!-- <sp-nav/> -->
       <nuxt/>
     </div>
-    
+
     <sp-footer/>
 
   </div>
@@ -102,7 +102,7 @@ export default {
   //     console.log( themeColor );
   //     setTimeout(() => {
   //     this.$bus.$emit('colorChange', themeColor );
-  //     console.log('Emitted COOKIEZ!');  
+  //     console.log('Emitted COOKIEZ!');
   //     }, 2000);
   //     console.log('GOT COOKIEZ!');
   //   }

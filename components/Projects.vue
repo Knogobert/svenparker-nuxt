@@ -79,7 +79,7 @@ export default {
   background-color: hsla(0, 0%, 0%, .05);
   display: block;
   width: 100%;
-  
+
   h2 {
     text-align: center;
     margin: 1rem 0;
