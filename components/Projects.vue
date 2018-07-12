@@ -31,6 +31,13 @@ export default {
   data() {
     return {
       projects: {
+        ms: {
+          title: 'Myers Surfboards',
+          url: 'http://myerssurfboards.co/',
+          date: 'July 2018',
+          description: 'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress.',
+          image: '/projects/snap-MS-darker.jpg'
+        },
         bc: {
           title: 'Briefcave',
           url: 'https://www.briefcave.se/',
