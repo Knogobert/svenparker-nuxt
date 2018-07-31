@@ -35,8 +35,15 @@ export default {
           title: 'Myers Surfboards',
           url: 'http://myerssurfboards.co/',
           date: 'July 2018',
-          description: 'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress.',
+          description: 'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress and should probably be a locked down staging site, but isn’t because of economic reasons.',
           image: '/projects/snap-MS-darker.jpg'
+        },
+        bpx: {
+          title: 'Boneprox',
+          url: 'http://www.boneprox.se/',
+          date: 'April 2018',
+          description: 'Made as a informational website for the revolutionary digital tool that analyzes dental x-rays for bone density and possible osteoporosis risks.',
+          image: '/projects/snap-BPX-darker.jpg'
         },
         bc: {
           title: 'Briefcave',
