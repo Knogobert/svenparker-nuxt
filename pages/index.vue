@@ -12,7 +12,7 @@
        — <a href="https://codepen.io/Knogobert/" target="_blank">Codepen</a>
        — <a href="https://vsco.co/svenparker/" target="_blank">VSCO</a>
        — <a href="http://se.linkedin.com/in/SvenParker" target="_blank">LinkedIn</a>
-       — <a href="#" @click.prevent="scrollSmooooovelyTo('.project-bc')">Or just scroll.</a>
+       — <a href="#" @click.prevent="scrollSmooooovelyTo('.project-ms')">Or just scroll.</a>
       </small>
     </sp-intro>
 
