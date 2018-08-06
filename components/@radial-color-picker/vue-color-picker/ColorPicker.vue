@@ -493,6 +493,7 @@
         top: 40%;
         left: 0;
         z-index: -1;
+        pointer-events: none;
     }
 
     .is-rippling {
