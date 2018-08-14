@@ -39,12 +39,12 @@ export default {
     return {
       color: {
         primary: {
-          darken3: 'hsla(145, 63%, 36%, 1)',
-          darken2: 'hsla(145, 63%, 40%, 1)',
-          darken1: 'hsla(145, 63%, 44%, 1)',
-          default: 'hsla(145, 63%, 49%, 1)',
-          lighten1: 'hsla(145, 63%, 52%, 1)',
-          lighten2: 'hsla(145, 63%, 56%, 1)',
+          darken3: 'hsla(203, 63%, 28%, 1)',
+          darken2: 'hsla(203, 63%, 32%, 1)',
+          darken1: 'hsla(203, 63%, 36%, 1)',
+          default: 'hsla(203, 63%, 41%, 1)',
+          lighten1: 'hsla(203, 63%, 48%, 1)',
+          lighten2: 'hsla(203, 63%, 52%, 1)',
         },
         secondary: {
           darken1: 'hsla(203, 73%, 36%, 1)',

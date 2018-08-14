@@ -78,7 +78,7 @@
         name: 'vue-color-picker',
         props: {
             value: {
-                default: () => ({ hue: 0, saturation: 100, luminosity: 50, alpha: 1 }),
+                default: () => ({ hue: 0, saturation: 63, luminosity: 41, alpha: 1 }),
             },
             step: {
                 default: 2,
@@ -110,7 +110,7 @@
         },
         computed: {
             color() {
-                const { hue, saturation = 100, luminosity = 50, alpha = 1 } = this.value;
+                const { hue, saturation = 63, luminosity = 41, alpha = 1 } = this.value;
 
                 return `hsla(${hue}, ${saturation}%, ${luminosity}%, ${alpha})`;
             }
@@ -175,8 +175,8 @@
             updateColor(hue) {
                 this.$emit('input', {
                     hue,
-                    saturation: this.value.saturation || 100,
-                    luminosity: this.value.luminosity || 50,
+                    saturation: this.value.saturation || 63,
+                    luminosity: this.value.luminosity || 41,
                     alpha: this.value.alpha || 1,
                 });
             },
@@ -269,7 +269,7 @@
 
 <style lang="scss">
 .color-picker {
-    $initial-color: #2ECC71;
+    $initial-color: #2778AA;
     $button-border: transparent;
     $material-curve-angular: cubic-bezier(0.35, 0, 0.25, 1);
 

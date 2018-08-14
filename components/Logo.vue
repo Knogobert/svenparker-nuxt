@@ -23,9 +23,9 @@ export default {
       bgColorClass: 'svg-fill--green',
       strokeColorClass: 'svg-fill--white',
       color: {
-        hue: 145,
+        hue: 203,
         saturation: 63,
-        luminosity: 49,
+        luminosity: 41,
         alpha: 1
       },
     }
