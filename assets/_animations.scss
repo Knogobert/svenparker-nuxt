@@ -91,3 +91,15 @@
         opacity: 1;
     }
 }
+
+.fade-in-enter-active {
+  transition: opacity .25s ease-in-out;
+}
+
+.fade-in-enter-to {
+  opacity: 1;
+}
+
+.fade-in-enter {
+  opacity: 0;
+}

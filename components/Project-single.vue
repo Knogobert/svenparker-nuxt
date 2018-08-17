@@ -10,7 +10,9 @@
         </article>
         <figure class="project-single-figure col-6 filter" :style="{ 'color': color.primary.lighten1 }" v-flow:up.inView><!-- v-inView -->
           <!-- <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style> -->
-          <img :src="image">
+          <transition name="fade-in">
+            <img :src="image" @load="onLoaded" v-show="imageLoaded">
+          </transition>
         </figure>
       </div>
       <div class="grid-row" v-else>
@@ -37,6 +39,7 @@ export default {
   },
   data() {
     return {
+      imageLoaded: false,
       color: {
         primary: {
           darken3: 'hsla(145, 63%, 36%, 1)',
@@ -65,6 +68,11 @@ export default {
     this.$bus.$on('colorChange', (data) => {
       this.color = data;
     });
+  },
+  methods: {
+    onLoaded() {
+      this.imageLoaded = true;
+    }
   },
   directives: {
     flow: {

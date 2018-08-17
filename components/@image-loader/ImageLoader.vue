@@ -1,8 +1,8 @@
 <template>
 
   <div class="sp-image-loader">
-    <transition name="fade">
-      <img :src="imageSrc" :class="classNames" @load="onLoaded" v-show="loaded"/>
+    <transition name="fade-in">
+      <img :src="imageSrc" :class="classNames" @load="onLoaded" v-show="imageLoaded"/>
     </transition>
   </div>
 
@@ -18,7 +18,7 @@ export default {
 
   data: function () {
     return {
-      loaded: false,
+      imageLoaded: false,
       imageSrc: this.src,
       classNames: this.classes
     }
@@ -26,22 +26,20 @@ export default {
 
   methods: {
     onLoaded() {
-      this.loaded = true;
+      this.imageLoaded = true;
     }
   }
 }
 </script>
 
 <style scoped>
-.fade-enter-active {
+.fade-in-enter-active {
   transition: opacity .25s ease-in-out;
 }
-
-.fade-enter-to {
+.fade-in-enter-to {
   opacity: 1;
 }
-
-.fade-enter {
+.fade-in-enter {
   opacity: 0;
 }
 </style>
