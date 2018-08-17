@@ -18,15 +18,25 @@
           </li>
         </ul> -->
       </article>
-      <img class="sp-intro-bg" src="/general/green-gmap-pp-cutout.png"/>
+      <!-- <img  src="/general/green-gmap-pp-cutout.png"/> -->
+      <sp-image-loader 
+      :src="'/general/green-gmap-pp-cutout.png'"
+      :smallSrc="'https://cdn-images-1.medium.com/freeze/max/27/1*sg-uLNm73whmdOgKlrQdZA.jpeg?q=20'"
+      :classes="'sp-intro-bg'">
+      </sp-image-loader>
     </div>
   </section>
 
 </template>
 
 <script>
+import spImageLoader from '~/components/@image-loader/ImageLoader.vue';
+
 export default {
   name: 'sp-Intro',
+  components: {
+    spImageLoader
+  },
   data() {
     return {
       show: false,
