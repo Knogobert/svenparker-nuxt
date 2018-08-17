@@ -18,6 +18,7 @@
           </li>
         </ul> -->
       </article>
+      <img class="sp-intro-bg" src="/general/green-gmap-pp-cutout.png"/>
     </div>
   </section>
 
@@ -61,6 +62,11 @@ export default {
     }
   },
   mounted() {
+    // Add classname if supported
+    if (typeof window.getComputedStyle(document.body).mixBlendMode !== 'undefined') {
+      document.documentElement.className += " mix-blend-mode";
+    }
+
     this.$bus.$on('colorChange', (data) => {
       this.color = data;
     });
@@ -89,6 +95,25 @@ export default {
   &-inner {
     //max-width: 31.25rem;
     //animation: flowDown 1.5s;
+  }
+
+  &-bg {
+    z-index: -1;
+    position: absolute;
+    bottom: -3rem;
+    right: 0;
+
+    min-width: 60%;
+    max-width: 80%;
+
+    max-height: 200%;
+    object-fit: scale-down;
+    //filter: invert(0) hue-rotate(180deg);
+    opacity: .25;
+  }
+  @at-root .mix-blend-mode &#{-bg} {
+    opacity: 1;
+    mix-blend-mode: difference;
   }
 
   .title {
