@@ -83,12 +83,17 @@ export default {
         temp: {
           title: 'More to come...',
           // url: 'http://svenparker.com/swiss+style/index.php',
-          date: 'Sep 2018',
+          date: '',
           description: 'I’m currently updating this website, for reals.',
           //image: '/projects/snap-SWSS.png'
         }
       }
     }
+  },
+  mounted() {
+    let currentDate = new Date(Date.now()).toDateString();
+    this.projects.temp.date = currentDate.slice(3,7);
+    this.projects.temp.date += currentDate.slice(10);
   }
 }
 </script>
