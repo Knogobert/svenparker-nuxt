@@ -18,6 +18,7 @@ module.exports = {
       { name: 'msapplication-config', content: 'browserconfig.xml'},
       { name: 'theme-color', content: '#2ecc71'},
       { name: 'robots', content: 'noindex' },
+      { name: 'google-site-verification', content: '4oeDbA1nkNSPNK4-7gB8Xc-MHrj-T-nrO4_S_263RU0' },
     ],
     link: [
       { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/apple-touch-icon.png' },
