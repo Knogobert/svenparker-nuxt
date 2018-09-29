@@ -17,7 +17,7 @@ module.exports = {
       { property: 'og:type', content: 'profile'},
       { property: 'og:title', content: 'Svenparker.com'},
       { property: 'og:url', content: 'https://svenparker.com'},
-      { property: 'og:image', content: '/ogp.jpg'},
+      { property: 'og:image', content: 'https://svenparker.com/ogp.jpg'},
       { property: 'profile:first_name', content: 'Sven'},
       { property: 'profile:last_name', content: 'Parker'},
       { name: 'msapplication-TileColor', content: '#2ecc71'},
