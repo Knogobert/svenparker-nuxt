@@ -33,7 +33,7 @@ module.exports = {
       { rel: 'manifest', href: '/site.webmanifest' },
       { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#2ecc71' },
       { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Barlow|Quicksand' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Nunito' }
     ],
     // script: [
     //   // {
