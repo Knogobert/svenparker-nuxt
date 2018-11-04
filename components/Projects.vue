@@ -72,28 +72,28 @@ export default {
           date: 'April 2016',
           description: '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was programmed for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
           image: '/projects/snap-BTK.jpg'
-        },
-        swss: {
-          title: 'Swiss+style',
-          url: 'http://svenparker.com/swiss+style/index.php',
-          date: 'February 2016',
-          description: 'A small, fun and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. One of my first PHP-only websites.',
-          image: '/projects/snap-SWSS.png'
-        },
-        temp: {
-          title: 'More to come...',
-          // url: 'http://svenparker.com/swiss+style/index.php',
-          date: '',
-          description: 'I’m currently updating this website, for reals.',
-          //image: '/projects/snap-SWSS.png'
         }
+        // swss: {
+        //   title: 'Swiss+style',
+        //   url: 'http://svenparker.com/swiss+style/index.php',
+        //   date: 'February 2016',
+        //   description: 'A small, fun and very hastily made website as a school exercise. The assignment was to create a "Swiss style" website without using any images. One of my first PHP-only websites.',
+        //   image: '/projects/snap-SWSS.png'
+        // },
+        // temp: {
+        //   title: 'More to come...',
+        //   // url: 'http://svenparker.com/',
+        //   date: '',
+        //   description: 'I’m currently updating this website, for reals.',
+        //   //image: '/projects/snap-SWSS.png'
+        // }
       }
     }
   },
   mounted() {
-    let currentDate = new Date(Date.now()).toDateString();
-    this.projects.temp.date = currentDate.slice(3,7);
-    this.projects.temp.date += currentDate.slice(10);
+    // let currentDate = new Date(Date.now()).toDateString();
+    // this.projects.temp.date = currentDate.slice(3,7);
+    // this.projects.temp.date += currentDate.slice(10);
   }
 }
 </script>
