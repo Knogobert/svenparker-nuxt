@@ -31,26 +31,33 @@ export default {
   data() {
     return {
       projects: {
+        lg: {
+          title: 'Lammet & Grisen',
+          url: 'https://lammet.nu/',
+          date: 'November 2018',
+          description: 'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress out there. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
+          image: '/projects/snap-LG.jpg'
+        },
         ms: {
           title: 'Myers Surfboards',
           url: 'https://myerssurfboards.co/',
           date: 'July 2018',
           description: 'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress and should probably be a locked down staging site, but isn’t because of economic reasons.',
-          image: '/projects/snap-MS-darker.jpg'
+          image: '/projects/snap-MS.jpg'
         },
         bpx: {
           title: 'Boneprox',
           url: 'https://boneprox.se/',
           date: 'April 2018',
           description: 'Made as a informational website for the revolutionary digital tool that analyzes dental x-rays for bone density and possible osteoporosis risks.',
-          image: '/projects/snap-BPX-darker.jpg'
+          image: '/projects/snap-BPX.jpg'
         },
         // ws: {
         //   title: 'WinstSeries',
         //   url: 'https://www.winstseries.com/',
         //   date: 'April 2018',
         //   description: 'desc',
-        //   image: '/projects/snap-WS-darker.jpg'
+        //   image: '/projects/snap-WS.jpg'
         // },
         bc: {
           title: 'Briefcave',
