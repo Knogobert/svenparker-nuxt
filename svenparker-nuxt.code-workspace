@@ -12,19 +12,38 @@
 			"vue"
 		],
 		"workbench.colorCustomizations": {
-			"activityBarBadge.background": "#FF4081",
-			"list.activeSelectionForeground": "#FF4081",
-			"list.inactiveSelectionForeground": "#FF4081",
-			"list.highlightForeground": "#FF4081",
-			"scrollbarSlider.activeBackground": "#FF408150",
-			"editorSuggestWidget.highlightForeground": "#FF4081",
-			"textLink.foreground": "#FF4081",
-			"progressBar.background": "#FF4081",
-			"pickerGroup.foreground": "#FF4081",
-			"tab.activeBorder": "#FF4081",
-			"notificationLink.foreground": "#FF4081",
 			"statusBar.background": "#2ECC71",
 			"statusBar.foreground": "#1a1a1a"
-		}
+		},
+		"editor.formatOnSave": false,
+		"javascript.format.enable": false,
+		"eslint.autoFixOnSave": true,
+		"eslint.alwaysShowStatus": true,
+		"eslint.options": {
+			"extensions": [
+				".html",
+				".js",
+				".vue",
+				".jsx"
+			]
+		},
+		"eslint.validate": [
+			{
+				"language": "html",
+				"autoFix": true
+			},
+			{
+				"language": "vue",
+				"autoFix": true
+			},
+			{
+				"language": "javascript",
+				"autoFix": true
+			},
+			{
+				"language": "javascriptreact",
+				"autoFix": true
+			}
+		]
 	}
 }

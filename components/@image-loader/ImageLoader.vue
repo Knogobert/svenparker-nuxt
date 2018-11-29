@@ -2,7 +2,11 @@
 
   <div class="sp-image-loader">
     <transition name="fade-in">
-      <img :src="imageSrc" :class="classNames" @load="onLoaded" v-show="imageLoaded"/>
+      <img
+        v-show="imageLoaded"
+        :src="imageSrc"
+        :class="classNames"
+        @load="onLoaded">
     </transition>
   </div>
 
@@ -10,13 +14,19 @@
 
 <script>
 export default {
-  name: 'sp-image-loader',
-  props: [
-    'src',
-    'classes'
-  ],
+  name: 'SpImageLoader',
+  props: {
+    src: {
+      type: String,
+      default: '/general/green-gmap-pp-cutout.png'
+    },
+    classes: {
+      type: String,
+      default: 'image-loader'
+    }
+  },
 
-  data: function () {
+  data: function() {
     return {
       imageLoaded: false,
       imageSrc: this.src,
@@ -26,7 +36,7 @@ export default {
 
   methods: {
     onLoaded() {
-      this.imageLoaded = true;
+      this.imageLoaded = true
     }
   }
 }
@@ -34,7 +44,7 @@ export default {
 
 <style scoped>
 .fade-in-enter-active {
-  transition: opacity .25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
 }
 .fade-in-enter-to {
   opacity: 1;

@@ -1,41 +1,156 @@
 <template>
-
-  <div class="project-single" :class="[{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0}, 'project-'+slug ]"><!-- :style="projectStyle" -->
-    <a class="project-single-link grid-container" :href="url" :title="'Go to '+title" target="_blank"  :class="{'project-single-link--height-auto': image === undefined}">
-      <div class="grid-row" v-if="image">
-        <article class="project-single-article col-6 mb-sm-2" v-flow:down>
-          <h3 class="project-single-title"><slot name="title"></slot></h3>
-          <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
-          <p class="project-single-description"><slot name="description"></slot></p>
+  <div
+    :class="[{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0}, 'project-'+slug ]"
+    class="project-single"
+  >
+    <!-- :style="projectStyle" -->
+    <a
+      :href="url"
+      :title="'Go to '+title"
+      :class="{'project-single-link--height-auto': image === undefined}"
+      class="project-single-link grid-container"
+      target="_blank"
+    >
+      <div
+        v-if="image"
+        class="grid-row"
+      >
+        <article
+          v-flow:down
+          class="project-single-article col-6 mb-sm-2"
+        >
+          <h3 class="project-single-title">
+            <slot name="title" />>
+          </h3>
+          <h5 class="project-single-subtitle">
+            <slot name="date" />
+          </h5>
+          <p class="project-single-description">
+            <slot name="description" />
+          </p>
         </article>
-        <figure class="project-single-figure col-6 filter" :style="{ 'color': color.primary.lighten1 }" v-flow:up.inView><!-- v-inView -->
+        <figure
+          v-flow:up.inView
+          :style="{ 'color': color.primary.lighten1 }"
+          class="project-single-figure col-6 filter"
+        >
+          <!-- v-inView -->
           <!-- <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style> -->
           <transition name="fade-in">
-            <img :src="image" @load="onLoaded" v-show="imageLoaded">
+            <img
+              v-show="imageLoaded"
+              :src="image"
+              @load="onLoaded"
+            >
           </transition>
         </figure>
       </div>
-      <div class="grid-row" v-else>
-        <article class="project-single-article col-12 mb-sm-2" v-flow:down>
-          <h3 class="project-single-title"><slot name="title"></slot></h3>
-          <h5 class="project-single-subtitle"><slot name="date"></slot></h5>
-          <p class="project-single-description"><slot name="description"></slot></p>
+      <div
+        v-else
+        class="grid-row"
+      >
+        <article
+          v-flow:down
+          class="project-single-article col-12 mb-sm-2"
+        >
+          <h3 class="project-single-title">
+            <slot name="title" />
+          </h3>
+          <h5 class="project-single-subtitle">
+            <slot name="date" />
+          </h5>
+          <p class="project-single-description">
+            <slot name="description" />
+          </p>
         </article>
       </div>
     </a>
   </div>
-
 </template>
 
 <script>
 export default {
-  name: 'sp-projects-single',
+  name: 'SpProjectsSingle',
+  directives: {
+    flow: {
+      inPaddedViewport(el) {
+        var rect = el.getBoundingClientRect()
+        //debugger;
+        return !(
+          rect.bottom - 150 < 0 ||
+          rect.right < 0 ||
+          rect.left > window.innerWidth ||
+          rect.top + 150 > window.innerHeight
+        )
+      },
+      inViewport(el) {
+        var rect = el.getBoundingClientRect()
+        return !(
+          rect.bottom < 0 ||
+          rect.right < 0 ||
+          rect.left > window.innerWidth ||
+          rect.top > window.innerHeight
+        )
+      },
+      bind(el, binding) {
+        el.classList.add('flow-' + binding.arg + '-before-enter')
+        el.$onScroll = function() {
+          if (binding.modifiers.inView === true) {
+            if (binding.def.inPaddedViewport(el)) {
+              el.classList.add('inView')
+              el.classList.remove('not-inView')
+              //binding.def.unbind(el, binding)
+            } else {
+              el.classList.add('not-inView')
+              el.classList.remove('inView')
+              //binding.def.bind(el, binding)
+            }
+
+            if (binding.def.inViewport(el)) {
+              el.classList.add('flow-' + binding.arg + '-enter')
+              el.classList.remove('flow-' + binding.arg + '-before-enter')
+              //binding.def.unbind(el, binding)
+            }
+          } else {
+            if (binding.def.inViewport(el)) {
+              el.classList.add('flow-' + binding.arg + '-enter')
+              el.classList.remove('flow-' + binding.arg + '-before-enter')
+              binding.def.unbind(el, binding)
+            }
+          }
+        }
+        document.addEventListener('scroll', el.$onScroll)
+      },
+      inserted(el, binding) {
+        el.$onScroll()
+      },
+      unbind(el, binding) {
+        document.removeEventListener('scroll', el.$onScroll)
+        delete el.$onScroll
+      }
+    }
+  },
   props: {
-    index: Number,
-    slug: String,
-    title: String,
-    url: String,
-    image: String,
+    index: {
+      type: Number,
+      default: 0
+    },
+    slug: {
+      type: String,
+      default: 'lg'
+    },
+    title: {
+      type: String,
+      default: 'Lammet & Grisen'
+    },
+    url: {
+      type: String,
+      default: 'https://lammet.nu/'
+    },
+    image: {
+      type: String,
+      default: '/projects/snap-LG.jpg'
+    }
   },
   data() {
     return {
@@ -47,7 +162,7 @@ export default {
           darken1: 'hsla(145, 63%, 44%, 1)',
           default: 'hsla(145, 63%, 49%, 1)',
           lighten1: 'hsla(145, 63%, 52%, 1)',
-          lighten2: 'hsla(145, 63%, 56%, 1)',
+          lighten2: 'hsla(145, 63%, 56%, 1)'
         },
         secondary: {
           darken1: 'hsla(203, 73%, 36%, 1)',
@@ -65,66 +180,13 @@ export default {
     // }
   },
   mounted() {
-    this.$bus.$on('colorChange', (data) => {
-      this.color = data;
-    });
+    this.$bus.$on('colorChange', data => {
+      this.color = data
+    })
   },
   methods: {
     onLoaded() {
-      this.imageLoaded = true;
-    }
-  },
-  directives: {
-    flow: {
-      inPaddedViewport (el) {
-        var rect = el.getBoundingClientRect()
-        //debugger;
-        return !(rect.bottom-150 < 0 || rect.right < 0 ||
-                rect.left > window.innerWidth ||
-                rect.top+150 > window.innerHeight)
-      },
-      inViewport (el) {
-        var rect = el.getBoundingClientRect()
-        return !(rect.bottom < 0 || rect.right < 0 ||
-                rect.left > window.innerWidth ||
-                rect.top > window.innerHeight)
-      },
-      bind(el, binding) {
-        el.classList.add('flow-'+binding.arg+'-before-enter')
-        el.$onScroll = function() {
-          if(binding.modifiers.inView === true){
-            if (binding.def.inPaddedViewport(el)) {
-              el.classList.add('inView')
-              el.classList.remove('not-inView')
-              //binding.def.unbind(el, binding)
-            }else{
-              el.classList.add('not-inView')
-              el.classList.remove('inView')
-              //binding.def.bind(el, binding)
-            }
-
-            if (binding.def.inViewport(el)) {
-              el.classList.add('flow-'+binding.arg+'-enter')
-              el.classList.remove('flow-'+binding.arg+'-before-enter')
-              //binding.def.unbind(el, binding)
-            }
-          }else{
-            if (binding.def.inViewport(el)) {
-              el.classList.add('flow-'+binding.arg+'-enter')
-              el.classList.remove('flow-'+binding.arg+'-before-enter')
-              binding.def.unbind(el, binding)
-            }
-          }
-        }
-        document.addEventListener('scroll', el.$onScroll)
-      },
-      inserted(el, binding) {
-        el.$onScroll()
-      },
-      unbind(el, binding) {
-        document.removeEventListener('scroll', el.$onScroll)
-        delete el.$onScroll
-      }
+      this.imageLoaded = true
     }
   }
 }
@@ -138,7 +200,7 @@ export default {
   background-size: cover;
   text-align: left;
 
-  &--left{
+  &--left {
     //text-align: left;
     .project-single-article {
       float: left;
@@ -147,7 +209,7 @@ export default {
       float: right;
     }
   }
-  &--right{
+  &--right {
     //text-align: right;
     .project-single-article {
       float: right;
@@ -158,35 +220,35 @@ export default {
   }
 
   &-link {
-    min-height: 25rem;//400px
+    min-height: 25rem; //400px
     padding: 3rem 1.5rem;
     display: block;
-    transition: .2s ease-in-out background-color;
+    transition: 0.2s ease-in-out background-color;
 
     .filter::before {
-      transition: .2s ease-in-out opacity;
+      transition: 0.2s ease-in-out opacity;
     }
 
     &:active,
     &:hover,
     &:focus {
-      background-color: hsla(0, 0%, 0%, .05);
-      transition: .2s ease-in-out background-color;
+      background-color: hsla(0, 0%, 0%, 0.05);
+      transition: 0.2s ease-in-out background-color;
 
       .filter::before {
         opacity: 0;
-        transition: .2s ease-in-out opacity;
+        transition: 0.2s ease-in-out opacity;
       }
 
       .project-single-title {
-        font-variation-settings: "wght" 80, "wdth" 500;
-        transition: font-variation-settings .2s ease-in-out;
+        font-variation-settings: 'wght' 80, 'wdth' 500;
+        transition: font-variation-settings 0.2s ease-in-out;
       }
     }
 
     .inView.filter::before {
       opacity: 0;
-      transition: .2s ease-in-out opacity;
+      transition: 0.2s ease-in-out opacity;
     }
 
     &--height-auto {
@@ -198,17 +260,20 @@ export default {
     }
   }
 
-  h3,h4,h5,p {
+  h3,
+  h4,
+  h5,
+  p {
     color: $white;
   }
   &-title {
     font-size: 2rem;
-    margin-bottom: .75rem;
-    font-variation-settings: "wght" 130, "wdth" 480;
-    transition: font-variation-settings .2s ease-in-out;
+    margin-bottom: 0.75rem;
+    font-variation-settings: 'wght' 130, 'wdth' 480;
+    transition: font-variation-settings 0.2s ease-in-out;
   }
   &-subtitle {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
   &-description {
     //max-width: 500px;
@@ -228,5 +293,4 @@ export default {
     }
   }
 }
-
 </style>

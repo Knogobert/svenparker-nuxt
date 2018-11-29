@@ -1,6 +1,6 @@
 {
   "name": "svenparker-nuxt",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Personal portfolio",
   "author": "Sven Parker <hello@svenparker.com>",
   "private": true,
@@ -14,16 +14,20 @@
   },
   "dependencies": {
     "@radial-color-picker/vue-color-picker": "^0.4.2",
-    "nuxt": "^1.0.0",
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.0.0",
     "smoothscroll-polyfill": "^0.4.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
+    "eslint": "^5.0.1",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "eslint-plugin-vue": "^4.7.1",
     "node-sass": "^4.9.0",
+    "nodemon": "^1.11.0",
+    "prettier": "1.14.3",
     "sass-loader": "^7.0.3"
   }
 }

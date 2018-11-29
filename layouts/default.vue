@@ -4,7 +4,9 @@
 
     <sp-logo @bodyColorChange="bodyColorChanged"/>
 
-    <div class="o-wrapper" :style="{ 'background-color': color.primary.default }">
+    <div
+      :style="{ 'background-color': color.primary.default }"
+      class="o-wrapper">
       <!-- <sp-nav/> -->
       <nuxt/>
     </div>
@@ -20,7 +22,7 @@ import spLogo from '~/components/Logo.vue'
 import spFooter from '~/components/Footer.vue'
 
 export default {
-  name: 'default-layout',
+  name: 'DefaultLayout',
   components: {
     spNav,
     spLogo,
@@ -50,7 +52,7 @@ export default {
           darken1: 'hsla(145, 63%, 44%, 1)',
           default: 'hsla(145, 63%, 49%, 1)',
           lighten1: 'hsla(145, 63%, 52%, 1)',
-          lighten2: 'hsla(145, 63%, 56%, 1)',
+          lighten2: 'hsla(145, 63%, 56%, 1)'
         },
         secondary: {
           darken1: 'hsla(203, 73%, 36%, 1)',
@@ -66,7 +68,17 @@ export default {
     //   console.log('SAVED to LS');
     // },
     colorStringify(defColor, hue, luminosity) {
-      return 'hsla('+hue+', '+defColor.saturation+'%, '+(defColor.luminosity + luminosity)+'%, '+defColor.alpha+')';
+      return (
+        'hsla(' +
+        hue +
+        ', ' +
+        defColor.saturation +
+        '%, ' +
+        (defColor.luminosity + luminosity) +
+        '%, ' +
+        defColor.alpha +
+        ')'
+      )
     },
     bodyColorChanged(hue, wasReleased = false) {
       // Tried to loop through but cant find a way without using eval()
@@ -78,24 +90,60 @@ export default {
       //   });
       // });
 
-      this.color.primary.darken3 = this.colorStringify(this.defaultColor.primary, hue, -13);
-      this.color.primary.darken2 = this.colorStringify(this.defaultColor.primary, hue, -9);
-      this.color.primary.darken1 = this.colorStringify(this.defaultColor.primary, hue, -5);
-      this.color.primary.default = this.colorStringify(this.defaultColor.primary, hue, 0);
-      this.color.primary.lighten1 = this.colorStringify(this.defaultColor.primary, hue, +3);
-      this.color.primary.lighten2 = this.colorStringify(this.defaultColor.primary, hue, +7);
+      this.color.primary.darken3 = this.colorStringify(
+        this.defaultColor.primary,
+        hue,
+        -13
+      )
+      this.color.primary.darken2 = this.colorStringify(
+        this.defaultColor.primary,
+        hue,
+        -9
+      )
+      this.color.primary.darken1 = this.colorStringify(
+        this.defaultColor.primary,
+        hue,
+        -5
+      )
+      this.color.primary.default = this.colorStringify(
+        this.defaultColor.primary,
+        hue,
+        0
+      )
+      this.color.primary.lighten1 = this.colorStringify(
+        this.defaultColor.primary,
+        hue,
+        +3
+      )
+      this.color.primary.lighten2 = this.colorStringify(
+        this.defaultColor.primary,
+        hue,
+        +7
+      )
 
-      this.color.secondary.darken1 = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), -5);
-      this.color.secondary.default = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), 0);
-      this.color.secondary.lighten1 = this.colorStringify(this.defaultColor.secondary, (hue + this.defaultColor.secondary.offset), +3);
+      this.color.secondary.darken1 = this.colorStringify(
+        this.defaultColor.secondary,
+        hue + this.defaultColor.secondary.offset,
+        -5
+      )
+      this.color.secondary.default = this.colorStringify(
+        this.defaultColor.secondary,
+        hue + this.defaultColor.secondary.offset,
+        0
+      )
+      this.color.secondary.lighten1 = this.colorStringify(
+        this.defaultColor.secondary,
+        hue + this.defaultColor.secondary.offset,
+        +3
+      )
 
-      this.$bus.$emit('colorChange', this.color);
+      this.$bus.$emit('colorChange', this.color)
 
       // if (wasReleased) {
       //   this.saveToLocalStorage('themeColor', this.color);
       // }
     }
-  },
+  }
   // mounted() {
   //   if(localStorage.getItem('themeColor') != null){
   //     let themeColor = JSON.parse(localStorage.getItem('themeColor'));
@@ -129,5 +177,4 @@ export default {
 // hsla(56, 63%, 49%, 1)
 // hsla(145, 63%, 49%, 1)
 // hsla(180, 63%, 49%, 1)
-
 </style>

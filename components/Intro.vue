@@ -10,7 +10,7 @@
           <slot name="subtitle">Subtitle</slot>
         </h2>
         <p class="introduction">
-          <slot></slot>
+          <slot/>
         </p>
         <!-- <ul class="links">
           <li class="links-link" v-for="link in links" :key="link.name">
@@ -33,7 +33,7 @@
 //import spImageLoader from '~/components/@image-loader/ImageLoader.vue';
 
 export default {
-  name: 'sp-Intro',
+  name: 'SpIntro',
   // components: {
   //   spImageLoader
   // },
@@ -47,7 +47,7 @@ export default {
           darken1: 'hsla(145, 63%, 44%, 1)',
           default: 'hsla(145, 63%, 49%, 1)',
           lighten1: 'hsla(145, 63%, 52%, 1)',
-          lighten2: 'hsla(145, 63%, 56%, 1)',
+          lighten2: 'hsla(145, 63%, 56%, 1)'
         },
         secondary: {
           darken1: 'hsla(203, 73%, 36%, 1)',
@@ -73,13 +73,15 @@ export default {
   },
   mounted() {
     // Add classname if supported
-    if (typeof window.getComputedStyle(document.body).mixBlendMode !== 'undefined') {
-      document.documentElement.className += " mix-blend-mode";
+    if (
+      typeof window.getComputedStyle(document.body).mixBlendMode !== 'undefined'
+    ) {
+      document.documentElement.className += ' mix-blend-mode'
     }
 
-    this.$bus.$on('colorChange', (data) => {
-      this.color = data;
-    });
+    this.$bus.$on('colorChange', data => {
+      this.color = data
+    })
   }
 }
 </script>
@@ -119,7 +121,7 @@ export default {
     max-height: 200%;
     object-fit: scale-down;
     //filter: invert(0) hue-rotate(180deg);
-    opacity: .25;
+    opacity: 0.25;
   }
   @at-root .mix-blend-mode &#{-bg} {
     opacity: 1;
@@ -131,16 +133,16 @@ export default {
     font-weight: $font-weight-light;
     font-size: 3.2rem;
     color: $white;
-    letter-spacing: .0625rem;//1px
+    letter-spacing: 0.0625rem; //1px
 
-    font-variation-settings: "wght" 120, "wdth" 400;
+    font-variation-settings: 'wght' 120, 'wdth' 400;
   }
 
   .subtitle {
     font-weight: $font-weight-light;
     font-size: 1.2rem;
     color: $white - 5;
-    word-spacing: .15rem;
+    word-spacing: 0.15rem;
     padding-bottom: 2rem;
   }
 
@@ -151,24 +153,24 @@ export default {
     pre {
       display: inline-block;
       padding: 0 0.5rem;
-      margin: 0 .5rem;
-      background-color: hsla(0, 0%, 0%, .03);
+      margin: 0 0.5rem;
+      background-color: hsla(0, 0%, 0%, 0.03);
     }
     a {
       position: relative;
       display: inline-block;
       font-weight: $font-weight-heavy;
-      font-variation-settings: "wght" 160, "wdth" 420;
-      transition: font-variation-settings .2s ease-in-out;
+      font-variation-settings: 'wght' 160, 'wdth' 420;
+      transition: font-variation-settings 0.2s ease-in-out;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         width: 100%;
         height: 4px;
         bottom: 0;
         left: 0;
-        background-color: hsla(0, 0%, 0%, .15);
+        background-color: hsla(0, 0%, 0%, 0.15);
         visibility: hidden;
         transform: scaleX(0);
         transition: all 0.3s ease-in-out;
@@ -177,8 +179,8 @@ export default {
       &:active,
       &:hover,
       &:focus {
-        font-variation-settings: "wght" 100, "wdth" 444;
-        transition: font-variation-settings .2s ease-in-out;
+        font-variation-settings: 'wght' 100, 'wdth' 444;
+        transition: font-variation-settings 0.2s ease-in-out;
 
         &:before {
           visibility: visible;
@@ -205,28 +207,28 @@ export default {
       a {
         color: $white;
         //background-color: $ufo-d3;
-        background-color: hsla(0, 0%, 0%, .1);
+        background-color: hsla(0, 0%, 0%, 0.1);
         padding: 1rem;
-        border-radius: .2rem;
+        border-radius: 0.2rem;
         user-select: none;
       }
     }
   }
 
-  @media only screen and (min-width: $breakpoint-sm){
+  @media only screen and (min-width: $breakpoint-sm) {
     .title {
       font-size: 4rem;
     }
     .subtitle {
       font-size: 1.4rem;
-      word-spacing: .375rem;
+      word-spacing: 0.375rem;
     }
     .introduction {
       font-size: 1.3rem;
       line-height: 1.8;
     }
   }
-  @media only screen and (min-width: $breakpoint-md){
+  @media only screen and (min-width: $breakpoint-md) {
     .title {
       font-size: 5rem;
     }
@@ -238,5 +240,4 @@ export default {
     }
   }
 }
-
 </style>

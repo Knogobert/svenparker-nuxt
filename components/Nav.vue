@@ -26,5 +26,4 @@
     margin: 0 1rem;
   }
 }
-
 </style>

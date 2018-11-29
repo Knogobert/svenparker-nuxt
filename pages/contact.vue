@@ -13,7 +13,7 @@
 import spIntro from '~/components/Intro.vue'
 
 export default {
-  name: 'contact-page',
+  name: 'ContactPage',
   components: {
     spIntro
   }
@@ -22,6 +22,4 @@ export default {
 
 <style lang="scss">
 @import '~assets/_variables.scss';
-
-
 </style>

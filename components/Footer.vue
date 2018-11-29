@@ -1,78 +1,65 @@
 <template>
-  <footer class="footer-main"><!--v-bodyZoom:up-->
+  <footer class="footer-main">
+    <!--v-bodyZoom:up-->
     <div class="footer-main-container">
       <transition name="page">
-        <div class="footer-slider footer-slider--left" v-if="showSliders">
-          <input type="range" min="20" max="188" v-model="sliderWeightValue" @change="changeWeight" class="slider">
+        <div
+          v-if="showSliders"
+          class="footer-slider footer-slider--left"
+        >
+          <input
+            v-model="sliderWeightValue"
+            type="range"
+            min="20"
+            max="188"
+            class="slider"
+            @change="changeWeight"
+          >
         </div>
       </transition>
 
-      <h6>That’s it folks!</h6><!--@click="toggleShowSliders()"-->
-
+      <h6>That’s it folks!</h6>
+      <!--@click="toggleShowSliders()"-->
       <transition name="page">
-        <div class="footer-slider footer-slider--right" v-if="showSliders">
-          <input type="range" min="300" max="500" v-model="sliderWidthValue" @change="changeWidth" class="slider">
+        <div
+          v-if="showSliders"
+          class="footer-slider footer-slider--right"
+        >
+          <input
+            v-model="sliderWidthValue"
+            type="range"
+            min="300"
+            max="500"
+            class="slider"
+            @change="changeWidth"
+          >
         </div>
       </transition>
-      <style v-if="sliderChanged">
-        html {
-          font-variation-settings: "wght" {{ weight }}, "wdth" {{ width }};
-        }
-      </style>
+      <!-- <style v-if="sliderChanged" /> -->
     </div>
   </footer>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      showSliders: false,
-      sliderChanged: false,
-      sliderWeightValue: 110,
-      sliderWidthValue: 420,
-      weight: 110,
-      width: 420
-    }
-  },
-  computed:{
-    computedWeight(){
-      return this.weight;
-    },
-    computedWidth(){
-      return this.width;
-    },
-  },
-  methods:{
-    toggleShowSliders(){
-      this.showSliders = !this.showSliders
-    },
-    changeWeight(){
-      // Uncomment to re-enable buggy mess of a variable font slider
-      //this.sliderChanged = true
-      this.weight = parseInt(this.sliderWeightValue)
-    },
-    changeWidth(){
-      // Uncomment to re-enable buggy mess of a variable font slider
-      //this.sliderChanged = true
-      this.width = parseInt(this.sliderWidthValue)
-    }
-  },
   directives: {
     bodyZoom: {
-      inViewport (el) {
+      inViewport(el) {
         var rect = el.getBoundingClientRect()
-        return !(rect.bottom < 0 || rect.right < 0 ||
-                rect.left > window.innerWidth ||
-                rect.top > window.innerHeight)
+        return !(
+          rect.bottom < 0 ||
+          rect.right < 0 ||
+          rect.left > window.innerWidth ||
+          rect.top > window.innerHeight
+        )
       },
       bind(el, binding) {
         el.$onScroll = function() {
-          let body = document.querySelector('body');
+          let body = document.querySelector('body')
           if (binding.def.inViewport(el)) {
-            body.classList.add('js-zoom--'+binding.arg)
-          }else{
-            body.classList.remove('js-zoom--'+binding.arg)
+            body.classList.add('js-zoom--' + binding.arg)
+          } else {
+            body.classList.remove('js-zoom--' + binding.arg)
           }
         }
         document.addEventListener('scroll', el.$onScroll)
@@ -85,6 +72,39 @@ export default {
         delete el.$onScroll
       }
     }
+  },
+  data() {
+    return {
+      showSliders: false,
+      sliderChanged: false,
+      sliderWeightValue: 110,
+      sliderWidthValue: 420,
+      weight: 110,
+      width: 420
+    }
+  },
+  computed: {
+    computedWeight() {
+      return this.weight
+    },
+    computedWidth() {
+      return this.width
+    }
+  },
+  methods: {
+    toggleShowSliders() {
+      this.showSliders = !this.showSliders
+    },
+    changeWeight() {
+      // Uncomment to re-enable buggy mess of a variable font slider
+      //this.sliderChanged = true
+      this.weight = parseInt(this.sliderWeightValue)
+    },
+    changeWidth() {
+      // Uncomment to re-enable buggy mess of a variable font slider
+      //this.sliderChanged = true
+      this.width = parseInt(this.sliderWidthValue)
+    }
   }
 }
 </script>
@@ -94,7 +114,7 @@ export default {
 @import '~assets/_variables.scss';
 
 .footer-main {
-  position:relative;
+  position: relative;
   z-index: 0;
 
   padding: 2rem;
@@ -140,7 +160,7 @@ export default {
 }
 
 .slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
+  -webkit-appearance: none; /* Override default CSS styles */
   appearance: none;
   background: $ufo-d2; /* Grey background */
   outline: none; /* Remove outline */
@@ -166,5 +186,4 @@ export default {
   cursor: pointer; /* Cursor on hover */
   border-radius: 50%;
 }
-
 </style>

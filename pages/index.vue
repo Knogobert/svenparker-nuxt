@@ -1,38 +1,62 @@
 <template>
   <main class="container">
-
     <sp-intro>
       <template slot="title">Sven Parker</template>
-      <template slot="subtitle">Web Developer / Web Designer</template>
-      Solving old problems with modern solutions — 
-      I love keeping up to date in the latest and have an eager to always learn more. This website is built on Vue and served serverless. That means you can<pre>git clone</pre>it <a href="https://github.com/Knogobert/svenparker-nuxt" target="_blank">here</a> and run it completely local.
-      <br/><small>
-      To find out what I'm up to, check out my
-       — <a href="https://github.com/Knogobert/" target="_blank">Github</a>
-       — <a href="https://codepen.io/Knogobert/" target="_blank">Codepen</a>
-       — <a href="https://vsco.co/svenparker/" target="_blank">VSCO</a>
-       — <a href="http://se.linkedin.com/in/SvenParker" target="_blank">LinkedIn</a>
-       — <a href="#" @click.prevent="scrollSmooooovelyTo('.project-ms')">Or just scroll.</a>
+      <template slot="subtitle">Web Developer / Web Designer</template>Solving old problems with modern solutions —
+      I love keeping up to date in the latest and have an eager to always learn more. This website is built on Vue and served serverless. That means you can
+      <pre>git clone</pre>it
+      <a
+        href="https://github.com/Knogobert/svenparker-nuxt"
+        target="_blank"
+      >here</a> and run it completely local.
+      <br>
+      <small>
+        To find out what I'm up to, check out my
+        —
+        <a
+          href="https://github.com/Knogobert/"
+          target="_blank"
+        >Github</a>
+        —
+        <a
+          href="https://codepen.io/Knogobert/"
+          target="_blank"
+        >Codepen</a>
+        —
+        <a
+          href="https://vsco.co/svenparker/"
+          target="_blank"
+        >VSCO</a>
+        —
+        <a
+          href="http://se.linkedin.com/in/SvenParker"
+          target="_blank"
+        >LinkedIn</a>
+        —
+        <a
+          href="#"
+          @click.prevent="scrollSmooooovelyTo('.project-ms')"
+        >Or just scroll.</a>
       </small>
     </sp-intro>
 
-    <sp-projects></sp-projects>
+    <sp-projects />
   </main>
 </template>
 
 <script>
-import spIntro from '~/components/Intro.vue'
-import spProjects from '~/components/Projects.vue'
+import SpIntro from '~/components/Intro.vue'
+import SpProjects from '~/components/Projects.vue'
 
 export default {
-  name: 'index-page',
+  name: 'IndexPage',
   components: {
-    spIntro,
-    spProjects
+    SpIntro,
+    SpProjects
   },
   methods: {
     scrollSmooooovelyTo(selector) {
-      document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
+      document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
     }
   }
 }

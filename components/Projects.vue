@@ -24,7 +24,7 @@
 import spProjectSingle from '~/components/Project-single.vue'
 
 export default {
-  name: 'sp-projects',
+  name: 'SpProjects',
   components: {
     spProjectSingle
   },
@@ -35,21 +35,24 @@ export default {
           title: 'Lammet & Grisen',
           url: 'https://lammet.nu/',
           date: 'November 2018',
-          description: 'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress out there. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
+          description:
+            'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress out there. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
           image: '/projects/snap-LG.jpg'
         },
         ms: {
           title: 'Myers Surfboards',
           url: 'https://myerssurfboards.co/',
           date: 'July 2018',
-          description: 'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress and should probably be a locked down staging site, but isn’t because of economic reasons.',
+          description:
+            'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress and should probably be a locked down staging site, but isn’t because of economic reasons.',
           image: '/projects/snap-MS.jpg'
         },
         bpx: {
           title: 'Boneprox',
           url: 'https://boneprox.se/',
           date: 'April 2018',
-          description: 'Made as a informational website for the revolutionary digital tool that analyzes dental x-rays for bone density and possible osteoporosis risks.',
+          description:
+            'Made as a informational website for the revolutionary digital tool that analyzes dental x-rays for bone density and possible osteoporosis risks.',
           image: '/projects/snap-BPX.jpg'
         },
         // ws: {
@@ -63,21 +66,24 @@ export default {
           title: 'Briefcave',
           url: 'https://www.briefcave.se/',
           date: 'August 2016',
-          description: 'I love my job at Briefcave. I developed the Wordpress theme for their new agency website and it features a nice page for job estimates and a lot of slick animations. This is where I currently sit.',
+          description:
+            'I love my job at Briefcave. I developed the Wordpress theme for their new agency website and it features a nice page for job estimates and a lot of slick animations. This is where I currently sit.',
           image: '/projects/snap-BC.jpg'
         },
         lls: {
           title: 'La Lepre Stanca',
           url: 'http://www.laleprestanca.se/',
           date: 'May 2016',
-          description: 'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a user portal for the site users to manage their meet-ups in. The result was great!',
+          description:
+            'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a user portal for the site users to manage their meet-ups in. The result was great!',
           image: '/projects/snap-LLS.jpg'
         },
         btk: {
           title: 'Bankeryds Tennisklubb',
           url: 'http://www.bankerydstk.nu/',
           date: 'April 2016',
-          description: '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was programmed for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
+          description:
+            '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was programmed for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
           image: '/projects/snap-BTK.jpg'
         }
         // swss: {
@@ -109,7 +115,7 @@ export default {
 @import '~assets/_variables.scss';
 
 .sp-projects {
-  background-color: hsla(0, 0%, 0%, .05);
+  background-color: hsla(0, 0%, 0%, 0.05);
   display: block;
   width: 100%;
 
@@ -120,5 +126,4 @@ export default {
     user-select: none;
   }
 }
-
 </style>
