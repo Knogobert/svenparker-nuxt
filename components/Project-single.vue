@@ -20,7 +20,7 @@
           class="project-single-article col-6 mb-sm-2"
         >
           <h3 class="project-single-title">
-            <slot name="title" />>
+            <slot name="title" />
           </h3>
           <h5 class="project-single-subtitle">
             <slot name="date" />

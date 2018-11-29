@@ -99,15 +99,15 @@ export default {
   name: 'VueColorPicker',
   props: {
     value: {
-      type: number,
+      type: Object,
       default: () => ({ hue: 0, saturation: 100, luminosity: 50, alpha: 1 })
     },
     step: {
-      type: number,
+      type: Number,
       default: 2
     },
     mouseScroll: {
-      type: boolean,
+      type: Boolean,
       default: false
     }
   },
