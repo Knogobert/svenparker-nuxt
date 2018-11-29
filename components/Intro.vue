@@ -96,7 +96,7 @@ export default {
   height: 100%;
   height: 100vh;
   //height: calc(100vh - 45px);
-  max-height: 100vh;
+  // max-height: 100vh;
   //padding: 30vh 7vw 4rem;
 
   display: flex;
@@ -216,6 +216,8 @@ export default {
   }
 
   @media only screen and (min-width: $breakpoint-sm) {
+    margin-top: 0;
+
     .title {
       font-size: 4rem;
     }
@@ -238,6 +240,12 @@ export default {
     .introduction {
       font-size: 1.4rem;
     }
+  }
+
+  // Height
+  @media only screen and (max-height: $breakpoint-sm) {
+    // < 540px
+    margin-top: 150px;
   }
 }
 </style>
