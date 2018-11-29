@@ -19,24 +19,24 @@
         </ul> -->
       </article>
       <!-- <img  src="/general/green-gmap-pp-cutout.png"/> -->
-      <!-- <sp-image-loader 
+      <sp-image-loader 
       :src="'/general/green-gmap-pp-cutout.png'"
       :smallSrc="'https://cdn-images-1.medium.com/freeze/max/27/1*sg-uLNm73whmdOgKlrQdZA.jpeg?q=20'"
       :classes="'sp-intro-bg'">
-      </sp-image-loader> -->
+      </sp-image-loader>
     </div>
   </section>
 
 </template>
 
 <script>
-//import spImageLoader from '~/components/@image-loader/ImageLoader.vue';
+import spImageLoader from '~/components/@image-loader/ImageLoader.vue';
 
 export default {
   name: 'sp-Intro',
-  // components: {
-  //   spImageLoader
-  // },
+  components: {
+    spImageLoader
+  },
   data() {
     return {
       show: false,
@@ -174,8 +174,8 @@ export default {
         transition: all 0.3s ease-in-out;
       }
 
-      &:active, 
-      &:hover, 
+      &:active,
+      &:hover,
       &:focus {
         font-variation-settings: "wght" 100, "wdth" 444;
         transition: font-variation-settings .2s ease-in-out;
