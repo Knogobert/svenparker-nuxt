@@ -174,8 +174,8 @@ export default {
         transition: all 0.3s ease-in-out;
       }
 
-      &:active, 
-      &:hover, 
+      &:active,
+      &:hover,
       &:focus {
         font-variation-settings: "wght" 100, "wdth" 444;
         transition: font-variation-settings .2s ease-in-out;
