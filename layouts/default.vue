@@ -1,11 +1,11 @@
 <template>
   <div>
-    <!-- <style>body{--theme-color: {{ themeColor ? themeColor.color : color.primary.default }};}</style> -->
+    <style>body{background-color: {{ themeColor ? themeColor.color : color.primary }};}</style>
 
     <sp-logo @bodyColorChange="bodyColorChanged"/>
 
     <div
-      :style="{ 'background-color': color.primary.default }"
+      :style="{ 'background-color': color.primary }"
       class="o-wrapper">
       <!-- <sp-nav/> -->
       {{ themeColor }}
@@ -40,96 +40,52 @@ export default {
         }
       },
       color: {
-        primary: {
-          darken3: 'hsla(145, 63%, 36%, 1)',
-          darken2: 'hsla(145, 63%, 40%, 1)',
-          darken1: 'hsla(145, 63%, 44%, 1)',
-          default: 'hsla(145, 63%, 49%, 1)',
-          lighten1: 'hsla(145, 63%, 52%, 1)',
-          lighten2: 'hsla(145, 63%, 56%, 1)'
-        }
-      },
-      themeColor: JSON.parse(localStorage.getItem('themeColor'))
+        primary: 'hsla(145, 63%, 49%, 1)'
+      }
     }
   },
-  watch: {
-    themeColor(val) {
-      this.document.body.style.setProperty('--theme-color', val)
+  computed: {
+    themeColor() {
+      return JSON.parse(localStorage.getItem('themeColor'))
     }
   },
+  // watch: {
+  //   themeColor(val) {
+  //     this.$el.style.setProperty('--theme-color', val.color)
+  //   }
+  // },
   mounted() {
     if (localStorage.getItem('themeColor')) {
       let themeColor = JSON.parse(localStorage.getItem('themeColor'))
       console.log('themeColor', themeColor)
       setTimeout(() => {
-        //this.$bus.$emit('colorChange', themeColor)
-        //console.log('Emitted COOKIEZ!')
+        this.$bus.$emit('colorChange', themeColor)
+        console.log('Emitted COOKIEZ!')
       }, 2000)
+      this.themeColor = themeColor
     }
   },
   methods: {
     // saveToLocalStorage(name, data) {
-    //   localStorage.setItem(name, JSON.stringify(data));
-    //   console.log('SAVED to LS');
+    //   localStorage.setItem(name, JSON.stringify(data))
+    //   console.log(`SAVED ${name} to LS`)
     // },
-    colorStringify(defColor, hue, luminosity) {
-      return (
+    bodyColorChanged(hue, wasSelected = false) {
+      this.color.primary =
         'hsla(' +
         hue +
         ', ' +
-        defColor.saturation +
+        this.defaultColor.primary.saturation +
         '%, ' +
-        (defColor.luminosity + luminosity) +
+        this.defaultColor.primary.luminosity +
         '%, ' +
-        defColor.alpha +
+        this.defaultColor.primary.alpha +
         ')'
-      )
-    },
-    bodyColorChanged(hue, wasReleased = false) {
-      // Tried to loop through but cant find a way without using eval()
-      // let colorObj = this.color;
-      // Object.keys(colorObj).forEach( (base) => {
-      //   console.log(`Current base: ${base}`);
-      //   Object.keys(colorObj[base]).forEach(clr => {
-      //     console.log(clr);
-      //   });
-      // });
-
-      this.color.primary.darken3 = this.colorStringify(
-        this.defaultColor.primary,
-        hue,
-        -13
-      )
-      this.color.primary.darken2 = this.colorStringify(
-        this.defaultColor.primary,
-        hue,
-        -9
-      )
-      this.color.primary.darken1 = this.colorStringify(
-        this.defaultColor.primary,
-        hue,
-        -5
-      )
-      this.color.primary.default = this.colorStringify(
-        this.defaultColor.primary,
-        hue,
-        0
-      )
-      this.color.primary.lighten1 = this.colorStringify(
-        this.defaultColor.primary,
-        hue,
-        +3
-      )
-      this.color.primary.lighten2 = this.colorStringify(
-        this.defaultColor.primary,
-        hue,
-        +7
-      )
 
       this.$bus.$emit('colorChange', this.color)
 
-      // if (wasReleased) {
-      //   this.saveToLocalStorage('themeColor', this.color);
+      // if (wasSelected) {
+      //   this.saveToLocalStorage('themeColor', this.color)
       // }
     }
   }

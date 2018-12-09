@@ -31,11 +31,10 @@
         </article>
         <figure
           v-flow:up.inView
-          :style="{ 'color': color.primary.lighten1 }"
           class="project-single-figure col-6 filter"
         >
           <!-- v-inView -->
-          <!-- <style>.filter::before{background-color: {{ color.primary.lighten2 }};}</style> -->
+          <!-- <style>.filter::before{background-color: {{ color.primary }};}</style> -->
           <transition name="fade-in">
             <img
               v-show="imageLoaded"
@@ -156,14 +155,7 @@ export default {
     return {
       imageLoaded: false,
       color: {
-        primary: {
-          darken3: 'hsla(145, 63%, 36%, 1)',
-          darken2: 'hsla(145, 63%, 40%, 1)',
-          darken1: 'hsla(145, 63%, 44%, 1)',
-          default: 'hsla(145, 63%, 49%, 1)',
-          lighten1: 'hsla(145, 63%, 52%, 1)',
-          lighten2: 'hsla(145, 63%, 56%, 1)'
-        }
+        primary: 'hsla(145, 63%, 49%, 1)'
       }
     }
   },
