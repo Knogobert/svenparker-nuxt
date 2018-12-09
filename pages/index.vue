@@ -2,15 +2,10 @@
   <main class="container">
     <sp-intro>
       <template slot="title">Sven Parker</template>
-      <template slot="subtitle">Web Developer / Web Designer</template>Solving old problems with modern solutions —
-      I love keeping up to date in the latest and have an eager to always learn more. This website is built on Vue and served serverless. That means you can
-      <pre>git clone</pre>it
-      <a
-        href="https://github.com/Knogobert/svenparker-nuxt"
-        target="_blank"
-      >here</a> and run it completely local.
-      <br>
+      <template slot="subtitle">Web Developer / Web Designer</template>
       <small>
+        I love keeping up to date in the latest and have an eager to always learn more.
+        <br>
         To find out what I'm up to, check out my
         —
         <a
@@ -35,7 +30,7 @@
         —
         <a
           href="#"
-          @click.prevent="scrollSmooooovelyTo('.project-ms')"
+          @click.prevent="scrollSmooooovelyTo('.project-lg')"
         >Or just scroll.</a>
       </small>
     </sp-intro>
