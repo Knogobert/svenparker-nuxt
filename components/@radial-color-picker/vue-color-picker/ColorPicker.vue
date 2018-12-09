@@ -74,7 +74,8 @@
             // hsla(25, 63%, 49%, 1)
             // hsla(56, 63%, 49%, 1)
             // hsla(145, 63%, 49%, 1)
-      // hsla(180, 63%, 49%, 1)-->
+            // hsla(158, 63%, 49%, 1)
+            // hsla(180, 63%, 49%, 1)-->
     </ul>
 
     <button
@@ -128,21 +129,31 @@ export default {
         'hsla(329, 63%, 49%, 1)',
         'hsla(25, 63%, 49%, 1)',
         'hsla(56, 63%, 49%, 1)',
-        'hsla(145, 63%, 49%, 1)'
+        'hsla(145, 63%, 49%, 1)',
+        'hsla(158, 63%, 49%, 1)'
       ]
     }
   },
   computed: {
     color() {
-      const { hue, saturation = 100, luminosity = 50, alpha = 1 } = this.value
+      let { hue, saturation = 100, luminosity = 50, alpha = 1 } = this.value
 
       return `hsla(${hue}, ${saturation}%, ${luminosity}%, ${alpha})`
     }
   },
   watch: {
-    'value.hue': function(newAngle, oldAngle) {
-      if (newAngle != oldAngle) {
-        rotator.angle = newAngle
+    'value.hue': {
+      handler(newAngle, oldAngle) {
+        if (newAngle != oldAngle) {
+          rotator.angle = newAngle
+        }
+        localStorage.setItem(
+          'themeColor',
+          JSON.stringify({
+            color: this.color,
+            values: this.value
+          })
+        )
       }
     }
   },

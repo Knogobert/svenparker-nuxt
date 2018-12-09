@@ -14,7 +14,7 @@
         </p>
         <!-- <ul class="links">
           <li class="links-link" v-for="link in links" :key="link.name">
-            <nuxt-link :to="link.path" :style="{ 'background-color': color.secondary.darken1 }">{{ link.name }}</nuxt-link>
+            <nuxt-link :to="link.path" :style="{ 'background-color': color.primary.darken1 }">{{ link.name }}</nuxt-link>
           </li>
         </ul> -->
       </article>
@@ -48,11 +48,6 @@ export default {
           default: 'hsla(145, 63%, 49%, 1)',
           lighten1: 'hsla(145, 63%, 52%, 1)',
           lighten2: 'hsla(145, 63%, 56%, 1)'
-        },
-        secondary: {
-          darken1: 'hsla(203, 73%, 36%, 1)',
-          default: 'hsla(203, 73%, 41%, 1)',
-          lighten1: 'hsla(203, 73%, 46%, 1)'
         }
       }
     }

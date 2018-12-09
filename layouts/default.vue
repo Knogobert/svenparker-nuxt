@@ -1,6 +1,6 @@
 <template>
   <div>
-    <style>body{background-color: {{ color.primary.default }};}</style>
+    <!-- <style>body{--theme-color: {{ themeColor ? themeColor.color : color.primary.default }};}</style> -->
 
     <sp-logo @bodyColorChange="bodyColorChanged"/>
 
@@ -8,6 +8,7 @@
       :style="{ 'background-color': color.primary.default }"
       class="o-wrapper">
       <!-- <sp-nav/> -->
+      {{ themeColor }}
       <nuxt/>
     </div>
 
@@ -36,13 +37,6 @@ export default {
           saturation: 63,
           luminosity: 49,
           alpha: 1
-        },
-        secondary: {
-          hue: 203,
-          saturation: 73,
-          luminosity: 41,
-          alpha: 1,
-          offset: 58
         }
       },
       color: {
@@ -53,13 +47,24 @@ export default {
           default: 'hsla(145, 63%, 49%, 1)',
           lighten1: 'hsla(145, 63%, 52%, 1)',
           lighten2: 'hsla(145, 63%, 56%, 1)'
-        },
-        secondary: {
-          darken1: 'hsla(203, 73%, 36%, 1)',
-          default: 'hsla(203, 73%, 41%, 1)',
-          lighten1: 'hsla(203, 73%, 46%, 1)'
         }
-      }
+      },
+      themeColor: JSON.parse(localStorage.getItem('themeColor'))
+    }
+  },
+  watch: {
+    themeColor(val) {
+      this.document.body.style.setProperty('--theme-color', val)
+    }
+  },
+  mounted() {
+    if (localStorage.getItem('themeColor')) {
+      let themeColor = JSON.parse(localStorage.getItem('themeColor'))
+      console.log('themeColor', themeColor)
+      setTimeout(() => {
+        //this.$bus.$emit('colorChange', themeColor)
+        //console.log('Emitted COOKIEZ!')
+      }, 2000)
     }
   },
   methods: {
@@ -121,22 +126,6 @@ export default {
         +7
       )
 
-      this.color.secondary.darken1 = this.colorStringify(
-        this.defaultColor.secondary,
-        hue + this.defaultColor.secondary.offset,
-        -5
-      )
-      this.color.secondary.default = this.colorStringify(
-        this.defaultColor.secondary,
-        hue + this.defaultColor.secondary.offset,
-        0
-      )
-      this.color.secondary.lighten1 = this.colorStringify(
-        this.defaultColor.secondary,
-        hue + this.defaultColor.secondary.offset,
-        +3
-      )
-
       this.$bus.$emit('colorChange', this.color)
 
       // if (wasReleased) {
@@ -144,17 +133,6 @@ export default {
       // }
     }
   }
-  // mounted() {
-  //   if(localStorage.getItem('themeColor') != null){
-  //     let themeColor = JSON.parse(localStorage.getItem('themeColor'));
-  //     console.log( themeColor );
-  //     setTimeout(() => {
-  //     this.$bus.$emit('colorChange', themeColor );
-  //     console.log('Emitted COOKIEZ!');
-  //     }, 2000);
-  //     console.log('GOT COOKIEZ!');
-  //   }
-  // }
 }
 </script>
 
@@ -176,5 +154,6 @@ export default {
 // hsla(25, 63%, 49%, 1)
 // hsla(56, 63%, 49%, 1)
 // hsla(145, 63%, 49%, 1)
+// hsla(158, 63%, 49%, 1)
 // hsla(180, 63%, 49%, 1)
 </style>

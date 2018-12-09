@@ -163,11 +163,6 @@ export default {
           default: 'hsla(145, 63%, 49%, 1)',
           lighten1: 'hsla(145, 63%, 52%, 1)',
           lighten2: 'hsla(145, 63%, 56%, 1)'
-        },
-        secondary: {
-          darken1: 'hsla(203, 73%, 36%, 1)',
-          default: 'hsla(203, 73%, 41%, 1)',
-          lighten1: 'hsla(203, 73%, 46%, 1)'
         }
       }
     }
