@@ -39,10 +39,8 @@ export default {
   // },
   data() {
     return {
-      show: false,
-      color: {
-        primary: 'hsla(145, 63%, 49%, 1)'
-      }
+      show: true
+      //themeColor: 'hsla(223, 63%, 49%, 1)' // Default set color
     }
   },
   computed: {
@@ -68,7 +66,7 @@ export default {
     }
 
     this.$bus.$on('colorChange', data => {
-      this.color = data
+      this.themeColor = data
     })
   }
 }

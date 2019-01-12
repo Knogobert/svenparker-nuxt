@@ -3,6 +3,7 @@
   <section class="sp-projects">
     <!-- <h2>Projects</h2> -->
 
+    <style>.filter::before{background-color: {{ themeColor }};}</style>
     <sp-project-single
       v-for="(project, key, index) in projects"
       :key="index"
@@ -30,6 +31,7 @@ export default {
   },
   data() {
     return {
+      themeColor: 'hsla(223, 63%, 49%, 1)', // Default set color
       projects: {
         lg: {
           title: 'Lammet & Grisen',
@@ -104,6 +106,12 @@ export default {
     }
   },
   mounted() {
+    if (localStorage.themeColor) {
+      this.themeColor = JSON.parse(localStorage.themeColor).color
+    }
+    this.$bus.$on('colorChange', data => {
+      this.themeColor = data
+    })
     // let currentDate = new Date(Date.now()).toDateString();
     // this.projects.temp.date = currentDate.slice(3,7);
     // this.projects.temp.date += currentDate.slice(10);

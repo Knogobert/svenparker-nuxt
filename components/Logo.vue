@@ -38,7 +38,7 @@ export default {
         saturation: 63,
         luminosity: 49,
         alpha: 1
-      }
+      } // Default set color
     }
   },
   mounted() {

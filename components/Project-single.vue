@@ -34,7 +34,6 @@
           class="project-single-figure col-6 filter"
         >
           <!-- v-inView -->
-          <style>.filter::before{background-color: {{ color.primary }};}</style>
           <transition name="fade-in">
             <img
               v-show="imageLoaded"
@@ -153,10 +152,7 @@ export default {
   },
   data() {
     return {
-      imageLoaded: false,
-      color: {
-        primary: 'hsla(145, 63%, 49%, 1)'
-      }
+      imageLoaded: false
     }
   },
   computed: {
@@ -165,11 +161,6 @@ export default {
     //     'background-image': `url(${this.bg})`,
     //   }
     // }
-  },
-  mounted() {
-    this.$bus.$on('colorChange', data => {
-      this.color.primary = data
-    })
   },
   methods: {
     onLoaded() {
