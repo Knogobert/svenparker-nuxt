@@ -102,7 +102,7 @@ export default {
     value: {
       type: Object,
       default: () => ({
-        hue: 223,
+        hue: 16,
         saturation: 63,
         luminosity: 49,
         alpha: 1
@@ -132,7 +132,7 @@ export default {
       colorChoice: [
         'hsla(223, 63%, 49%, 1)',
         'hsla(329, 63%, 49%, 1)',
-        'hsla(25, 63%, 49%, 1)',
+        'hsla(16, 63%, 49%, 1)',
         'hsla(56, 63%, 49%, 1)',
         'hsla(145, 63%, 49%, 1)',
         'hsla(158, 63%, 49%, 1)'

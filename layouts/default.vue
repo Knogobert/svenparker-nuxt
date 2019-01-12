@@ -31,7 +31,7 @@ export default {
     return {
       themeColor: '',
       defaultColor: {
-        hue: 223,
+        hue: 16,
         saturation: 63,
         luminosity: 49,
         alpha: 1

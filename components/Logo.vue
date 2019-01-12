@@ -34,7 +34,7 @@ export default {
       bgColorClass: 'svg-fill--green',
       strokeColorClass: 'svg-fill--white',
       color: {
-        hue: 223,
+        hue: 16,
         saturation: 63,
         luminosity: 49,
         alpha: 1
@@ -155,12 +155,12 @@ export default {
       top: 11.5%;
       left: 11.5%;
       border: none;
-      box-shadow: 0 0 20px 0px rgba($black, 0.05);
+      box-shadow: 0 5px 20px 0 rgba($black, 0.15);
       transition: box-shadow 0.2s ease-in-out;
       &:active,
       &:focus,
       &:hover {
-        box-shadow: 0 0 20px 0px rgba($black, 0.1);
+        box-shadow: 0 0 0 0 rgba($black, 0.15);
         transition: box-shadow 0.2s ease-in-out;
       }
     }
