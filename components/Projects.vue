@@ -36,7 +36,7 @@ export default {
           url: 'https://lammet.nu/',
           date: 'November 2018',
           description:
-            'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress out there. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
+            'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
           image: '/projects/snap-LG.jpg'
         },
         ms: {
@@ -67,7 +67,7 @@ export default {
           url: 'https://www.briefcave.se/',
           date: 'August 2016',
           description:
-            'I love my job at Briefcave. I developed the Wordpress theme for their new agency website and it features a nice page for job estimates and a lot of slick animations. This is where I currently sit.',
+            'On my job at Briefcave I developed the Wordpress theme for their new agency website. It features a nice page for job estimates and a lot of slick animations.',
           image: '/projects/snap-BC.jpg'
         },
         lls: {
