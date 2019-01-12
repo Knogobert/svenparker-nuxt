@@ -34,7 +34,7 @@
           class="project-single-figure col-6 filter"
         >
           <!-- v-inView -->
-          <!-- <style>.filter::before{background-color: {{ color.primary }};}</style> -->
+          <style>.filter::before{background-color: {{ color.primary }};}</style>
           <transition name="fade-in">
             <img
               v-show="imageLoaded"
@@ -168,7 +168,7 @@ export default {
   },
   mounted() {
     this.$bus.$on('colorChange', data => {
-      this.color = data
+      this.color.primary = data
     })
   },
   methods: {

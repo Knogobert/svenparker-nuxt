@@ -31,7 +31,7 @@ export default {
     return {
       themeColor: '',
       defaultColor: {
-        hue: 145,
+        hue: 223,
         saturation: 63,
         luminosity: 49,
         alpha: 1
@@ -40,15 +40,14 @@ export default {
   },
   watch: {
     themeColor() {
+      document.body.style.backgroundColor = this.themeColor
       return this.themeColor
     }
   },
   mounted() {
     if (localStorage.themeColor) {
-      console.log('FOUND this in LS', JSON.parse(localStorage.themeColor))
       this.themeColor = JSON.parse(localStorage.themeColor).color
     } else {
-      console.log('DIDNT FIND', this.stringifyColor(this.defaultColor.hue))
       this.themeColor = this.stringifyColor(this.defaultColor.hue)
     }
 

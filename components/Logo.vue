@@ -15,8 +15,8 @@
     <!-- <input type="text" v-model="strokeColorClass" v-if="hide"> -->
     <color-picker
       v-model="color"
-      @input="onColorPick"
-      @select="onColorPickRelease" />
+      @input="onColorPick" />
+      <!-- @select="onColorPickRelease" -->
   </div>
 </template>
 
@@ -34,20 +34,31 @@ export default {
       bgColorClass: 'svg-fill--green',
       strokeColorClass: 'svg-fill--white',
       color: {
-        hue: 145,
+        hue: 223,
         saturation: 63,
         luminosity: 49,
         alpha: 1
       }
     }
   },
+  mounted() {
+    if (localStorage.themeColor) {
+      let ls = JSON.parse(localStorage.themeColor)
+      this.color = {
+        hue: ls.values.hue,
+        saturation: ls.values.saturation,
+        luminosity: ls.values.luminosity,
+        alpha: ls.values.alpha
+      }
+    }
+  },
   methods: {
     onColorPick() {
       this.$emit('bodyColorChange', Math.round(this.color.hue))
-    },
-    onColorPickRelease() {
-      this.$emit('bodyColorChange', Math.round(this.color.hue), true)
     }
+    // onColorPickRelease() {
+    //   this.$emit('bodyColorChange', Math.round(this.color.hue), true)
+    // }
   }
 }
 </script>

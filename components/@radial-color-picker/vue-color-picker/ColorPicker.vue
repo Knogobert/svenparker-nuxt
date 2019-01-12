@@ -101,7 +101,12 @@ export default {
   props: {
     value: {
       type: Object,
-      default: () => ({ hue: 0, saturation: 100, luminosity: 50, alpha: 1 })
+      default: () => ({
+        hue: 223,
+        saturation: 63,
+        luminosity: 49,
+        alpha: 1
+      })
     },
     step: {
       type: Number,
