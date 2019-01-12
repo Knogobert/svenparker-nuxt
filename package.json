@@ -15,6 +15,7 @@
   "dependencies": {
     "@radial-color-picker/vue-color-picker": "^0.4.2",
     "cross-env": "^5.2.0",
+    "detect-hover": "^1.0.2",
     "nuxt": "^2.0.0",
     "smoothscroll-polyfill": "^0.4.3"
   },

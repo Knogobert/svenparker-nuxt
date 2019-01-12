@@ -67,6 +67,8 @@
 </template>
 
 <script>
+import detectHover from 'detect-hover'
+
 export default {
   name: 'SpProjectsSingle',
   directives: {
@@ -93,7 +95,8 @@ export default {
       bind(el, binding) {
         el.classList.add('flow-' + binding.arg + '-before-enter')
         el.$onScroll = function() {
-          if (binding.modifiers.inView === true) {
+          if (binding.modifiers.inView === true && detectHover.none !== false) {
+            // && if on device that cant hover, falls back on undefined
             if (binding.def.inPaddedViewport(el)) {
               el.classList.add('inView')
               el.classList.remove('not-inView')
