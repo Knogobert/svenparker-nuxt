@@ -1,14 +1,12 @@
 <template>
   <div>
-    <style>body{background-color: {{ themeColor ? themeColor.color : color.primary }};}</style>
-
+    <style>body{background-color: {{ themeColor }};}</style>
     <sp-logo @bodyColorChange="bodyColorChanged"/>
 
     <div
-      :style="{ 'background-color': color.primary }"
+      :style="{ 'background-color': themeColor }"
       class="o-wrapper">
       <!-- <sp-nav/> -->
-      {{ themeColor }}
       <nuxt/>
     </div>
 
@@ -31,62 +29,48 @@ export default {
   },
   data() {
     return {
+      themeColor: '',
       defaultColor: {
-        primary: {
-          hue: 145,
-          saturation: 63,
-          luminosity: 49,
-          alpha: 1
-        }
-      },
-      color: {
-        primary: 'hsla(145, 63%, 49%, 1)'
+        hue: 145,
+        saturation: 63,
+        luminosity: 49,
+        alpha: 1
       }
     }
   },
-  computed: {
+  watch: {
     themeColor() {
-      return JSON.parse(localStorage.getItem('themeColor'))
+      return this.themeColor
     }
   },
-  // watch: {
-  //   themeColor(val) {
-  //     this.$el.style.setProperty('--theme-color', val.color)
-  //   }
-  // },
   mounted() {
-    if (localStorage.getItem('themeColor')) {
-      let themeColor = JSON.parse(localStorage.getItem('themeColor'))
-      console.log('themeColor', themeColor)
-      setTimeout(() => {
-        this.$bus.$emit('colorChange', themeColor)
-        console.log('Emitted COOKIEZ!')
-      }, 2000)
-      this.themeColor = themeColor
+    if (localStorage.themeColor) {
+      console.log('FOUND this in LS', JSON.parse(localStorage.themeColor))
+      this.themeColor = JSON.parse(localStorage.themeColor).color
+    } else {
+      console.log('DIDNT FIND', this.stringifyColor(this.defaultColor.hue))
+      this.themeColor = this.stringifyColor(this.defaultColor.hue)
     }
+
+    document.body.style.backgroundColor = this.themeColor
   },
   methods: {
-    // saveToLocalStorage(name, data) {
-    //   localStorage.setItem(name, JSON.stringify(data))
-    //   console.log(`SAVED ${name} to LS`)
-    // },
-    bodyColorChanged(hue, wasSelected = false) {
-      this.color.primary =
+    bodyColorChanged(hue) {
+      this.themeColor = this.stringifyColor(hue)
+      this.$bus.$emit('colorChange', this.themeColor)
+    },
+    stringifyColor(hue) {
+      return (
         'hsla(' +
         hue +
         ', ' +
-        this.defaultColor.primary.saturation +
+        this.defaultColor.saturation +
         '%, ' +
-        this.defaultColor.primary.luminosity +
+        this.defaultColor.luminosity +
         '%, ' +
-        this.defaultColor.primary.alpha +
+        this.defaultColor.alpha +
         ')'
-
-      this.$bus.$emit('colorChange', this.color)
-
-      // if (wasSelected) {
-      //   this.saveToLocalStorage('themeColor', this.color)
-      // }
+      )
     }
   }
 }
