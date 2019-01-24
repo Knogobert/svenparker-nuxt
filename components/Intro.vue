@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       show: true
-      //themeColor: 'hsla(16, 63%, 49%, 1)' // Default set color
+      //themeColor: 'hsla(349, 63%, 49%, 1)' // Default set color
     }
   },
   computed: {

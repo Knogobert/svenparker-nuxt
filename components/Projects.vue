@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      themeColor: 'hsla(16, 63%, 49%, 1)', // Default set color
+      themeColor: 'hsla(349, 63%, 49%, 1)', // Default set color
       projects: {
         lg: {
           title: 'Lammet & Grisen',

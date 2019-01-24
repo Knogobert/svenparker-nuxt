@@ -70,12 +70,11 @@
       />
       <!-- // Usable random color choices
             // hsla(223, 63%, 49%, 1)
-            // hsla(329, 63%, 49%, 1)
-            // hsla(25, 63%, 49%, 1)
+            // hsla(349, 63%, 49%, 1)
+            // hsla(16, 63%, 49%, 1)
             // hsla(56, 63%, 49%, 1)
             // hsla(145, 63%, 49%, 1)
-            // hsla(158, 63%, 49%, 1)
-            // hsla(180, 63%, 49%, 1)-->
+            // hsla(185, 63%, 49%, 1)-->
     </ul>
 
     <button
@@ -102,7 +101,7 @@ export default {
     value: {
       type: Object,
       default: () => ({
-        hue: 16,
+        hue: 349,
         saturation: 63,
         luminosity: 49,
         alpha: 1
@@ -131,7 +130,7 @@ export default {
       isToggling: false,
       colorChoice: [
         'hsla(223, 63%, 49%, 1)',
-        'hsla(329, 63%, 49%, 1)',
+        'hsla(349, 63%, 49%, 1)',
         'hsla(16, 63%, 49%, 1)',
         'hsla(56, 63%, 49%, 1)',
         'hsla(145, 63%, 49%, 1)',

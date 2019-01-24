@@ -31,7 +31,7 @@ export default {
     return {
       themeColor: '',
       defaultColor: {
-        hue: 16,
+        hue: 349,
         saturation: 63,
         luminosity: 49,
         alpha: 1
@@ -86,13 +86,4 @@ export default {
   //text-align: center;
   flex-flow: column;
 }
-
-// Usable random color choices
-// hsla(223, 63%, 49%, 1)
-// hsla(329, 63%, 49%, 1)
-// hsla(25, 63%, 49%, 1)
-// hsla(56, 63%, 49%, 1)
-// hsla(145, 63%, 49%, 1)
-// hsla(158, 63%, 49%, 1)
-// hsla(180, 63%, 49%, 1)
 </style>
