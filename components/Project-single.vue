@@ -3,7 +3,6 @@
     :class="[{'project-single--left': index % 2 === 0, 'project-single--right': index % 2 !== 0}, 'project-'+slug ]"
     class="project-single"
   >
-    <!-- :style="projectStyle" -->
     <a
       :href="url"
       :title="'Go to '+title"
@@ -28,6 +27,7 @@
           <p class="project-single-description">
             <slot name="description" />
           </p>
+          <h4 class="project-single-visit">— Go to site</h4>
         </article>
         <figure
           v-flow:up.inView
@@ -60,6 +60,7 @@
           <p class="project-single-description">
             <slot name="description" />
           </p>
+          <h4 class="project-single-visit">— Go to site</h4>
         </article>
       </div>
     </a>
@@ -138,32 +139,25 @@ export default {
     },
     slug: {
       type: String,
-      default: 'lg'
+      default: 'slug'
     },
     title: {
       type: String,
-      default: 'Lammet & Grisen'
+      default: 'Title'
     },
     url: {
       type: String,
-      default: 'https://lammet.nu/'
+      default: ''
     },
     image: {
       type: String,
-      default: '/projects/snap-LG.jpg'
+      default: '' //'/projects/snap-LG.jpg'
     }
   },
   data() {
     return {
       imageLoaded: false
     }
-  },
-  computed: {
-    // projectStyle(){
-    //   return {
-    //     'background-image': `url(${this.bg})`,
-    //   }
-    // }
   },
   methods: {
     onLoaded() {
@@ -225,6 +219,10 @@ export default {
         font-variation-settings: 'wght' 80, 'wdth' 500;
         transition: font-variation-settings 0.2s ease-in-out;
       }
+      .project-single-visit {
+        opacity: 1;
+        transform: translateX(0%);
+      }
     }
 
     .inView.filter::before {
@@ -261,6 +259,13 @@ export default {
   }
   &-figure {
     //opacity: 0;
+  }
+  &-visit {
+    margin-top: 2rem;
+    font-weight: normal;
+    opacity: 0;
+    transform: translateX(-2rem);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
   }
 
   @media only screen and (min-width: $breakpoint-sm) {
