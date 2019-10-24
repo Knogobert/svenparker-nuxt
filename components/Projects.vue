@@ -33,6 +33,22 @@ export default {
     return {
       themeColor: 'hsla(349, 63%, 49%, 1)', // Default set color
       projects: {
+        // sm: {
+        //   title: 'Sven+Malin',
+        //   url: 'https://svenplusmalin.com/',
+        //   date: 'February 2020',
+        //   description:
+        //     'Of course a web developer creates a website for his wedding! This one is built with Nuxt and Firebase.'
+        //   // image: '/projects/snap-TC.png'
+        // },
+        tc: {
+          title: 'Trustcruit',
+          url: 'https://trustcruit.com/',
+          date: 'February 2019',
+          description:
+            'When I started working at Trustcruit, we set to update the marketing site. Trustcruit is a SAAS for HR departments and employers, with a vision of creating a better job application process across the world. Here I currently work hard on the Vue dashboard mainly, as the head of the front-end team.',
+          image: '/projects/snap-TC.png'
+        },
         lg: {
           title: 'Lammet & Grisen',
           url: 'https://lammet.nu/',
