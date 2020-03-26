@@ -11,11 +11,15 @@
 
 <script>
 import spIntro from '~/components/Intro.vue'
+import moveThatBus from 'movethatbus.js'
 
 export default {
   name: 'ContactPage',
   components: {
     spIntro
+  },
+  mounted() {
+    moveThatBus.init()
   }
 }
 </script>

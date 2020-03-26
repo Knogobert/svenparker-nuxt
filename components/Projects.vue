@@ -49,14 +49,14 @@ export default {
             'When I started working at Trustcruit, we set to update the marketing site. Trustcruit is a SAAS for HR departments and employers, with a vision of creating a better job application process across the world. Here I currently work hard on the Vue dashboard mainly, as the head of the front-end team.',
           image: '/projects/snap-TC.png'
         },
-        lg: {
-          title: 'Lammet & Grisen',
-          url: 'https://lammet.nu/',
-          date: 'November 2018',
-          description:
-            'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
-          image: '/projects/snap-LG.jpg'
-        },
+        // lg: {
+        //   title: 'Lammet & Grisen',
+        //   url: 'https://lammet.nu/',
+        //   date: 'November 2018',
+        //   description:
+        //     'Have you ever been to Sälen or Öland? Then you probably know about one of Swedens most popular restaurants. I made Lammet & Grisens website in the latest available technology for Wordpress. The backend is made easy for the client by utilizing Wordpress Gutenberg.',
+        //   image: '/projects/snap-LG.jpg'
+        // },
         ms: {
           title: 'Myers Surfboards',
           url: 'https://myerssurfboards.co/',
@@ -65,14 +65,14 @@ export default {
             'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress and should probably be a locked down staging site, but isn’t because of economic reasons.',
           image: '/projects/snap-MS.jpg'
         },
-        bpx: {
-          title: 'Boneprox',
-          url: 'https://boneprox.se/',
-          date: 'April 2018',
-          description:
-            'Made as a informational website for the revolutionary digital tool that analyzes dental x-rays for bone density and possible osteoporosis risks.',
-          image: '/projects/snap-BPX.jpg'
-        },
+        // bpx: {
+        //   title: 'Boneprox',
+        //   url: 'https://boneprox.se/',
+        //   date: 'April 2018',
+        //   description:
+        //     'Made as a informational website for the revolutionary digital tool that analyzes dental x-rays for bone density and possible osteoporosis risks.',
+        //   image: '/projects/snap-BPX.jpg'
+        // },
         // ws: {
         //   title: 'WinstSeries',
         //   url: 'https://www.winstseries.com/',
