@@ -16,7 +16,7 @@
     "@radial-color-picker/vue-color-picker": "^0.4.2",
     "cross-env": "^5.2.1",
     "detect-hover": "^1.0.2",
-    "movethatbus.js": "0.0.3",
+    "movethatbus.js": "^1.0.2",
     "nuxt": "^2.10.2",
     "smoothscroll-polyfill": "^0.4.4"
   },
