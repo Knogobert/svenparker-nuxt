@@ -46,7 +46,7 @@ export default {
           url: 'https://trustcruit.com/',
           date: 'February 2019',
           description:
-            'When I started working at Trustcruit, we set to update the marketing site. Trustcruit is a SAAS for HR departments and employers, with a vision of creating a better job application process across the world. Here I currently work hard on the Vue dashboard mainly, as the head of the front-end team.',
+            'When I started working at Trustcruit, we set to update the marketing site. Trustcruit is a SAAS for HR departments and employers, with a vision of creating a better job application process across the world. Here I currently work on the Vue dashboard mainly, as a part of the product team. The site has gotten a makeover since the snapshot. Now my colleagues are mostly handling it.',
           image: '/projects/snap-TC.png'
         },
         // lg: {
