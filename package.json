@@ -17,7 +17,7 @@
     "cross-env": "^5.2.1",
     "detect-hover": "^1.0.2",
     "movethatbus.js": "^1.0.2",
-    "nuxt": "^2.10.2",
+    "nuxt": "^2.14.4",
     "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
