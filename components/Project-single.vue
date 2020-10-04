@@ -38,6 +38,7 @@
             <img
               v-show="imageLoaded"
               :src="image"
+              loading="lazy"
               @load="onLoaded"
             >
           </transition>

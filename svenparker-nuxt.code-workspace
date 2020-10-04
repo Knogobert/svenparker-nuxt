@@ -17,7 +17,6 @@
 		},
 		"editor.formatOnSave": false,
 		"javascript.format.enable": false,
-		"eslint.autoFixOnSave": true,
 		"eslint.alwaysShowStatus": true,
 		"eslint.options": {
 			"extensions": [

@@ -6,6 +6,7 @@
         v-show="imageLoaded"
         :src="imageSrc"
         :class="classNames"
+        loading="lazy"
         @load="onLoaded">
     </transition>
   </div>
