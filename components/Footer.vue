@@ -18,7 +18,14 @@
         </div>
       </transition>
 
-      <h6>That’s it folks!</h6>
+      <h6 class="mb-sm-1">That’s it folks!</h6>
+      <div
+        id="wcb"
+        class="wcb carbonbadge wcb-d"/>
+      <script
+        src="https://unpkg.com/website-carbon-badges@^1/b.min.js"
+        defer/>
+
       <!--@click="toggleShowSliders()"-->
       <transition name="page">
         <div
@@ -117,7 +124,7 @@ export default {
   position: relative;
   z-index: 0;
 
-  padding: 2rem;
+  padding: 4rem 2rem; // The height of the footer
 
   display: flex;
   justify-content: center;
@@ -185,5 +192,9 @@ export default {
   background: $ufo-l2; /* Green background */
   cursor: pointer; /* Cursor on hover */
   border-radius: 50%;
+}
+
+#wcb_g {
+  color: var(--b1);
 }
 </style>
