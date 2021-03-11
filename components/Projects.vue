@@ -33,10 +33,18 @@ export default {
     return {
       themeColor: 'hsla(349, 63%, 49%, 1)', // Default set color
       projects: {
+        mk: {
+          title: 'Malin Katrine',
+          url: 'https://malinkatrine.com/',
+          date: 'Feburary 2021',
+          description:
+            'My better half studies UX, of course she needs an online portfolio. She made the design while I knacked away on the code, but we didn’t make it far until she landed an internship. So it might be a bit underfilled at the moment. I was especially happy about the zooming feature when in a case study, check it out!',
+          image: '/projects/snap-MK-case-dark@2x.png'
+        },
         ntn: {
           title: 'NTN-Boilerplate',
           url: 'https://github.com/Knogobert/ntn-boilerplate',
-          date: 'March 2021',
+          date: 'February 2021',
           description:
             'Whenever I need to get a quick start on a new site that someone requests (sister, brother, spouse, friend or myself). I almost always reach for Nuxt and Tailwind, as they usually fit the need. So I made an open-source starting template that utilize those technologies, with a sprinkle of Netlify CMS which makes the domain the only thing to pay for on a small website. Try it out yourself, it takes less than 5 minutes!',
           image: '/projects/snap-NTN-light@2x.png'
