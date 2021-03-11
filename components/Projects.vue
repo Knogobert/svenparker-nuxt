@@ -33,6 +33,14 @@ export default {
     return {
       themeColor: 'hsla(349, 63%, 49%, 1)', // Default set color
       projects: {
+        ntn: {
+          title: 'NTN-Boilerplate',
+          url: 'https://github.com/Knogobert/ntn-boilerplate',
+          date: 'March 2021',
+          description:
+            'Whenever I need to get a quick start on a new site that someone requests (sister, brother, spouse, friend or myself). I almost always reach for Nuxt and Tailwind, as they usually fit the need. So I made an open-source starting template that utilize those technologies, with a sprinkle of Netlify CMS which makes the domain the only thing to pay for on a small website. Try it out yourself, it takes less than 5 minutes!',
+          image: '/projects/snap-NTN-light@2x.png'
+        },
         // sm: {
         //   title: 'Sven+Malin',
         //   url: 'https://svenplusmalin.com/',
