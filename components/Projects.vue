@@ -49,6 +49,14 @@ export default {
             'Whenever I need to get a quick start on a new site that someone requests (sister, brother, spouse, friend or myself). I almost always reach for Nuxt and Tailwind, as they usually fit the need. So I made an open-source starting template that utilize those technologies, with a sprinkle of Netlify CMS which makes the domain the only thing to pay for on a small website. Try it out yourself, it takes less than 5 minutes!',
           image: '/projects/snap-NTN-light@2x.png'
         },
+        ejfa: {
+          title: 'En Jul För Alla',
+          url: 'https://enjulforalla.netlify.app/',
+          date: 'December 2020',
+          description:
+            'One week from initial commit to launch. It was quite a hectic week, but sitting evenings together (remotely) with a coordinated team from Hillsong gave a pretty nice result. The design was handed to me and two more developers. The Swish solution maybe still works, but don’t send money there and expect it to be registered correctly, as the site was supposed to only be up 30 days. Over 300 000 kr was collected through this website to give to the community!',
+          image: '/projects/snap-EJFA@2x.png'
+        },
         // sm: {
         //   title: 'Sven+Malin',
         //   url: 'https://svenplusmalin.com/',
@@ -78,7 +86,7 @@ export default {
           url: 'https://myerssurfboards.co/',
           date: 'July 2018',
           description:
-            'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Currently a work-in-progress and should probably be a locked down staging site, but isn’t because of economic reasons.',
+            'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Has undergone some face-lifts since first launch, when it was a side business for him. Now it has grown into his full-time job.',
           image: '/projects/snap-MS.jpg'
         },
         // bpx: {
@@ -117,7 +125,7 @@ export default {
           url: 'http://www.bankerydstk.nu/',
           date: 'April 2016',
           description:
-            '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was programmed for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
+            '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was coded for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
           image: '/projects/snap-BTK.jpg'
         }
         // swss: {

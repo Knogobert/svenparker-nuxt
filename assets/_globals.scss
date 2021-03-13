@@ -60,9 +60,11 @@ img {
     mix-blend-mode: exclusion;
     background-color: currentColor;
     filter: invert(1) hue-rotate(180deg);
+    border-radius: 5px;
   }
 
   img {
     display: block;
+    border-radius: 5px;
   }
 }

@@ -255,12 +255,12 @@ export default {
   &-subtitle {
     margin-bottom: 0.5rem;
   }
-  &-description {
-    //max-width: 500px;
-  }
-  &-figure {
-    //opacity: 0;
-  }
+  // &-description {
+  //   max-width: 500px;
+  // }
+  // &-figure {
+  //   opacity: 0;
+  // }
   &-visit {
     margin-top: 2rem;
     font-weight: normal;
