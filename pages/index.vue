@@ -4,7 +4,7 @@
       <template slot="title">Sven Parker</template>
       <template slot="subtitle">Web Developer / Web Designer</template>
       <small>
-        I love keeping up to date in the latest and have an eager to always learn more.
+        I love keeping up to date in the latest and have an eagerness to always learn more.
         <br>
         To find out what I'm up to, check out my
         —
