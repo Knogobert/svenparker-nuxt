@@ -33,6 +33,14 @@ export default {
     return {
       themeColor: 'hsla(349, 63%, 49%, 1)', // Default set color
       projects: {
+        qr: {
+          title: 'Swish QR Kod',
+          url: 'https://swish-qr-kod.netlify.app/',
+          date: 'March 2022',
+          description:
+            'A one-nighter project I made with my friend Daniel Bark to quickly get nice QR codes for Swish payments. It’s made with Nuxt and Tailwind, and utilizes the Swish API to generate the QR code.',
+          image: '/projects/snap-QR@2x.png'
+        },
         mk: {
           title: 'Malin Katrine',
           url: 'https://malinkatrine.com/',
@@ -86,7 +94,7 @@ export default {
           url: 'https://myerssurfboards.co/',
           date: 'July 2018',
           description:
-            'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Has undergone some face-lifts since first launch, when it was a side business for him. Now it has grown into his full-time job.',
+            'A personal pro bono project made for my brother-in-law Carson Myers. A surfboard shaper based in Wahiawa, HI. Now that it has grown into his full-time job, we have moved away from the wordpress site I once created way back.',
           image: '/projects/snap-MS.jpg'
         },
         // bpx: {
@@ -112,22 +120,22 @@ export default {
             'On my job at Briefcave I developed the Wordpress theme for their new agency website. It features a nice page for job estimates and a lot of slick animations.',
           image: '/projects/snap-BC.jpg'
         },
-        lls: {
-          title: 'La Lepre Stanca',
-          url: 'http://www.laleprestanca.se/',
-          date: 'May 2016',
-          description:
-            'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a user portal for the site users to manage their meet-ups in. The result was great!',
-          image: '/projects/snap-LLS.jpg'
-        },
-        btk: {
-          title: 'Bankeryds Tennisklubb',
-          url: 'http://www.bankerydstk.nu/',
-          date: 'April 2016',
-          description:
-            '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was coded for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
-          image: '/projects/snap-BTK.jpg'
-        }
+        // lls: {
+        //   title: 'La Lepre Stanca',
+        //   url: 'http://www.laleprestanca.se/',
+        //   date: 'May 2016',
+        //   description:
+        //     'During my internship at Grand Public I had the honors to create the Wordpress theme for a bicycling club based in Jönköping. Some of the difficulties were to code a user portal for the site users to manage their meet-ups in. The result was great!',
+        //   image: '/projects/snap-LLS.jpg'
+        // },
+        // btk: {
+        //   title: 'Bankeryds Tennisklubb',
+        //   url: 'http://www.bankerydstk.nu/',
+        //   date: 'April 2016',
+        //   description:
+        //     '"Probably Swedens nicest tennis club website" I once heard. I gotta agree... It was coded for a tennis club in Bankeryd, Sweden and created together with some peeps at Grand Public.',
+        //   image: '/projects/snap-BTK.jpg'
+        // }
         // swss: {
         //   title: 'Swiss+style',
         //   url: 'http://svenparker.com/swiss+style/index.php',
