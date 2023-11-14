@@ -119,7 +119,7 @@ export default {
           description:
             'On my job at Briefcave I developed the Wordpress theme for their new agency website. It features a nice page for job estimates and a lot of slick animations.',
           image: '/projects/snap-BC.jpg'
-        },
+        }
         // lls: {
         //   title: 'La Lepre Stanca',
         //   url: 'http://www.laleprestanca.se/',
