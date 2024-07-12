@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import spIntro from '~/components/Intro.vue'
+import spIntro from '@/components/Intro.vue'
 import moveThatBus from 'movethatbus.js'
 
 export default {
@@ -25,5 +25,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/_variables.scss';
+@import '@/assets/_variables.scss';
 </style>

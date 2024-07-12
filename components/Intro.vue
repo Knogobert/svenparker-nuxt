@@ -10,7 +10,7 @@
           <slot name="subtitle">Subtitle</slot>
         </h2>
         <p class="introduction">
-          <slot/>
+          <slot />
         </p>
         <!-- <ul class="links">
           <li class="links-link" v-for="link in links" :key="link.name">
@@ -29,51 +29,29 @@
 
 </template>
 
-<script>
-//import spImageLoader from '~/components/@image-loader/ImageLoader.vue';
+<script setup>
+//import spImageLoader from '@/components/@image-loader/ImageLoader.vue';
+import { ref, onMounted, computed } from 'vue'
+import { useNuxtApp } from '#app'
 
-export default {
-  name: 'SpIntro',
-  // components: {
-  //   spImageLoader
-  // },
-  data() {
-    return {
-      show: true
-      //themeColor: 'hsla(349, 63%, 49%, 1)' // Default set color
-    }
-  },
-  computed: {
-    links() {
-      return [
-        {
-          name: 'Home',
-          path: '/'
-        },
-        {
-          name: 'Contact',
-          path: '/contact'
-        }
-      ]
-    }
-  },
-  mounted() {
-    // Add classname if supported
-    if (
-      typeof window.getComputedStyle(document.body).mixBlendMode !== 'undefined'
-    ) {
-      document.documentElement.className += ' mix-blend-mode'
-    }
+const themeColor = ref('hsla(349, 63%, 49%, 1)') // Default set color
 
-    this.$bus.$on('colorChange', data => {
-      this.themeColor = data
-    })
-  }
-}
+const links = computed(() => [
+  { name: 'Home', path: '/' },
+  { name: 'Contact', path: '/contact' }
+])
+
+onMounted(() => {
+  const { $eventBus } = useNuxtApp()
+  $eventBus.on('colorChange', (data) => {
+    themeColor.value = data
+  })
+})
 </script>
 
 <style lang="scss">
-@import '~assets/_variables.scss';
+@use 'sass:color';
+@import '@/assets/_variables.scss';
 
 .sp-intro {
   //background-color: #2ECC71;
@@ -107,9 +85,6 @@ export default {
     max-height: 200%;
     object-fit: scale-down;
     //filter: invert(0) hue-rotate(180deg);
-    opacity: 0.25;
-  }
-  @at-root .mix-blend-mode &#{-bg} {
     opacity: 1;
     mix-blend-mode: difference;
   }
@@ -127,7 +102,8 @@ export default {
   .subtitle {
     font-weight: $font-weight-light;
     font-size: 1.2rem;
-    color: $white - 5;
+    // color: $white - 5;
+    color: color.scale($white, $lightness: -5%);
     word-spacing: 0.15rem;
     padding-bottom: 2rem;
   }

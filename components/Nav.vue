@@ -6,7 +6,7 @@
 </template>
 
 <style lang="scss">
-@import '~assets/_variables.scss';
+@import '@/assets/_variables.scss';
 
 .nav-main {
   position: fixed;

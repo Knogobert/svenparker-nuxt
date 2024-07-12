@@ -22,9 +22,9 @@
       <div
         id="wcb"
         class="wcb carbonbadge wcb-d"/>
-      <script
+      <!-- <script
         src="https://unpkg.com/website-carbon-badges@^1/b.min.js"
-        defer/>
+        defer/> -->
 
       <!--@click="toggleShowSliders()"-->
       <transition name="page">
@@ -118,7 +118,7 @@ export default {
 
 
 <style lang="scss">
-@import '~assets/_variables.scss';
+@import '@/assets/_variables.scss';
 
 .footer-main {
   position: relative;

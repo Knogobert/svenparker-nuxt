@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-export default ({ app }) => {
+export default defineNuxtPlugin(({ app }) => {
   /*
   ** Only run on client-side and only in production mode
   */
@@ -28,4 +28,4 @@ export default ({ app }) => {
       'Branch': '{{ BRANCH }}'
     })
   })
-}
+})

@@ -11,26 +11,30 @@
         <a
           href="https://github.com/Knogobert/"
           target="_blank"
+          rel="noopener noreferrer"
         >Github</a>
         —
         <a
           href="https://codepen.io/Knogobert/"
           target="_blank"
+          rel="noopener noreferrer"
         >Codepen</a>
         —
         <a
           href="https://vsco.co/svenparker/"
           target="_blank"
+          rel="noopener noreferrer"
         >VSCO</a>
         —
         <a
           href="http://se.linkedin.com/in/SvenParker"
           target="_blank"
+          rel="noopener noreferrer"
         >LinkedIn</a>
         —
         <a
           href="#"
-          @click.prevent="scrollSmooooovelyTo('.project-lg')"
+          @click.prevent="scrollSmooooovelyTo('.project-single')"
         >Or just scroll.</a>
       </small>
     </sp-intro>
@@ -39,20 +43,15 @@
   </main>
 </template>
 
-<script>
-import SpIntro from '~/components/Intro.vue'
-import SpProjects from '~/components/Projects.vue'
+<script setup>
+import SpIntro from '@/components/Intro.vue'
+import SpProjects from '@/components/Projects.vue'
 
-export default {
-  name: 'IndexPage',
-  components: {
-    SpIntro,
-    SpProjects
-  },
-  methods: {
-    scrollSmooooovelyTo(selector) {
-      document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+const scrollSmooooovelyTo = (selector) => {
+  document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
 }
+
+defineOptions({
+  name: 'IndexPage'
+})
 </script>

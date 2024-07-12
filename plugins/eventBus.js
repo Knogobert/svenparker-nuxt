@@ -1,9 +1,27 @@
-import Vue from 'vue'
+// @ts-ignore-next-line
+import { defineNuxtPlugin } from '#app'
 
-const eventBus = {}
+export default defineNuxtPlugin((nuxtApp) => {
+  const eventBus = new EventBus()
+  nuxtApp.provide('eventBus', eventBus)
+})
 
-eventBus.install = function(Vue) {
-  Vue.prototype.$bus = new Vue()
+class EventBus {
+  constructor() {
+    this.events = {}
+  }
+
+  on(event, callback) {
+    if (!this.events[event]) {
+      this.events[event] = []
+    }
+    this.events[event].push(callback)
+  }
+
+  emit(event, data) {
+    const callbacks = this.events[event]
+    if (callbacks) {
+      callbacks.forEach(callback => callback(data))
+    }
+  }
 }
-
-Vue.use(eventBus)

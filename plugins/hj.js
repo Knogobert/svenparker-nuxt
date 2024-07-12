@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default ({ app }) => {
+export default defineNuxtPlugin(({ app }) => {
     /*
     ** Only run on client-side and only in production mode
     */
@@ -15,4 +15,4 @@ export default ({ app }) => {
     r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
     a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-}
+})

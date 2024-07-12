@@ -15,8 +15,10 @@
         class="grid-row"
       >
         <article
-          v-flow:down
           class="project-single-article col-6 mb-sm-2"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :enter="{ opacity: 1, y: 0 }"
         >
           <h3 class="project-single-title">
             <slot name="title" />
@@ -30,13 +32,14 @@
           <h4 class="project-single-visit">— Go to site</h4>
         </article>
         <figure
-          v-flow:up.inView
           class="project-single-figure col-6 filter"
+          v-motion
+          :initial="{ opacity: 0, y: -50 }"
+          :enter="{ opacity: 1, y: 0 }"
         >
-          <!-- v-inView -->
           <transition name="fade-in">
             <img
-              v-show="imageLoaded"
+              v-if="imageLoaded"
               :src="image"
               loading="lazy"
               @load="onLoaded"
@@ -49,8 +52,10 @@
         class="grid-row"
       >
         <article
-          v-flow:down
           class="project-single-article col-12 mb-sm-2"
+          v-motion
+          :initial="{ opacity: 0, y: 50 }"
+          :enter="{ opacity: 1, y: 0 }"
         >
           <h3 class="project-single-title">
             <slot name="title" />
@@ -68,108 +73,44 @@
   </div>
 </template>
 
-<script>
-import detectHover from 'detect-hover'
+<script setup>
+import { ref } from 'vue'
+import { useMotion } from '@vueuse/motion'
 
-export default {
-  name: 'SpProjectsSingle',
-  directives: {
-    flow: {
-      inPaddedViewport(el) {
-        var rect = el.getBoundingClientRect()
-        //debugger;
-        return !(
-          rect.bottom - 150 < 0 ||
-          rect.right < 0 ||
-          rect.left > window.innerWidth ||
-          rect.top + 150 > window.innerHeight
-        )
-      },
-      inViewport(el) {
-        var rect = el.getBoundingClientRect()
-        return !(
-          rect.bottom < 0 ||
-          rect.right < 0 ||
-          rect.left > window.innerWidth ||
-          rect.top > window.innerHeight
-        )
-      },
-      bind(el, binding) {
-        el.classList.add('flow-' + binding.arg + '-before-enter')
-        el.$onScroll = function() {
-          if (binding.modifiers.inView === true && detectHover.none !== false) {
-            // && if on device that cant hover, falls back on undefined
-            if (binding.def.inPaddedViewport(el)) {
-              el.classList.add('inView')
-              el.classList.remove('not-inView')
-              //binding.def.unbind(el, binding)
-            } else {
-              el.classList.add('not-inView')
-              el.classList.remove('inView')
-              //binding.def.bind(el, binding)
-            }
-
-            if (binding.def.inViewport(el)) {
-              el.classList.add('flow-' + binding.arg + '-enter')
-              el.classList.remove('flow-' + binding.arg + '-before-enter')
-              //binding.def.unbind(el, binding)
-            }
-          } else {
-            if (binding.def.inViewport(el)) {
-              el.classList.add('flow-' + binding.arg + '-enter')
-              el.classList.remove('flow-' + binding.arg + '-before-enter')
-              binding.def.unbind(el, binding)
-            }
-          }
-        }
-        document.addEventListener('scroll', el.$onScroll)
-      },
-      inserted(el, binding) {
-        el.$onScroll()
-      },
-      unbind(el, binding) {
-        document.removeEventListener('scroll', el.$onScroll)
-        delete el.$onScroll
-      }
-    }
+const props = defineProps({
+  index: {
+    type: Number,
+    default: 0
   },
-  props: {
-    index: {
-      type: Number,
-      default: 0
-    },
-    slug: {
-      type: String,
-      default: 'slug'
-    },
-    title: {
-      type: String,
-      default: 'Title'
-    },
-    url: {
-      type: String,
-      default: ''
-    },
-    image: {
-      type: String,
-      default: '' //'/projects/snap-LG.jpg'
-    }
+  slug: {
+    type: String,
+    default: 'slug'
   },
-  data() {
-    return {
-      imageLoaded: false
-    }
+  title: {
+    type: String,
+    default: 'Title'
   },
-  methods: {
-    onLoaded() {
-      this.imageLoaded = true
-    }
+  url: {
+    type: String,
+    default: ''
+  },
+  image: {
+    type: String,
+    default: ''
   }
+})
+
+const imageLoaded = ref(true)
+
+const onLoaded = () => {
+  imageLoaded.value = true
 }
+
+useMotion()
 </script>
 
 <style lang="scss">
-@import '~assets/_variables.scss';
+@import '@/assets/_variables.scss';
 
 .project-single {
   // background-color: hsla(0, 0%, 0%, .1);
@@ -275,9 +216,9 @@ export default {
     }
   }
   @media only screen and (max-width: $breakpoint-md) {
-    .flow-up-enter {
-      animation: fromTransparent 1.5s;
-    }
+    // .flow-up-enter {
+    //   animation: fromTransparent 1.5s;
+    // }
   }
 }
 </style>
