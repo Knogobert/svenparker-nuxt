@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useNuxtApp } from '#app'
 import spProjectSingle from '@/components/Project-single.vue'
 
@@ -144,10 +144,6 @@ const projects = ref({
   // }
 })
 
-const filterStyle = computed(() => ({
-  '--filter-background-color': themeColor.value
-}))
-
 onMounted(() => {
   if (import.meta.client && localStorage.themeColor) {
     themeColor.value = JSON.parse(localStorage.themeColor).color
@@ -161,8 +157,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/_variables.scss';
-
 .sp-projects {
   background-color: hsla(0, 0%, 0%, 0.05);
   display: block;
@@ -171,12 +165,12 @@ onMounted(() => {
   h2 {
     text-align: center;
     margin: 1rem 0;
-    color: $white;
+    color: var(--white);
     user-select: none;
   }
 }
 
 .filter::before {
-  background-color: v-bind('filterStyle["--filter-background-color"]');
+  background-color: v-bind('themeColor');
 }
 </style>

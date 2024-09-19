@@ -26,7 +26,7 @@ const defaultColor = {
 }
 
 watch(themeColor, () => {
-  document.body.style.backgroundColor = themeColor.value
+  if (import.meta.client) document.body.style.backgroundColor = themeColor.value
 })
 
 const bodyColorChanged = (hue) => {
@@ -49,7 +49,7 @@ const stringifyColor = (hue) => {
 }
 
 onMounted(() => {
-  if (process.client) {
+  if (import.meta.client)  {
     if (localStorage.themeColor) {
       themeColor.value = JSON.parse(localStorage.themeColor).color
     } else {
@@ -62,8 +62,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '@/assets/_variables.scss';
-
 .container {
   min-height: 100vh;
   display: flex;

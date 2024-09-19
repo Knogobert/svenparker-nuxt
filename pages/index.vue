@@ -1,8 +1,8 @@
 <template>
   <main class="container">
     <sp-intro>
-      <template slot="title">Sven Parker</template>
-      <template slot="subtitle">Web Developer / Web Designer</template>
+      <template #title>Sven Parker</template>
+      <template #subtitle>Web Developer / Web Designer</template>
       <small>
         I love keeping up to date in the latest and have an eagerness to always learn more.
         <br>
@@ -47,11 +47,12 @@
 import SpIntro from '@/components/Intro.vue'
 import SpProjects from '@/components/Projects.vue'
 
-const scrollSmooooovelyTo = (selector) => {
-  document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
-}
-
 defineOptions({
   name: 'IndexPage'
 })
+
+const scrollSmooooovelyTo = (selector) => {
+  if (import.meta.client) document.querySelector(selector).scrollIntoView({ behavior: 'smooth' })
+}
+
 </script>

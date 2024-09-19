@@ -51,8 +51,6 @@ onMounted(() => {
 
 <style lang="scss">
 @use 'sass:color';
-@import '@/assets/_variables.scss';
-
 .sp-intro {
   //background-color: #2ECC71;
   width: 100%;

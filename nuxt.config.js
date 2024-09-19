@@ -35,7 +35,20 @@ export default defineNuxtConfig({
   ** Customize the progress-bar color
   */
   // loading: { color: '#37D278' },
-  css: ['assets/main.scss'],
+  css: ['~/assets/styles/main.scss'],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern",
+          additionalData: '@use "~/assets/styles/_variables.scss" as *;',  // For global variables
+          sassOptions: {
+            outputStyle: 'compressed',
+          },
+        },
+      },
+    },
+  },
   /*
   ** Transition options
   */

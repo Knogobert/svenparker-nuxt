@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+
+@import '_reset.scss';
+@import '_variables.scss';
+
+//* CSS VARS
+:root {
+  --theme-color: #2ecc71;
+
+  --white: $white;
+  --grey: $grey;
+  --black: $black;
+
+  // Brand Colors
+  --ufo-d3: $ufo-d3;
+  --ufo-d2: $ufo-d2;
+  --ufo-d1: $ufo-d1;
+  --ufo: $ufo;
+  --ufo-l1: $ufo-l1;
+  --ufo-l2: $ufo-l2;
+}
+
+@import '_typography.scss';
+@import '_helpers.scss';
+@import '_grid.scss';
+
+@import '_globals.scss';
+@import '_animations.scss';

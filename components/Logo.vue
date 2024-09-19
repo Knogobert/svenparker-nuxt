@@ -61,7 +61,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/_variables.scss';
 //@import '@/components/@radial-color-picker/vue-color-picker/dist/vue-color-picker.min.css';
 
 .sp-logo {

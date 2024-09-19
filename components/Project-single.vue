@@ -17,9 +17,11 @@
         <article
           class="project-single-article col-6 mb-sm-2"
           v-motion
+          :duration="1000"
           :initial="{ opacity: 0, y: 50 }"
-          :enter="{ opacity: 1, y: 0 }"
+          :visible-once="{ opacity: 1, y: 0}"
         >
+          <!-- v-motion-show-down -->
           <h3 class="project-single-title">
             <slot name="title" />
           </h3>
@@ -34,17 +36,20 @@
         <figure
           class="project-single-figure col-6 filter"
           v-motion
+          :duration="1000"
           :initial="{ opacity: 0, y: -50 }"
-          :enter="{ opacity: 1, y: 0 }"
+          :visible-once="{ opacity: 1, y: 0}"
         >
-          <transition name="fade-in">
-            <img
-              v-if="imageLoaded"
-              :src="image"
-              loading="lazy"
-              @load="onLoaded"
-            >
-          </transition>
+          <!-- v-motion-show-up -->
+          <NuxtImg
+            :src="image"
+            :alt="title"
+            loading="lazy"
+          />
+          <!-- <transition name="fade-in"> -->
+              <!-- v-show="imageLoaded"
+              @load="onLoaded" -->
+          <!-- </transition> -->
         </figure>
       </div>
       <div
@@ -54,8 +59,9 @@
         <article
           class="project-single-article col-12 mb-sm-2"
           v-motion
+          :duration="1000"
           :initial="{ opacity: 0, y: 50 }"
-          :enter="{ opacity: 1, y: 0 }"
+          :visible-once="{ opacity: 1, y: 0}"
         >
           <h3 class="project-single-title">
             <slot name="title" />
@@ -101,7 +107,6 @@ const props = defineProps({
 })
 
 const imageLoaded = ref(true)
-
 const onLoaded = () => {
   imageLoaded.value = true
 }
@@ -110,8 +115,6 @@ useMotion()
 </script>
 
 <style lang="scss">
-@import '@/assets/_variables.scss';
-
 .project-single {
   // background-color: hsla(0, 0%, 0%, .1);
   background-size: cover;
@@ -216,9 +219,9 @@ useMotion()
     }
   }
   @media only screen and (max-width: $breakpoint-md) {
-    // .flow-up-enter {
-    //   animation: fromTransparent 1.5s;
-    // }
+    .flow-up-enter {
+      animation: fromTransparent 1.5s;
+    }
   }
 }
 </style>

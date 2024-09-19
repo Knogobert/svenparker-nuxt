@@ -2,28 +2,22 @@
   <main class="container">
 
     <sp-intro>
-      <template slot="title">Contact</template>
-      <template slot="subtitle">Info</template>
+      <template #title>Contact</template>
+      <template #subtitle>Info</template>
     </sp-intro>
 
   </main>
 </template>
 
-<script>
+<script setup>
 import spIntro from '@/components/Intro.vue'
-import moveThatBus from 'movethatbus.js'
+import { onMounted, ref } from 'vue'
 
-export default {
-  name: 'ContactPage',
-  components: {
-    spIntro
-  },
-  mounted() {
-    moveThatBus.init()
-  }
-}
+const moveThatBus = ref(null)
+
+onMounted(async () => {
+  moveThatBus.value = await import('movethatbus.js')
+  // Initialize or use moveThatBus.value here
+  moveThatBus.value.init()
+})
 </script>
-
-<style lang="scss">
-@import '@/assets/_variables.scss';
-</style>
