@@ -187,7 +187,6 @@ const updateColor = (hue) => {
   // Round the hue to the nearest 0.25 degree (1440 colors in 360 degrees)
   const roundedHue = Math.round(hue * 4) / 4;
 
-  console.log('hue:', roundedHue)
   colorValue.value.hue = roundedHue
   emit('input', {
     hue: roundedHue,

@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2024-07-12',
-  ssr: false,
+  compatibilityDate: '2024-09-20',
+  // ssr: false,
   app: {
     head: {
       title: 'Sven Parker',
@@ -48,6 +48,9 @@ export default defineNuxtConfig({
         },
       },
     },
+    build: {
+      sourcemap: true,
+    },
   },
   /*
   ** Transition options
@@ -64,9 +67,9 @@ export default defineNuxtConfig({
     }
   },
   plugins: [
-    { src: '@/plugins/ga.js', ssr: false },
-    { src: '@/plugins/hj.js', ssr: false },
-    { src: '@/plugins/eventBus.js', ssr: false },
+    { src: '@/plugins/ga.js', mode: 'client' },
+    { src: '@/plugins/hj.js', mode: 'client' },
+    { src: '@/plugins/eventBus.js', mode: 'client' },
   ],
   modules: ['@vueuse/motion/nuxt', '@nuxt/image'],
   dir: {
