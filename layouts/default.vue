@@ -1,68 +1,32 @@
 <template>
   <div>
-    <sp-logo @bodyColorChange="bodyColorChanged"/>
-
-    <div
-      :style="{ 'background-color': themeColor }"
-      class="o-wrapper">
-      <NuxtPage/>
+    <sp-logo />
+    <div class="o-wrapper">
+      <NuxtPage />
     </div>
-
-    <sp-footer/>
+    <sp-footer />
   </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import spLogo from '@/components/Logo.vue'
 import spFooter from '@/components/Footer.vue'
 
-const themeColor = ref('')
-const defaultColor = {
-  hue: 349,
-  saturation: 63,
-  luminosity: 49,
-  alpha: 1
-}
-
-watch(themeColor, () => {
-  if (import.meta.client) document.body.style.backgroundColor = themeColor.value
-})
-
-const bodyColorChanged = (hue) => {
-  themeColor.value = stringifyColor(hue)
-  // Emit event to update other components
-}
-
-const stringifyColor = (hue) => {
-  return (
-    'hsla(' +
-    hue +
-    ', ' +
-    defaultColor.saturation +
-    '%, ' +
-    defaultColor.luminosity +
-    '%, ' +
-    defaultColor.alpha +
-    ')'
-  )
-}
-
 onMounted(() => {
-  if (import.meta.client)  {
+  if (import.meta.client) {
     if (localStorage.themeColor) {
-      themeColor.value = JSON.parse(localStorage.themeColor).color
-    } else {
-      themeColor.value = stringifyColor(defaultColor.hue)
+      const savedColor = JSON.parse(localStorage.themeColor).color
+      document.documentElement.style.setProperty('--theme-color', savedColor) // 1. Initial
     }
-
-    document.body.style.backgroundColor = themeColor.value
   }
 })
 </script>
 
 <style lang="scss">
-.container {
+.o-wrapper {
+  background-color: var(--theme-color);
+  transition: background-color 0.3s ease;
   min-height: 100vh;
   display: flex;
   justify-content: center;

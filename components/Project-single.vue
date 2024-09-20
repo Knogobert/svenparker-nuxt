@@ -224,4 +224,9 @@ useMotion()
     }
   }
 }
+
+.project-single-figure {
+  color: var(--theme-color);
+  transition: color 100ms ease-in;
+}
 </style>

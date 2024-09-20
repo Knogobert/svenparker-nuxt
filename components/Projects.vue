@@ -18,11 +18,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useNuxtApp } from '#app'
+import { ref } from 'vue'
 import spProjectSingle from '@/components/Project-single.vue'
-
-const themeColor = ref('hsla(349, 63%, 49%, 1)') // Default set color
 
 const projects = ref({
   qr: {
@@ -143,17 +140,6 @@ const projects = ref({
   //   //image: '/projects/snap-SWSS.png'
   // }
 })
-
-onMounted(() => {
-  if (import.meta.client && localStorage.themeColor) {
-    themeColor.value = JSON.parse(localStorage.themeColor).color
-  }
-
-  const { $eventBus } = useNuxtApp()
-  $eventBus.on('colorChange', (data) => {
-    themeColor.value = data
-  })
-})
 </script>
 
 <style lang="scss" scoped>
@@ -168,9 +154,5 @@ onMounted(() => {
     color: var(--white);
     user-select: none;
   }
-}
-
-.filter::before {
-  background-color: v-bind('themeColor');
 }
 </style>

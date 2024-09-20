@@ -31,22 +31,12 @@
 
 <script setup>
 //import spImageLoader from '@/components/@image-loader/ImageLoader.vue';
-import { ref, onMounted, computed } from 'vue'
-import { useNuxtApp } from '#app'
+// import { ref } from 'vue'
 
-const themeColor = ref('hsla(349, 63%, 49%, 1)') // Default set color
-
-const links = computed(() => [
-  { name: 'Home', path: '/' },
-  { name: 'Contact', path: '/contact' }
-])
-
-onMounted(() => {
-  const { $eventBus } = useNuxtApp()
-  $eventBus.on('colorChange', (data) => {
-    themeColor.value = data
-  })
-})
+// const links = ref(() => [
+//   { name: 'Home', path: '/' },
+//   { name: 'Contact', path: '/contact' }
+// ])
 </script>
 
 <style lang="scss">

@@ -38,8 +38,8 @@
       class="ripple-text"
     >Taste the rainbow</span>
 
-    <ul
-      v-show="1==0"
+    <!-- <ul
+      v-if="false"
       :class="isSwatchesIn >= 1 ? 'is-swatch-in' : 'is-swatch-out'"
       class="color-swatch-list"
     >
@@ -74,8 +74,8 @@
             // hsla(16, 63%, 49%, 1)
             // hsla(56, 63%, 49%, 1)
             // hsla(145, 63%, 49%, 1)
-            // hsla(185, 63%, 49%, 1)-->
-    </ul>
+            // hsla(185, 63%, 49%, 1)->
+    </ul> -->
 
     <button
       :class="{ 'is-pressed': isPressed }"
@@ -89,218 +89,237 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
+import { useThrottleFn } from '@vueuse/core'
 import fillColorWheel from '@radial-color-picker/color-wheel'
 import Rotator from '@radial-color-picker/rotator'
 
-let rotator
-
-export default {
-  name: 'VueColorPicker',
-  props: {
-    value: {
-      type: Object,
-      default: () => ({
-        hue: 349,
-        saturation: 63,
-        luminosity: 49,
-        alpha: 1
-      }) // Default set color
-    },
-    step: {
-      type: Number,
-      default: 2
-    },
-    mouseScroll: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      interval: 0,
-      isDisabled: true,
-      isDragging: false,
-      isKnobIn: false,
-      isPaletteIn: false,
-      isPressed: false,
-      isRippling: false,
-      isRipplingText: 0,
-      isSwatchesIn: 0,
-      isToggling: false,
-      colorChoice: [
-        'hsla(223, 63%, 49%, 1)',
-        'hsla(349, 63%, 49%, 1)',
-        'hsla(16, 63%, 49%, 1)',
-        'hsla(56, 63%, 49%, 1)',
-        'hsla(145, 63%, 49%, 1)',
-        'hsla(158, 63%, 49%, 1)'
-      ]
-    }
-  },
-  computed: {
-    color() {
-      let { hue, saturation = 100, luminosity = 50, alpha = 1 } = this.value
-
-      return `hsla(${hue}, ${saturation}%, ${luminosity}%, ${alpha})`
-    }
-  },
-  watch: {
-    'value.hue': {
-      handler(newAngle, oldAngle) {
-        if (newAngle != oldAngle) {
-          rotator.angle = newAngle
-        }
-        localStorage.setItem(
-          'themeColor',
-          JSON.stringify({
-            color: this.color,
-            values: this.value
-          })
-        )
-      }
-    }
-  },
-  mounted() {
-    if (this.mouseScroll) {
-      this.$refs.rotator.addEventListener('wheel', this.onScroll)
-    }
-
-    fillColorWheel(this.$refs.palette, this.$el.offsetWidth || 280)
-
-    rotator = new Rotator(this.$refs.rotator, {
-      inertia: 0.7,
-      angle: this.value.hue,
-      onRotate: this.updateColor,
-      onDragStart: () => {
-        this.isDragging = true
-      },
-      onDragStop: () => {
-        this.isDragging = false
-      }
+const props = defineProps({
+  value: {
+    type: Object,
+    default: () => ({
+      hue: 349,
+      saturation: 63,
+      luminosity: 49,
+      alpha: 1
     })
-
-    window.addEventListener('resize', this.handleWindowResize)
-
-    this.callAttention()
   },
-  beforeDestroy() {
-    //window.removeEventListener('resize', this.handleWindowResize)
-    rotator.destroy()
-    rotator = null
+  step: {
+    type: Number,
+    default: 2
   },
-  methods: {
-    onScroll(ev) {
-      if (this.isDisabled) return
+  mouseScroll: {
+    type: Boolean,
+    default: false
+  }
+})
 
-      ev.preventDefault()
+const emit = defineEmits(['input', 'select'])
 
-      if (ev.deltaY > 0) {
-        rotator.angle += this.step
-      } else {
-        rotator.angle -= this.step
-      }
-    },
-    rotate(ev, isIncrementing) {
-      if (this.isDisabled) return
+const colorValue = ref(props.value)
 
-      let multiplier = isIncrementing ? 1 : -1
+const intervalPointer = ref(null)
+const isDisabled = ref(true)
+const isDragging = ref(false)
+const isKnobIn = ref(false)
+const isPaletteIn = ref(false)
+const isPressed = ref(false)
+const isRippling = ref(false)
+const isRipplingText = ref(0)
+const isSwatchesIn = ref(0)
+const isToggling = ref(false)
+const colorChoice = ref([
+  'hsla(223, 63%, 49%, 1)',
+  'hsla(349, 63%, 49%, 1)',
+  'hsla(16, 63%, 49%, 1)',
+  'hsla(56, 63%, 49%, 1)',
+  'hsla(145, 63%, 49%, 1)',
+  'hsla(158, 63%, 49%, 1)'
+])
 
-      if (ev.ctrlKey) {
-        multiplier *= 6
-      } else if (ev.shiftKey) {
-        multiplier *= 3
-      }
+const palette = ref(null)
+const rotator = ref(null)
+let rotatorInstance = null
 
-      rotator.angle += this.step * multiplier
-    },
-    updateColor(hue) {
-      this.$emit('input', {
-        hue,
-        saturation: this.value.saturation || 100,
-        luminosity: this.value.luminosity || 50,
-        alpha: this.value.alpha || 1
-      })
-    },
-    rotateToMouse(ev) {
-      if (this.isDisabled) return
+const color = computed(() => {
+  let { hue, saturation = 100, luminosity = 50, alpha = 1 } = colorValue.value
+  return `hsla(${hue}, ${saturation}%, ${luminosity}%, ${alpha})`
+})
 
-      rotator.setAngleFromEvent(ev)
-    },
-    selectColor() {
-      this.isToggling = true
-      this.isPressed = true
+const throttledUpdateThemeColor = useThrottleFn(() => {
+  localStorage.setItem(
+    'themeColor',
+    JSON.stringify({
+      color: color.value,
+      values: colorValue.value
+    })
+  )
+}, 40, { leading: true, trailing: true })
 
-      if (!this.isDisabled) {
-        this.$emit('select', this.value)
-        this.isRippling = true
-        this.isRipplingText++
-        this.isSwatchesIn = 0
-      } else {
-        this.isPaletteIn = true
-        this.isSwatchesIn++
-      }
-    },
-    togglePicker() {
-      this.callAttention(false)
+const onScroll = (ev) => {
+  if (isDisabled.value) return
 
-      if (this.isDisabled) {
-        this.isKnobIn = true
-      } else {
-        this.isKnobIn = false
-      }
+  ev.preventDefault()
 
-      this.isPressed = false
-    },
-    hidePalette() {
-      if (!this.isDisabled) {
-        this.isPaletteIn = false
-      } else {
-        this.isDisabled = false
-      }
-    },
-    callAttention(keepRipples = true) {
-      if (keepRipples === false) {
-        return clearInterval(this.interval)
-      }
-
-      this.interval = setInterval(() => {
-        this.isRippling = true
-      }, 10000)
-    },
-    stopRipple() {
-      this.isRippling = false
-    },
-    toggleKnob(ev) {
-      // 'transitionend' fires for every transitioned property
-      if (ev.propertyName === 'transform') {
-        if (this.isDisabled) {
-          this.isKnobIn = true
-        } else {
-          this.isDisabled = true
-        }
-      }
-      this.isToggling = false
-    },
-    handleWindowResize() {
-      rotator.destroy()
-
-      fillColorWheel(this.$refs.palette, this.$el.offsetWidth || 280)
-
-      rotator = new Rotator(this.$refs.rotator, {
-        inertia: 0.7,
-        angle: this.value.hue,
-        onRotate: this.updateColor,
-        onDragStart: () => {
-          this.isDragging = true
-        },
-        onDragStop: () => {
-          this.isDragging = false
-        }
-      })
-    }
+  if (ev.deltaY > 0) {
+    rotatorInstance.angle += props.step
+  } else {
+    rotatorInstance.angle -= props.step
   }
 }
+
+const rotate = (ev, isIncrementing) => {
+  if (isDisabled.value) return
+
+  let multiplier = isIncrementing ? 1 : -1
+
+  if (ev.ctrlKey) {
+    multiplier *= 6
+  } else if (ev.shiftKey) {
+    multiplier *= 3
+  }
+
+  rotatorInstance.angle += props.step * multiplier
+}
+
+const updateColor = (hue) => {
+  // Round the hue to the nearest 0.25 degree (1440 colors in 360 degrees)
+  const roundedHue = Math.round(hue * 4) / 4;
+
+  console.log('hue:', roundedHue)
+  colorValue.value.hue = roundedHue
+  emit('input', {
+    hue: roundedHue,
+    saturation: colorValue.value.saturation || 100,
+    luminosity: colorValue.value.luminosity || 50,
+    alpha: colorValue.value.alpha || 1
+  })
+  rotatorInstance.angle = roundedHue
+  document.documentElement.style.setProperty('--theme-color', color.value) // 2. During
+  throttledUpdateThemeColor()
+}
+
+const rotateToMouse = (ev) => {
+  if (isDisabled.value) return
+  rotatorInstance.setAngleFromEvent(ev)
+}
+
+const selectColor = () => {
+  isToggling.value = true
+  isPressed.value = true
+
+  if (!isDisabled.value) {
+    emit('select', colorValue.value)
+    isRippling.value = true
+    isRipplingText.value++
+    isSwatchesIn.value = 0
+  } else {
+    isPaletteIn.value = true
+    isSwatchesIn.value++
+  }
+}
+
+const togglePicker = () => {
+  callAttention(false)
+
+  if (isDisabled.value) {
+    isKnobIn.value = true
+  } else {
+    isKnobIn.value = false
+  }
+
+  isPressed.value = false
+}
+
+const hidePalette = () => {
+  if (!isDisabled.value) {
+    isPaletteIn.value = false
+  } else {
+    isDisabled.value = false
+  }
+}
+
+const callAttention = (keepRipples = true) => {
+  if (keepRipples === false) {
+    return clearInterval(intervalPointer.value)
+  }
+
+  intervalPointer.value = setInterval(() => {
+    isRippling.value = true
+  }, 10000)
+}
+
+const stopRipple = () => {
+  isRippling.value = false
+}
+
+const toggleKnob = (ev) => {
+  // 'transitionend' fires for every transitioned property
+  if (ev.propertyName === 'transform') {
+    if (isDisabled.value) {
+      isKnobIn.value = true
+    } else {
+      isDisabled.value = true
+    }
+  }
+  isToggling.value = false
+}
+
+const handleWindowResize = () => {
+  rotatorInstance.destroy()
+
+  fillColorWheel(palette.value, rotator.value.offsetWidth || 280)
+
+  rotatorInstance = new Rotator(rotator.value, {
+    inertia: 0.7,
+    angle: colorValue.value.hue,
+    onRotate: updateColor,
+    onDragStart: () => {
+      isDragging.value = true
+    },
+    onDragStop: () => {
+      isDragging.value = false
+    }
+  })
+}
+
+onMounted(() => {
+  if (props.mouseScroll) {
+    rotator.value.addEventListener('wheel', onScroll)
+  }
+
+  fillColorWheel(palette.value, rotator.value.offsetWidth || 280)
+
+  rotatorInstance = new Rotator(rotator.value, {
+    inertia: 0.7,
+    angle: colorValue.value.hue,
+    onRotate: updateColor,
+    onDragStart: () => {
+      isDragging.value = true
+    },
+    onDragStop: () => {
+      isDragging.value = false
+    }
+  })
+
+  if (import.meta.client) window.addEventListener('resize', handleWindowResize)
+
+  callAttention()
+
+  if (localStorage.themeColor) {
+    let ls = JSON.parse(localStorage.themeColor)
+    colorValue.value = ls.values
+    updateColor(ls.values.hue)
+    console.log('Initial color set from localStorage:', colorValue.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (import.meta.client) window.removeEventListener('resize', handleWindowResize)
+  rotatorInstance.destroy()
+  rotatorInstance = null
+})
 </script>
 
 <style lang="scss">
@@ -439,7 +458,8 @@ export default {
     background-color: $initial-color;
     outline: 0;
     cursor: pointer;
-    transition: transform 0.7s $material-curve-angular;
+    transition: transform 0.7s $material-curve-angular,
+                background-color 100ms ease-in;
     will-change: transform;
     overflow: visible;
     border: 6px solid #fff;

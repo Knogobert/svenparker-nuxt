@@ -41,17 +41,13 @@ export default {
   mounted() {
     if (localStorage.themeColor) {
       let ls = JSON.parse(localStorage.themeColor)
-      this.color = {
-        hue: ls.values.hue,
-        saturation: ls.values.saturation,
-        luminosity: ls.values.luminosity,
-        alpha: ls.values.alpha
-      }
+      this.color = ls.values
     }
   },
   methods: {
     onColorPick() {
       this.$emit('bodyColorChange', Math.round(this.color.hue))
+      document.documentElement.style.setProperty('--theme-color', `hsla(${Math.round(this.color.hue)}, ${this.color.saturation}%, ${this.color.luminosity}%, ${this.color.alpha})`) // 3. After save
     }
     // onColorPickRelease() {
     //   this.$emit('bodyColorChange', Math.round(this.color.hue), true)

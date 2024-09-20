@@ -2,26 +2,13 @@
 import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const eventBus = new EventBus()
+  const eventBus = {
+    on(event, callback) {
+      window.addEventListener(event, (e) => callback(e.detail))
+    },
+    emit(event, data) {
+      window.dispatchEvent(new CustomEvent(event, { detail: data }))
+    }
+  }
   nuxtApp.provide('eventBus', eventBus)
 })
-
-class EventBus {
-  constructor() {
-    this.events = {}
-  }
-
-  on(event, callback) {
-    if (!this.events[event]) {
-      this.events[event] = []
-    }
-    this.events[event].push(callback)
-  }
-
-  emit(event, data) {
-    const callbacks = this.events[event]
-    if (callbacks) {
-      callbacks.forEach(callback => callback(data))
-    }
-  }
-}
