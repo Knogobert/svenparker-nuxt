@@ -31,7 +31,7 @@ export default {
       hide: true,
       bgColorClass: 'svg-fill--green',
       color: {
-        hue: 349,
+        hue: 244,
         saturation: 63,
         luminosity: 49,
         alpha: 1

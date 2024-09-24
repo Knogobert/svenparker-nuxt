@@ -14,9 +14,9 @@ export default defineNuxtConfig({
         { property: 'og:image', content: 'https://svenparker.com/ogp.jpg' },
         { property: 'profile:first_name', content: 'Sven' },
         { property: 'profile:last_name', content: 'Parker' },
-        { name: 'msapplication-TileColor', content: '#2ecc71' },
+        { name: 'msapplication-TileColor', content: '#392ecc' },
         { name: 'msapplication-config', content: 'browserconfig.xml' },
-        { name: 'theme-color', content: '#2ecc71' },
+        { name: 'theme-color', content: '#392ecc' },
         { name: 'robots', content: 'index, follow' },
         { name: 'google-site-verification', content: '4oeDbA1nkNSPNK4-7gB8Xc-MHrj-T-nrO4_S_263RU0' }
       ],
@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
         { rel: 'manifest', href: '/site.webmanifest' },
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#2ecc71' },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#392ecc' },
         { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Nunito' }
       ]

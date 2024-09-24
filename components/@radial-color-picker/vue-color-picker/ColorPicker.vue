@@ -99,7 +99,7 @@ const props = defineProps({
   value: {
     type: Object,
     default: () => ({
-      hue: 349,
+      hue: 244,
       saturation: 63,
       luminosity: 49,
       alpha: 1
