@@ -98,6 +98,9 @@ export default {
       return this.width
     }
   },
+  mounted() {
+    this.loadCarbonBadge();
+  },
   methods: {
     toggleShowSliders() {
       this.showSliders = !this.showSliders
@@ -111,6 +114,13 @@ export default {
       // Uncomment to re-enable buggy mess of a variable font slider
       //this.sliderChanged = true
       this.width = parseInt(this.sliderWidthValue)
+    },
+    loadCarbonBadge() {
+      const script = document.createElement('script')
+      script.src = 'https://unpkg.com/website-carbon-badges@^1/b.min.js'
+      script.defer = true
+      script.async = true
+      document.body.appendChild(script)
     }
   }
 }
