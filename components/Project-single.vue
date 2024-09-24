@@ -45,6 +45,8 @@
             :src="image"
             :alt="title"
             loading="lazy"
+            :placeholder="[72, 40, 75, 5]"
+            placeholder-class="is-placeholding"
           />
           <!-- <transition name="fade-in"> -->
               <!-- v-show="imageLoaded"
