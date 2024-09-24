@@ -99,7 +99,9 @@ export default {
     }
   },
   mounted() {
-    this.loadCarbonBadge();
+    if (!import.meta.env.DEV) {
+      this.loadCarbonBadge();
+    }
   },
   methods: {
     toggleShowSliders() {

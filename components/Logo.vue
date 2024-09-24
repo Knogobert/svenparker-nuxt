@@ -20,6 +20,7 @@
 
 <script>
 import ColorPicker from '@/components/@radial-color-picker/vue-color-picker/ColorPicker.vue'
+import { useThrottleFn } from '@vueuse/core'
 
 export default {
   name: 'SpLogo',
@@ -45,13 +46,74 @@ export default {
     }
   },
   methods: {
-    onColorPick() {
+    onColorPick(evt) {
+      this.color = evt
       this.$emit('bodyColorChange', Math.round(this.color.hue))
-      document.documentElement.style.setProperty('--theme-color', `hsla(${Math.round(this.color.hue)}, ${this.color.saturation}%, ${this.color.luminosity}%, ${this.color.alpha})`) // 3. After save
-    }
+      const colorString = `hsla(${Math.round(this.color.hue)}, ${this.color.saturation}%, ${this.color.luminosity}%, ${this.color.alpha})`;
+      document.documentElement.style.setProperty('--theme-color', colorString) // 3. After save
+      this.updateFavicon(colorString);
+    },
     // onColorPickRelease() {
     //   this.$emit('bodyColorChange', Math.round(this.color.hue), true)
     // }
+    updateFavicon: useThrottleFn(function(color) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 32;
+      canvas.height = 32;
+      const ctx = canvas.getContext('2d');
+
+      // Convert HSLA to RGBA if necessary
+      if (color.startsWith('hsla')) {
+        const hsl = color.match(/hsla\((\d+),\s*(\d+)%,\s*(\d+)%,\s*(\d+(\.\d+)?)\)/);
+        const h = hsl[1] / 360;
+        const s = hsl[2] / 100;
+        const l = hsl[3] / 100;
+        const a = hsl[4];
+        let r, g, b;
+        if (s === 0) {
+          r = g = b = l; // achromatic
+        } else {
+          const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1 / 6) return p + (q - p) * 6 * t;
+            if (t < 1 / 2) return q;
+            if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+            return p;
+          };
+          const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+          const p = 2 * l - q;
+          r = hue2rgb(p, q, h + 1 / 3);
+          g = hue2rgb(p, q, h);
+          b = hue2rgb(p, q, h - 1 / 3);
+        }
+        color = `rgba(${Math.round(r * 255)}, ${Math.round(g * 255)}, ${Math.round(b * 255)}, ${a})`;
+      }
+
+      // Draw a filled circle
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(16, 16, 16, 0, 2 * Math.PI);
+      ctx.fill();
+
+      const updateFavi = () => {
+        // Update favicon
+        const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = canvas.toDataURL("image/x-icon");
+        document.getElementsByTagName('head')[0].appendChild(link);
+      }
+
+      // Load the safari-pizza.svg image
+      const img = new Image();
+      img.src = '/safari-pizza.svg';
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0);
+        updateFavi();
+      }
+      img.onerror = updateFavi
+    }, 100)
   }
 }
 </script>
