@@ -4,6 +4,7 @@
   "description": "Personal portfolio",
   "author": "Sven Parker <hello@svenparker.com>",
   "private": true,
+  "save-exact": true,
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
