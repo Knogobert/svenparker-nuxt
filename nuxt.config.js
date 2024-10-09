@@ -18,7 +18,10 @@ export default defineNuxtConfig({
         { name: 'msapplication-config', content: 'browserconfig.xml' },
         { name: 'theme-color', content: '#392ecc' },
         { name: 'robots', content: 'index, follow' },
-        { name: 'google-site-verification', content: '4oeDbA1nkNSPNK4-7gB8Xc-MHrj-T-nrO4_S_263RU0' }
+        { name: 'google-site-verification', content: '4oeDbA1nkNSPNK4-7gB8Xc-MHrj-T-nrO4_S_263RU0' },
+        //  Sets the status bar style to transparent
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
       ],
       link: [
         { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: '/apple-touch-icon.png' },
